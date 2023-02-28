@@ -1,9 +1,7 @@
-
 import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { FirstForm, NewForm ,NewLogin,Signup } from './components/LoginComp'
+import { FirstForm, Signup } from './components/LoginComp'
 import AdminHome from './components/AdminHome'
 import TemHome from './components/TemHome'
 import TmHome from './components/TmHome'
@@ -51,17 +49,19 @@ function App() {
               <Route path="/" element={<FrontHome/>} />
               <Route path="/sign-in" element={<FirstForm/>} />
               <Route path="/sign-up" element={<Signup/>} />
-              <Route path="admin_home" element={<AdminHome/>} />
-              <Route path="tm_home" element={<TmHome/>} />
-              <Route path="tem_home" element={<TemHome/>} />
-              <Route path="mu_home" element={<MuHome/>} />
-              <Route path="logout" element={<LogoutComp/>} />
-              <Route path="creattour" element={<Tournamentform/>} />
+              <Route path="/admin_home" element={<AdminHome/>} />
+              <Route path="/tm_home" element={<TmHome/>} />
+              <Route path="/tem_home" element={<TemHome/>} />
+              <Route path="/mu_home" element={<MuHome/>} />
+              <Route path="/logout" element={<LogoutComp/>} />
+              <Route path="/creattour" element={<Tournamentform/>} />
             </Routes>
           </div>
         </div>
       </div>
     </Router>
   )
+
+  
 }
 export default App

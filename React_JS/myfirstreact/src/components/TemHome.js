@@ -1,8 +1,21 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { useReducer, useState, useEffect} from "react";
 export default function TemHome() {
 
-    return(
 
+const [tem,setTem] = useState(null);
+ useEffect(()=>{
+
+ var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
+  fetch("http://localhost:8082/getuser?uid="+uid)
+  .then(resp => resp.json())
+  .then(obj => {
+    localStorage.setItem("loggedTeamMan", JSON.stringify(obj))
+    setTem(obj);
+  })
+ } ,[])
+
+    return(
         <div>
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                   <div className="container">
@@ -12,7 +25,7 @@ export default function TemHome() {
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                       <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/creattour'}>
+                          <Link className="nav-link" >
                             Create Tournament
                           </Link>
                         </li>
@@ -43,7 +56,7 @@ export default function TemHome() {
                 <br/>
         <br/>
                 <div>
-                    <h1>Team Manager</h1>
+                    <h1>Welcome {tem && tem.first_name} </h1>
                 </div>
                 </div>
     )

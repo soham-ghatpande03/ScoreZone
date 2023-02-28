@@ -1,5 +1,19 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { useReducer, useState, useEffect} from "react";
 export default function TmHome() {
+
+
+  const [tm,setTm] = useState(null);
+ useEffect(()=>{
+
+ var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
+  fetch("http://localhost:8082/getuser?uid="+uid)
+  .then(resp => resp.json())
+  .then(obj => {
+    localStorage.setItem("loggedTourMan", JSON.stringify(obj))
+    setTm(obj);
+  })
+ } ,[])
 
     return(
         <div>
@@ -11,7 +25,7 @@ export default function TmHome() {
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                       <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-in'}>
+                          <Link className="nav-link" to={'/creattour'}>
                             Register Team
                           </Link>
                         </li>

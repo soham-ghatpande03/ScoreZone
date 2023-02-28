@@ -32,20 +32,33 @@ public class Team {
 	
 	@Column(name="TEAM_DESCRIPTION")
 	String team_description;
+	
+	@Column(name="TEAM_LOGO")
+	byte[] team_logo;
+	
 
 	public Team() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Team(int team_id, String team_name, String team_manager_id, Date registration_date,
-			String team_description) {
+	
+	public Team(int team_id, String team_name, String team_manager_id, Date registration_date, String team_description,
+			byte[] team_logo) {
 		super();
 		this.team_id = team_id;
 		this.team_name = team_name;
 		this.team_manager_id = team_manager_id;
 		this.registration_date = registration_date;
 		this.team_description = team_description;
+		this.team_logo = team_logo;
+	}
+
+	public byte[] getTeam_logo() {
+		return team_logo;
+	}
+
+	public void setTeam_logo(byte[] team_logo) {
+		this.team_logo = team_logo;
 	}
 
 	public int getTeam_id() {

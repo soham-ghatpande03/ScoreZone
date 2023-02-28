@@ -62,6 +62,7 @@ var FirstForm = ()=>{
                 else{
 
                     reduxAction(login());
+                    localStorage.setItem("loggeduser" , JSON.stringify(obj));
                     if(obj.type_id.type_id === 1)
                     {
                         navigate("/tm_home");

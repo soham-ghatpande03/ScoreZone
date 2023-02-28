@@ -1,4 +1,6 @@
+import '../forms.css';
 import { useReducer} from "react";
+
 
 export default function Tournamentform(){
 
@@ -34,22 +36,102 @@ export default function Tournamentform(){
         .then(resp => console.log(resp))
     }
 
-    return(
-        <div>
-            <form>
-                Enter Title : <input type="text" name="title" id="title"
-                 onChange={(e) => {dispatch({type:'update', fld:'tournament_title', val: e.target.value})}}/><br/>
-                Enter ManagerId : <input type="number" name="managerid" id="managerid"
-                 onChange={(e) => {dispatch({type:'update', fld:'tournament_manager_id', val: e.target.value})}}/><br/>
-                Enter Start Date : <input type="date" name="sdate" id="sdate"
-                 onChange={(e) => {dispatch({type:'update', fld:'start_date', val: e.target.value})}}/><br/>
-                Enter End Date : <input type="date" name="edate" id="edate"
-                 onChange={(e) => {dispatch({type:'update', fld:'end_date', val: e.target.value})}}/><br/>
-                Enter Deadline Date : <input type="date" name="ddate" id="ddate" 
-                 onChange={(e) => {dispatch({type:'update', fld:'participation_deadline', val: e.target.value})}}/><br/>
-                <button type="submit" onClick={(e) => {sendData(e)}}>Submit</button>
-                <button type="reset" onClick={() => {dispatch({type:'reset'})}}>Clear</button>
-            </form>
+    // return(
+    //     <div>
+    //         <form>
+    //             Enter Title : <input type="text" name="title" id="title"
+    //              onChange={(e) => {dispatch({type:'update', fld:'tournament_title', val: e.target.value})}}/><br/>
+    //             Enter ManagerId : <input type="number" name="managerid" id="managerid"
+    //              onChange={(e) => {dispatch({type:'update', fld:'tournament_manager_id', val: e.target.value})}}/><br/>
+    //             Enter Start Date : <input type="date" name="sdate" id="sdate"
+    //              onChange={(e) => {dispatch({type:'update', fld:'start_date', val: e.target.value})}}/><br/>
+    //             Enter End Date : <input type="date" name="edate" id="edate"
+    //              onChange={(e) => {dispatch({type:'update', fld:'end_date', val: e.target.value})}}/><br/>
+    //             Enter Deadline Date : <input type="date" name="ddate" id="ddate" 
+    //              onChange={(e) => {dispatch({type:'update', fld:'participation_deadline', val: e.target.value})}}/><br/>
+    //             <button type="submit" onClick={(e) => {sendData(e)}}>Submit</button>
+    //             <button type="reset" onClick={() => {dispatch({type:'reset'})}}>Clear</button>
+    //         </form>
+    //     </div>
+    // )
+
+
+return(
+    <div>
+      <form>
+        <h3>Create Tournament</h3>
+        <div className="mb-3">
+          <label>Title</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter Title"
+            id="title"
+            name="title"
+            value={info.tournament_title}
+            onChange={(e) => {dispatch({type:'update', fld:'tournament_title', val: e.target.value})}}
+          />
         </div>
+
+        <div className="mb-3">
+          <label>ManagerId</label>
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Enter ManagerId"
+            id="ManagerId"
+            name="ManagerId"
+            value={info.tournament_manager_id}
+            onChange={(e) => {dispatch({type:'update', fld:'tournament_manager_id', val: e.target.value})}}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label>Start Date</label>
+          <input
+            type="date"
+            className="form-control"
+            placeholder="Start Date"
+            id="Start_Date"
+            name="Start_Date"
+            value={info.start_date}
+            onChange={(e) => {dispatch({type:'update', fld:'start_date', val: e.target.value})}}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label>End Date</label>
+          <input
+            type="date"
+            className="form-control"
+            placeholder="End Date"
+            id="End_Date"
+            name="End_Date"
+            value={info.end_date}
+            onChange={(e) => {dispatch({type:'update', fld:'end_date', val: e.target.value})}}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label>Deadline Date</label>
+          <input
+            type="date"
+            className="form-control"
+            placeholder="Deadline Date"
+            id="Deadline_Date"
+            name="Deadline_Date"
+            value={info.participation_deadline}
+            onChange={(e) => {dispatch({type:'update', fld:'participation_deadline', val: e.target.value})}}
+          />
+        </div>
+
+        <div className="d-grid">
+          <button type="submit" className="btn btn-primary" onClick={(e) => {sendData(e)}}>
+            Submit
+          </button>
+        </div>
+      </form>
+      </div>
     )
+
 }

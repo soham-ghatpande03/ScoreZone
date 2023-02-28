@@ -32,4 +32,8 @@ public class UserService {
 		return u;
 		
 	}
+	
+	public User getUser(int id) {
+		return urepo.getUser(id);
+	}
 }

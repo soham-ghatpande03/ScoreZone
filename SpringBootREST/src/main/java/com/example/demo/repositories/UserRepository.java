@@ -11,4 +11,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	@Query("select u from User u where username=?1 and password =?2")
 	public Optional<User> getLogin(String uid ,String pwd); // data maynot be present hence using Optional
+
+	
+	@Query("select u from User u where uid = ?1 ")
+	public User getUser(int id);
+	
 }

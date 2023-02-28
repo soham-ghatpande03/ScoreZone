@@ -40,14 +40,18 @@ public class Tournament {
 	
 	@Column(name="TOURNAMENT_STATUS")
 	int tournament_status;
+	
+	@Column(name="TOURNAMENT_LOGO")
+	byte[] tournament_logo;
 
 	public Tournament() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public Tournament(int tournament_id, String tournament_title, int tournament_manager_id, Date start_date,
-			Date end_date, Date participation_deadline, int tournament_status) {
+			Date end_date, Date participation_deadline, int tournament_status, byte[] tournament_logo) {
 		super();
 		this.tournament_id = tournament_id;
 		this.tournament_title = tournament_title;
@@ -56,7 +60,19 @@ public class Tournament {
 		this.end_date = end_date;
 		this.participation_deadline = participation_deadline;
 		this.tournament_status = tournament_status;
+		this.tournament_logo = tournament_logo;
 	}
+
+
+	public byte[] getTournament_logo() {
+		return tournament_logo;
+	}
+
+
+	public void setTournament_logo(byte[] tournament_logo) {
+		this.tournament_logo = tournament_logo;
+	}
+
 
 	public int getTournament_id() {
 		return tournament_id;
@@ -122,5 +138,4 @@ public class Tournament {
 				+ tournament_status + "]";
 	}
 
-	
 }
