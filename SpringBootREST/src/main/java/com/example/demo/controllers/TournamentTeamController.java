@@ -20,7 +20,7 @@ public class TournamentTeamController {
 		return tservice.getAll();
 	}
 	
-	@PostMapping("/saveTeamTournamentID")
+	@PostMapping("/saveTournamentTeamID")
 	public TournamentTeam saveTeamTournamentID(TournamentTeam t) {
 		return tservice.saveTeam(t);
 		
