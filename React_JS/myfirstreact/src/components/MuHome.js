@@ -24,7 +24,8 @@ export default function MuHome() {
             </div>
           </div>
         </nav>
-
+        <br/>
+        <br/>
         <div>
             <h1>Match Updater</h1>
         </div>

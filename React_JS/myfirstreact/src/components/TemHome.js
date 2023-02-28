@@ -40,14 +40,11 @@ export default function TemHome() {
                     </div>
                   </div>
                 </nav>
-        
+                <br/>
+        <br/>
                 <div>
-                    <h1>Match Updater</h1>
+                    <h1>Team Manager</h1>
                 </div>
-                
-        <div>
-            <h1>Team Manager</h1>
-        </div>
-        </div>
+                </div>
     )
 }

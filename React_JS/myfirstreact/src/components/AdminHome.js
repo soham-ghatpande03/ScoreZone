@@ -4,7 +4,7 @@ export default function AdminHome() {
     return(
 
 <div>
-<nav className="navbar navbar-expand-lg navbar-light fixed-top">
+<nav className="navbar navbar-expand-lg navbar-light fixed-right">
           <div className="container">
             <Link className="navbar-brand" to={'/sign-in'}>
               ScoreZone
@@ -25,6 +25,11 @@ export default function AdminHome() {
                 <li className="nav-item">
                   <Link className="nav-link" to={'/sign-up'}>
                     Add Venues
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/sign-up'}>
+                    Logout
                   </Link>
                 </li>
               </ul>
