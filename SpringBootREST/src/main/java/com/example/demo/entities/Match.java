@@ -17,129 +17,135 @@ public class Match {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int MATCH_ID;
+	@Column(name="MATCH_ID")
+	int match_id;
 	
-	@Column
-	int TOURNAMENT_ID, TEAM_ID_A, TEAM_ID_B, TEAM_A_SCORE, TEAM_B_SCORE, MATCH_STATUS;
+	@Column(name="TOURNAMENT_ID")
+	int tournament_id;
 	
-	@Column
-	String MATCH_VENUE;
+	@Column(name="TEAM_ID_A")
+	int team_id_a;
+	
+	@Column(name="TEAM_ID_B")
+	int team_id_b;
+	
+	@Column(name="TEAM_A_SCORE")
+	int team_a_score;
+	
+	@Column(name="TEAM_B_SCORE")
+	int team_b_score;
+	
+	@Column(name="MATCH_STATUS")
+	int match_status;
+	
+	@Column(name=" MATCH_VENUE")
+	String match_venue;
 	
 
 	@JsonFormat(pattern = "DD-MM-YYYY")
-	@Column
-	Date MATCH_DATE;
+	@Column(name="MATCH_DATE")
+	Date match_date;
 	
-	@Column
-	String REMARKS;
+	@Column(name="REMARKS")
+	String remarks;
 
 	public Match() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Match(int mATCH_ID, int tOURNAMENT_ID, int tEAM_ID_A, int tEAM_ID_B, int tEAM_A_SCORE, int tEAM_B_SCORE,
-			int mATCH_STATUS, String mATCH_VENUE, Date mATCH_DATE, String rEMARKS) {
+	public Match(int match_id, int tournament_id, int team_id_a, int team_id_b, int team_a_score, int team_b_score,
+			int match_status, String match_venue, Date match_date, String remarks) {
 		super();
-		MATCH_ID = mATCH_ID;
-		TOURNAMENT_ID = tOURNAMENT_ID;
-		TEAM_ID_A = tEAM_ID_A;
-		TEAM_ID_B = tEAM_ID_B;
-		TEAM_A_SCORE = tEAM_A_SCORE;
-		TEAM_B_SCORE = tEAM_B_SCORE;
-		MATCH_STATUS = mATCH_STATUS;
-		MATCH_VENUE = mATCH_VENUE;
-		MATCH_DATE = mATCH_DATE;
-		REMARKS = rEMARKS;
+		this.match_id = match_id;
+		this.tournament_id = tournament_id;
+		this.team_id_a = team_id_a;
+		this.team_id_b = team_id_b;
+		this.team_a_score = team_a_score;
+		this.team_b_score = team_b_score;
+		this.match_status = match_status;
+		this.match_venue = match_venue;
+		this.match_date = match_date;
+		this.remarks = remarks;
 	}
 
-	public int getMATCH_ID() {
-		return MATCH_ID;
+	public int getMatch_id() {
+		return match_id;
 	}
 
-	public void setMATCH_ID(int mATCH_ID) {
-		MATCH_ID = mATCH_ID;
+	public void setMatch_id(int match_id) {
+		this.match_id = match_id;
 	}
 
-	public int getTOURNAMENT_ID() {
-		return TOURNAMENT_ID;
+	public int getTournament_id() {
+		return tournament_id;
 	}
 
-	public void setTOURNAMENT_ID(int tOURNAMENT_ID) {
-		TOURNAMENT_ID = tOURNAMENT_ID;
+	public void setTournament_id(int tournament_id) {
+		this.tournament_id = tournament_id;
 	}
 
-	public int getTEAM_ID_A() {
-		return TEAM_ID_A;
+	public int getTeam_id_a() {
+		return team_id_a;
 	}
 
-	public void setTEAM_ID_A(int tEAM_ID_A) {
-		TEAM_ID_A = tEAM_ID_A;
+	public void setTeam_id_a(int team_id_a) {
+		this.team_id_a = team_id_a;
 	}
 
-	public int getTEAM_ID_B() {
-		return TEAM_ID_B;
+	public int getTeam_id_b() {
+		return team_id_b;
 	}
 
-	public void setTEAM_ID_B(int tEAM_ID_B) {
-		TEAM_ID_B = tEAM_ID_B;
+	public void setTeam_id_b(int team_id_b) {
+		this.team_id_b = team_id_b;
 	}
 
-	public int getTEAM_A_SCORE() {
-		return TEAM_A_SCORE;
+	public int getTeam_a_score() {
+		return team_a_score;
 	}
 
-	public void setTEAM_A_SCORE(int tEAM_A_SCORE) {
-		TEAM_A_SCORE = tEAM_A_SCORE;
+	public void setTeam_a_score(int team_a_score) {
+		this.team_a_score = team_a_score;
 	}
 
-	public int getTEAM_B_SCORE() {
-		return TEAM_B_SCORE;
+	public int getTeam_b_score() {
+		return team_b_score;
 	}
 
-	public void setTEAM_B_SCORE(int tEAM_B_SCORE) {
-		TEAM_B_SCORE = tEAM_B_SCORE;
+	public void setTeam_b_score(int team_b_score) {
+		this.team_b_score = team_b_score;
 	}
 
-	public int getMATCH_STATUS() {
-		return MATCH_STATUS;
+	public int getMatch_status() {
+		return match_status;
 	}
 
-	public void setMATCH_STATUS(int mATCH_STATUS) {
-		MATCH_STATUS = mATCH_STATUS;
+	public void setMatch_status(int match_status) {
+		this.match_status = match_status;
 	}
 
-	public String getMATCH_VENUE() {
-		return MATCH_VENUE;
+	public String getMatch_venue() {
+		return match_venue;
 	}
 
-	public void setMATCH_VENUE(String mATCH_VENUE) {
-		MATCH_VENUE = mATCH_VENUE;
+	public void setMatch_venue(String match_venue) {
+		this.match_venue = match_venue;
 	}
 
-	public Date getMATCH_DATE() {
-		return MATCH_DATE;
+	public Date getMatch_date() {
+		return match_date;
 	}
 
-	public void setMATCH_DATE(Date mATCH_DATE) {
-		MATCH_DATE = mATCH_DATE;
+	public void setMatch_date(Date match_date) {
+		this.match_date = match_date;
 	}
 
-	public String getREMARKS() {
-		return REMARKS;
+	public String getRemarks() {
+		return remarks;
 	}
 
-	public void setREMARKS(String rEMARKS) {
-		REMARKS = rEMARKS;
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
-
-	@Override
-	public String toString() {
-		return "Match [MATCH_ID=" + MATCH_ID + ", TOURNAMENT_ID=" + TOURNAMENT_ID + ", TEAM_ID_A=" + TEAM_ID_A
-				+ ", TEAM_ID_B=" + TEAM_ID_B + ", TEAM_A_SCORE=" + TEAM_A_SCORE + ", TEAM_B_SCORE=" + TEAM_B_SCORE
-				+ ", MATCH_STATUS=" + MATCH_STATUS + ", MATCH_VENUE=" + MATCH_VENUE + ", MATCH_DATE=" + MATCH_DATE
-				+ ", REMARKS=" + REMARKS + "]";
-	}
-	
-	
 }
