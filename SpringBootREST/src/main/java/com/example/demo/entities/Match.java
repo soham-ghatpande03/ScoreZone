@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -20,14 +21,17 @@ public class Match {
 	@Column(name="MATCH_ID")
 	int match_id;
 	
+	@OneToOne(mappedBy = "tournament_id")
 	@Column(name="TOURNAMENT_ID")
-	int tournament_id;
+	Tournament tournament_id;
 	
+	@OneToOne(mappedBy = "team_id")
 	@Column(name="TEAM_ID_A")
-	int team_id_a;
+	Team team_id_a;
 	
+	@OneToOne(mappedBy = "team_id")
 	@Column(name="TEAM_ID_B")
-	int team_id_b;
+	Team team_id_b;
 	
 	@Column(name="TEAM_A_SCORE")
 	int team_a_score;
@@ -41,7 +45,6 @@ public class Match {
 	@Column(name=" MATCH_VENUE")
 	String match_venue;
 	
-
 	@JsonFormat(pattern = "DD-MM-YYYY")
 	@Column(name="MATCH_DATE")
 	Date match_date;
@@ -54,10 +57,9 @@ public class Match {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Match(int match_id, int tournament_id, int team_id_a, int team_id_b, int team_a_score, int team_b_score,
+	public Match(Tournament tournament_id, Team team_id_a, Team team_id_b, int team_a_score, int team_b_score,
 			int match_status, String match_venue, Date match_date, String remarks) {
 		super();
-		this.match_id = match_id;
 		this.tournament_id = tournament_id;
 		this.team_id_a = team_id_a;
 		this.team_id_b = team_id_b;
@@ -77,27 +79,27 @@ public class Match {
 		this.match_id = match_id;
 	}
 
-	public int getTournament_id() {
+	public Tournament getTournament_id() {
 		return tournament_id;
 	}
 
-	public void setTournament_id(int tournament_id) {
+	public void setTournament_id(Tournament tournament_id) {
 		this.tournament_id = tournament_id;
 	}
 
-	public int getTeam_id_a() {
+	public Team getTeam_id_a() {
 		return team_id_a;
 	}
 
-	public void setTeam_id_a(int team_id_a) {
+	public void setTeam_id_a(Team team_id_a) {
 		this.team_id_a = team_id_a;
 	}
 
-	public int getTeam_id_b() {
+	public Team getTeam_id_b() {
 		return team_id_b;
 	}
 
-	public void setTeam_id_b(int team_id_b) {
+	public void setTeam_id_b(Team team_id_b) {
 		this.team_id_b = team_id_b;
 	}
 
@@ -148,4 +150,8 @@ public class Match {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
+
+	
+
+	
 }
