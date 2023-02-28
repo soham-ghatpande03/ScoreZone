@@ -12,8 +12,8 @@ export default function TemHome() {
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                       <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-in'}>
-                            Register Team
+                          <Link className="nav-link" to={'/creattour'}>
+                            Create Tournament
                           </Link>
                         </li>
                         <li className="nav-item">
