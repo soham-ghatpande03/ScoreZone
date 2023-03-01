@@ -7,6 +7,7 @@ export default function TmHome() {
  useEffect(()=>{
 
  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
+ console.log(uid);
   fetch("http://localhost:8082/getuser?uid="+uid)
   .then(resp => resp.json())
   .then(obj => {
@@ -40,7 +41,7 @@ export default function TmHome() {
                           </Link>
                         </li>                  
                         <li className="nav-item">
-                        <Link className="nav-link" to={'/'}>
+                        <Link className="nav-link" to={'/logout'}>
                             Logout
                           </Link>
                         </li>

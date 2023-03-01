@@ -6,7 +6,8 @@ export default function LogoutComp(){
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    localStorage.clear();
     dispatch(logout())
+    localStorage.clear();
+    
     navigate("/")
 }

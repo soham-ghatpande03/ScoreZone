@@ -5,16 +5,18 @@ import { useReducer ,useEffect, useState} from "react";
 export default function Tournamentform(){
 
   const [tm,setTm] = useState(null);
-  useEffect(()=>{
+  const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
+  /*useEffect(()=>{
  
   var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
+  console.log(uid)
    fetch("http://localhost:8082/getuser?uid="+uid)
    .then(resp => resp.json())
    .then(obj => {
      localStorage.setItem("loggedTourMan", JSON.stringify(obj))
      setTm(obj);
    })
-  } ,[])
+  } ,[])*/
 
     const init = {
 
@@ -72,7 +74,7 @@ return(
           <input
             type="number"
             className="form-control"
-            placeholder={tm.uid}
+            placeholder={tmanager.uid}
             id="ManagerId"
             name="ManagerId"
             value={info.tournament_manager_id}
