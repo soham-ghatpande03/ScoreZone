@@ -1,7 +1,7 @@
 import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { FirstForm, Signup } from './components/LoginComp'
+import { FirstForm } from './components/LoginComp'
 import AdminHome from './components/AdminHome'
 import TemHome from './components/TemHome'
 import TmHome from './components/TmHome'
@@ -11,6 +11,7 @@ import FrontHome from './components/FrontHome'
 import LogoutComp from './components/LogoutComp'
 import Tournamentform from './components/TournamentForm'
 import './index.css';
+import Signup from './components/UserRegister'
 
 function App() {
 
