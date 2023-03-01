@@ -62,6 +62,17 @@ public class Tournament {
 		this.tournament_status = tournament_status;
 		this.tournament_logo = tournament_logo;
 	}
+	
+
+	public Tournament(String tournament_title, int tournament_manager_id, Date start_date, Date end_date,
+			Date participation_deadline) {
+		super();
+		this.tournament_title = tournament_title;
+		this.tournament_manager_id = tournament_manager_id;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.participation_deadline = participation_deadline;
+	}
 
 
 	public byte[] getTournament_logo() {
