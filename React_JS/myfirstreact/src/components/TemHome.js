@@ -25,27 +25,27 @@ const [tem,setTem] = useState(null);
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                       <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                          <Link className="nav-link" >
-                            Create Tournament
+                          <Link className="nav-link" to={'/'} >
+                            View My Team
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-up'}>
+                          <Link className="nav-link" to={'/'}>
                             Participate
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-up'}>
+                          <Link className="nav-link" to={'/'}>
                             Teams
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-up'}>
+                          <Link className="nav-link" to={'/'}>
                             Matches
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-up'}>
+                        <Link className="nav-link" to={'/'}>
                             Logout
                           </Link>
                         </li>

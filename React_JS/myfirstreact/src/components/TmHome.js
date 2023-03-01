@@ -26,26 +26,21 @@ export default function TmHome() {
                       <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                           <Link className="nav-link" to={'/creattour'}>
-                            Register Team
+                            Create Tournament
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-up'}>
-                            Participate
+                          <Link className="nav-link" to={'/'}>
+                            Generate Matches
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-up'}>
+                          <Link className="nav-link" to={'/'}>
                             Teams
                           </Link>
-                        </li>
+                        </li>                  
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-up'}>
-                            Matches
-                          </Link>
-                        </li>
-                        <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-up'}>
+                        <Link className="nav-link" to={'/'}>
                             Logout
                           </Link>
                         </li>
@@ -57,7 +52,8 @@ export default function TmHome() {
         <br/>
                 <div>
                     <h1>Tournament Manager</h1>
-                </div>
+                    <h1>Welcome {tm && tm.first_name} </h1>
+                </div>  
                 </div>
     )
 }

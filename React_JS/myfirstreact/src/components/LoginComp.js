@@ -87,6 +87,8 @@ var FirstForm = ()=>{
 
 
     return(
+      <div className="auth-wrapper">
+      <div className="auth-inner"> 
         <div>
           <form>
             <h3>Sign In</h3>
@@ -137,12 +139,16 @@ var FirstForm = ()=>{
           </form>
           <p>{msg}</p>
           </div>
+          </div>
+      </div>
         )
 
 }
 
 var Signup = ()=>{
     return (
+      <div className="auth-wrapper">
+      <div className="auth-inner"> 
       <form>
         <h3>Sign Up</h3>
         <div className="mb-3">
@@ -182,6 +188,8 @@ var Signup = ()=>{
           Already registered <a href="/sign-in">sign in?</a>
         </p>
       </form>
+      </div>
+      </div>
     )
   }
 

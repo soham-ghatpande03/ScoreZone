@@ -1,45 +1,41 @@
 import '../bgim.css';
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 export default function FrontHome() 
 {
     return (
-        <div>
-          <div>
-          <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="400">
-            <div class="container">
-                <div class="navbar-header">
-              <a href="#" class="navbar-brand">ScoreZone</a>
-              <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <i class="fa fa-bars"></i>
-              </a>
-              </div>
-              <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                  <li>Link</li>
-                  <li>Link</li>
-                </ul>
-                <ul class="nav pull-right navbar-nav">
-                  <li>
-                   <a href="#">Link</a>
-                  </li>
-                  <li>
-                    <a href="#"><span class="badge">2</span></a>
-                  </li>
-                </ul>
-              </div>		
-            </div>
+      
+      <div >
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <div className="container">
+          <Link className="navbar-brand" to={'/'}>
+            ScoreZone
+          </Link>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to={'/sign-in'}>
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={'/sign-up'}>
+                  Sign up
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
-        
-        <section class="first">
-        
-          <div class="container">
-          
-            
-          </div>
-        
-        </section>
-          
-        </div>
+
+      </nav>
+      <section class="first">
+
+<div class="container">
+
+  
+</div>
+
+</section>
+      </div>
     )
 }
+

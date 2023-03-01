@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import FrontHome from './components/FrontHome'
 import LogoutComp from './components/LogoutComp'
 import Tournamentform from './components/TournamentForm'
+import './index.css';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
         <div style={{display: mystate.loggedin ? "none" : "block"}}>
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={'/'}>
+            <Link className="navbar-brand" to={"/"}>
               ScoreZone
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -43,22 +44,22 @@ function App() {
         </nav>
         </div>
         <div className="auth-wrapper">
-          <div className="auth-inner">
-            <Routes>
+            {/* <div className="auth-inner"> */}
+          <Routes>
+              <Route path="/sign-in" element={<FirstForm/>} className="auth-inner" />
               <Route exact path="/" element={<FrontHome/>} />
-              <Route path="/" element={<FrontHome/>} />
-              <Route path="/sign-in" element={<FirstForm/>} />
-              <Route path="/sign-up" element={<Signup/>} />
+              <Route path="/home" element={<FrontHome/>} />
+              <Route path="/sign-up" element={<Signup/> }className="auth-inner" />
               <Route path="/admin_home" element={<AdminHome/>} />
               <Route path="/tm_home" element={<TmHome/>} />
               <Route path="/tem_home" element={<TemHome/>} />
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />
-              <Route path="/creattour" element={<Tournamentform/>} />
+              <Route path="/creattour" element={<Tournamentform/>} className="auth-inner" />
             </Routes>
-          </div>
-        </div>
-      </div>
+          </div>  
+        </div>        
+
     </Router>
   )
 
