@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,23 +20,20 @@ public class Match {
 	@Column(name="MATCH_ID")
 	int match_id;
 	
-	@OneToOne(mappedBy = "tournament_id")
 	@Column(name="TOURNAMENT_ID")
-	Tournament tournament_id;
+	int tournament_id;
 	
-	@OneToOne(mappedBy = "team_id")
 	@Column(name="TEAM_ID_A")
-	Team team_id_a;
+	int team_id_a;
 	
-	@OneToOne(mappedBy = "team_id")
 	@Column(name="TEAM_ID_B")
-	Team team_id_b;
+	int team_id_b;
 	
 	@Column(name="TEAM_A_SCORE")
-	int team_a_score;
+	Integer team_a_score;
 	
 	@Column(name="TEAM_B_SCORE")
-	int team_b_score;
+	Integer team_b_score;
 	
 	@Column(name="MATCH_STATUS")
 	int match_status;
@@ -54,10 +50,9 @@ public class Match {
 
 	public Match() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Match(Tournament tournament_id, Team team_id_a, Team team_id_b, int team_a_score, int team_b_score,
+	public Match(int tournament_id, int team_id_a, int team_id_b, Integer team_a_score, Integer team_b_score,
 			int match_status, String match_venue, Date match_date, String remarks) {
 		super();
 		this.tournament_id = tournament_id;
@@ -79,43 +74,43 @@ public class Match {
 		this.match_id = match_id;
 	}
 
-	public Tournament getTournament_id() {
+	public int getTournament_id() {
 		return tournament_id;
 	}
 
-	public void setTournament_id(Tournament tournament_id) {
+	public void setTournament_id(int tournament_id) {
 		this.tournament_id = tournament_id;
 	}
 
-	public Team getTeam_id_a() {
+	public int getTeam_id_a() {
 		return team_id_a;
 	}
 
-	public void setTeam_id_a(Team team_id_a) {
+	public void setTeam_id_a(int team_id_a) {
 		this.team_id_a = team_id_a;
 	}
 
-	public Team getTeam_id_b() {
+	public int getTeam_id_b() {
 		return team_id_b;
 	}
 
-	public void setTeam_id_b(Team team_id_b) {
+	public void setTeam_id_b(int team_id_b) {
 		this.team_id_b = team_id_b;
 	}
 
-	public int getTeam_a_score() {
+	public Integer getTeam_a_score() {
 		return team_a_score;
 	}
 
-	public void setTeam_a_score(int team_a_score) {
+	public void setTeam_a_score(Integer team_a_score) {
 		this.team_a_score = team_a_score;
 	}
 
-	public int getTeam_b_score() {
+	public Integer getTeam_b_score() {
 		return team_b_score;
 	}
 
-	public void setTeam_b_score(int team_b_score) {
+	public void setTeam_b_score(Integer team_b_score) {
 		this.team_b_score = team_b_score;
 	}
 

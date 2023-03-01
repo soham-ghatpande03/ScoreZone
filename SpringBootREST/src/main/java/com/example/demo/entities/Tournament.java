@@ -25,7 +25,6 @@ public class Tournament {
 	@Column(name="TOURNAMENT_MANAGER_ID")
 	int tournament_manager_id;
 	
-
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Column(name="START_DATE")
 	Date start_date;
