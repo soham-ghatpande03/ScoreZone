@@ -6,17 +6,6 @@ export default function Tournamentform(){
 
   const [tm,setTm] = useState(null);
   const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
-  /*useEffect(()=>{
- 
-  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
-  console.log(uid)
-   fetch("http://localhost:8082/getuser?uid="+uid)
-   .then(resp => resp.json())
-   .then(obj => {
-     localStorage.setItem("loggedTourMan", JSON.stringify(obj))
-     setTm(obj);
-   })
-  } ,[])*/
 
     const init = {
 

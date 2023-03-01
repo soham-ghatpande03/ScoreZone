@@ -22,16 +22,16 @@ public class Match {
 	@Column(name="MATCH_ID")
 	int match_id;
 	
-	
-	@Column(name="TOURNAMENT_ID")
+	@ManyToOne
+	@JoinColumn(name="tournament_id")
 	Tournament tournament_id;
 	
-
-	@Column(name="TEAM_ID_A")
+	@ManyToOne
+	@JoinColumn(name="team_id_a" )
 	Team team_id_a;
 	
-	
-	@Column(name="TEAM_ID_B")
+	@ManyToOne
+	@JoinColumn(name="team_id_b")
 	Team team_id_b;
 	
 	@Column(name="TEAM_A_SCORE")

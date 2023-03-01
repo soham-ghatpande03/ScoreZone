@@ -7,6 +7,7 @@ const [tem,setTem] = useState(null);
  useEffect(()=>{
 
  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
+ console.log(uid);
   fetch("http://localhost:8082/getuser?uid="+uid)
   .then(resp => resp.json())
   .then(obj => {
@@ -19,11 +20,16 @@ const [tem,setTem] = useState(null);
         <div>
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                   <div className="container">
-                    <Link className="navbar-brand" to={'/sign-in'}>
+                    <Link className="navbar-brand" to={'/'}>
                       ScoreZone
                     </Link>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                       <ul className="navbar-nav ml-auto">
+                      <li className="nav-item">
+                          <Link className="nav-link" to={'createteam'} >
+                            Create Team
+                          </Link>
+                        </li>
                         <li className="nav-item">
                           <Link className="nav-link" to={'/'} >
                             View My Team

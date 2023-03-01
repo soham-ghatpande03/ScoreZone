@@ -37,7 +37,7 @@ public class User {
 	String password;
 	
 	@ManyToOne
-	@JoinColumn(name="TYPE_ID")
+	@JoinColumn(name="type_id")
 	UserType type_id;
 	
 	@Column(name="USER_STATUS")

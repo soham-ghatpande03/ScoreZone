@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import java.sql.Date;
+import java.util.Arrays;
 
 public class DummyTeam {
 
@@ -11,7 +12,7 @@ public class DummyTeam {
 	String team_name;
 	
 
-	String team_manager_id;
+	int team_manager_id;
 	
 
 
@@ -29,7 +30,7 @@ public class DummyTeam {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public DummyTeam(int team_id, String team_name, String team_manager_id, Date registration_date, String team_description,
+	public DummyTeam(int team_id, String team_name, int team_manager_id, Date registration_date, String team_description,
 			byte[] team_logo) {
 		super();
 		this.team_id = team_id;
@@ -64,11 +65,11 @@ public class DummyTeam {
 		this.team_name = team_name;
 	}
 
-	public String getTeam_manager_id() {
+	public int getTeam_manager_id() {
 		return team_manager_id;
 	}
 
-	public void setTeam_manager_id(String team_manager_id) {
+	public void setTeam_manager_id(int team_manager_id) {
 		this.team_manager_id = team_manager_id;
 	}
 
@@ -86,6 +87,13 @@ public class DummyTeam {
 
 	public void setTeam_description(String team_description) {
 		this.team_description = team_description;
+	}
+
+	@Override
+	public String toString() {
+		return "DummyTeam [team_id=" + team_id + ", team_name=" + team_name + ", team_manager_id=" + team_manager_id
+				+ ", registration_date=" + registration_date + ", team_description=" + team_description + ", team_logo="
+				+ Arrays.toString(team_logo) + "]";
 	}
 
 	
