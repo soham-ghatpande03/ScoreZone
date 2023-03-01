@@ -6,12 +6,16 @@ export default function Register(){
 
     const init = {
 
-        First_Name:"",
-        Last_Name:"",
-        Email:"",
-        Contact:"",
-        Username:"",
-        Password:""
+        
+        first_name: "",
+        last_name: "",
+        email: "",
+        contact: "",
+        username: "",
+        password: "",
+        type_id:"",
+        security_qid: "",
+        q_answer: ""
 
     }
 
@@ -36,78 +40,120 @@ export default function Register(){
         }
         fetch("http://localhost:8082/saveUser", reqOptions)
         .then(resp => console.log(resp))
+
     }
-
-    
-
 
 return(
     <div>
       <form>
-        <h3>Create Tournament</h3>
+        <h3>Registration Form</h3>
+
         <div className="mb-3">
-          <label>Title</label>
+          <label>First Name</label>
           <input
             type="text"
             className="form-control"
-            placeholder="Enter Title"
-            id="title"
-            name="title"
-            value={info.tournament_title}
-            onChange={(e) => {dispatch({type:'update', fld:'tournament_title', val: e.target.value})}}
+            placeholder="Enter First Name"
+            id="First_Name"
+            name="First_Name"
+            value={info.first_name}
+            onChange={(e) => {dispatch({type:'update', fld:'first_name', val: e.target.value})}}
           />
         </div>
 
         <div className="mb-3">
-          <label>First_Name</label>
+          <label>Last Name</label>
           <input
             type="text"
             className="form-control"
-            placeholder="Enter ManagerId"
-            id="ManagerId"
-            name="ManagerId"
-            value={info.tournament_manager_id}
-            onChange={(e) => {dispatch({type:'update', fld:'tournament_manager_id', val: e.target.value})}}
+            placeholder="Enter Last Name"
+            id="Last_Name"
+            name="Last_Name"
+            value={info.last_name}
+            onChange={(e) => {dispatch({type:'update', fld:'last_name', val: e.target.value})}}
           />
         </div>
 
         <div className="mb-3">
-          <label>Start Date</label>
+          <label>Email</label>
           <input
-            type="date"
+            type="text"
             className="form-control"
-            placeholder="Start Date"
-            id="Start_Date"
-            name="Start_Date"
-            value={info.start_date}
-            onChange={(e) => {dispatch({type:'update', fld:'start_date', val: e.target.value})}}
+            placeholder="Enter Email"
+            id="Email"
+            name="Email"
+            value={info.email}
+            onChange={(e) => {dispatch({type:'update', fld:'email', val: e.target.value})}}
           />
         </div>
 
         <div className="mb-3">
-          <label>End Date</label>
+          <label>Contact</label>
           <input
-            type="date"
+            type="number"
             className="form-control"
-            placeholder="End Date"
-            id="End_Date"
-            name="End_Date"
-            value={info.end_date}
-            onChange={(e) => {dispatch({type:'update', fld:'end_date', val: e.target.value})}}
+            placeholder="Enter Contact No"
+            id="Contact"
+            name="Contact"
+            value={info.contact}
+            onChange={(e) => {dispatch({type:'update', fld:'contact', val: e.target.value})}}
           />
         </div>
 
         <div className="mb-3">
-          <label>Deadline Date</label>
+          <label>Username</label>
           <input
-            type="date"
+            type="text"
             className="form-control"
-            placeholder="Deadline Date"
-            id="Deadline_Date"
-            name="Deadline_Date"
-            value={info.participation_deadline}
-            onChange={(e) => {dispatch({type:'update', fld:'participation_deadline', val: e.target.value})}}
+            placeholder="Enter Username"
+            id="Username"
+            name="Username"
+            value={info.username}
+            onChange={(e) => {dispatch({type:'update', fld:'username', val: e.target.value})}}
           />
+        </div>
+
+        <div className="mb-3">
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter Password"
+            id="Password"
+            name="Password"
+            value={info.password}
+            onChange={(e) => {dispatch({type:'update', fld:'password', val: e.target.value})}}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label>Security Question</label><br></br>
+          <select>
+            <option value={info.security_qid}   onChange={(e) => {dispatch({type:'update', fld:'security_qid', val: 1})}}>Place</option>
+            <option value={info.security_qid}   onChange={(e) => {dispatch({type:'update', fld:'security_qid', val: 2})}}>Color</option>
+            <option value={info.security_qid}   onChange={(e) => {dispatch({type:'update', fld:'security_qid', val: 3})}}>Pet</option>
+            </select>
+        </div>
+
+        <div className="mb-3">
+          <label>Security Answer</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter Answer"
+            id="Answer"
+            name="Answer"
+            value={info.q_answer}
+            onChange={(e) => {dispatch({type:'update', fld:'q_answer', val: e.target.value})}}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label>User type</label><br></br>
+          <select>
+            <option value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:1})}}>Tournament Manager</option>
+            <option value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:2})}}>Team Manager</option>
+            </select>
         </div>
 
         <div className="d-grid">

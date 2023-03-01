@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.LoginCheck;
-import com.example.demo.entities.Player;
 import com.example.demo.entities.User;
 import com.example.demo.services.UserService;
 
