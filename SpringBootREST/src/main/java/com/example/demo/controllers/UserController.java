@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.LoginCheck;
+import com.example.demo.entities.Player;
 import com.example.demo.entities.User;
 import com.example.demo.services.UserService;
 
@@ -35,5 +36,10 @@ public class UserController {
 	@GetMapping("/getuser")
 	public User getUser(@RequestParam("uid") int uid ) {
 		return uservice.getUser(uid);
+	}
+	
+	@PostMapping("/saveUser")
+	public User savePlayer(@RequestBody User ue) {
+		return uservice.saveUser(ue);
 	}
 }

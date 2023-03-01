@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import FrontHome from './components/FrontHome'
 import LogoutComp from './components/LogoutComp'
 import Tournamentform from './components/TournamentForm'
+import Register from './components/Register'
 
 function App() {
 
@@ -48,7 +49,7 @@ function App() {
               <Route exact path="/" element={<FrontHome/>} />
               <Route path="/" element={<FrontHome/>} />
               <Route path="/sign-in" element={<FirstForm/>} />
-              <Route path="/sign-up" element={<Signup/>} />
+              <Route path="/sign-up" element={<Register/>} />
               <Route path="/admin_home" element={<AdminHome/>} />
               <Route path="/tm_home" element={<TmHome/>} />
               <Route path="/tem_home" element={<TemHome/>} />
