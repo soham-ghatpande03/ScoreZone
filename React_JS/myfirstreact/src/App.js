@@ -12,6 +12,7 @@ import LogoutComp from './components/LogoutComp'
 import Tournamentform from './components/TournamentForm'
 import './index.css';
 import Signup from './components/UserRegister'
+import RegisterTeam from './components/RegisterTeam'
 
 function App() {
 
@@ -39,6 +40,11 @@ function App() {
                     Sign up
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/register-team'}>
+                    Register Team
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -56,6 +62,7 @@ function App() {
               <Route path="/tem_home" element={<TemHome/>} />
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />
+              <Route path="/register-team" element={<RegisterTeam/>} />
               <Route path="/creattour" element={<Tournamentform/>} className="auth-inner" />
             </Routes>
           </div>  

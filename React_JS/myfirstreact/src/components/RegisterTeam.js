@@ -2,16 +2,21 @@ import '../forms.css';
 import { useReducer} from "react";
 
 
-export default function Register(){
+
+export default function RegisterTeam(){
+
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
     const init = {
 
         //team specification
-        team_id:"",
+        tem_id:"",
         team_name:"",
         registration_date:"",
         team_description:"",
         team_logo:"",
+        //registration_date:{date}.toJson
         
 
     }
@@ -35,8 +40,11 @@ export default function Register(){
             headers: {'content-type':'application/json'},
             body: JSON.stringify(info)
         }
-        fetch("http://localhost:8082/saveteam", reqOptions)
+       
+        fetch("http://localhost:8082/saveTeam", reqOptions)
         .then(resp => console.log(resp))
+
+
 
     }
 
@@ -70,8 +78,22 @@ return(
             onChange={(e) => {dispatch({type:'update', fld:'team_description', val: e.target.value})}}
           />
         </div>
-        
-
+      
+        <div className="mb-3">
+          <label>Team Manager ID</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter Your ID"
+            id="Tem_Id"
+            name="Tem_Id"
+            value={info.Team_name}
+            onChange={(e) => {dispatch({type:'update', fld:'tem_id', val: e.target.value})}}
+          />
+        </div>
+        <div>
+         {date}
+        </div>
         <div className="d-grid">
           <button type="submit" className="btn btn-primary" onClick={(e) => {sendData(e)}}>
             Submit

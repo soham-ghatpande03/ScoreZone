@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Player;
 import com.example.demo.entities.Team;
+import com.example.demo.entities.User;
 import com.example.demo.repositories.TeamRepository;
 
 @Service
@@ -18,5 +21,12 @@ public class TeamService {
 	{
 		return terepo.findAll();
 	}
+
+	public Team saveTeam(Team te) {
+		// TODO Auto-generated method stub
+		return terepo.save(te);
+	}
+	
+	
 }
 
