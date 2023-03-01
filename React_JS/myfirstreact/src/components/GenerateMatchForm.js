@@ -1,12 +1,13 @@
+import '../forms.css';
+import {useReducer} from "react";
+
 export default function GenerateMatchForm(){
 
     const init = {
-
-        tournament_title:"",
-        tournament_manager_id:"",
-        start_date:"",
-        end_date:"",
-        participation_deadline:""
+        team_id_a:"",
+        team_id_b:"",
+        match_venue:"",
+        match_date:"",
     }
 
     const reducer = (state, action) => {
@@ -28,7 +29,7 @@ export default function GenerateMatchForm(){
             headers: {'content-type':'application/json'},
             body: JSON.stringify(info)
         }
-        fetch("http://localhost:8082/generateMatch", reqOptions)
+        fetch("http://localhost:8082/generateMatches", reqOptions)
         .then(resp => console.log(resp))
     }
 
@@ -38,70 +39,56 @@ export default function GenerateMatchForm(){
           <form>
             <h3>Generate Match</h3>
             <div className="mb-3">
-              <label>Title</label>
+              <label>Team 1 Id</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Enter Title"
-                id="title"
-                name="title"
-                value={info.tournament_title}
-                onChange={(e) => {dispatch({type:'update', fld:'tournament_title', val: e.target.value})}}
+                id="team1"
+                name="team1"
+                value={info.team_id_a}
+                onChange={(e) => {dispatch({type:'update', fld:'team_id_a', val: e.target.value})}}
               />
             </div>
     
             <div className="mb-3">
-              <label>ManagerId</label>
+              <label>Team 2 Id</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
-                placeholder="Enter ManagerId"
-                id="ManagerId"
-                name="ManagerId"
-                value={info.tournament_manager_id}
-                onChange={(e) => {dispatch({type:'update', fld:'tournament_manager_id', val: e.target.value})}}
+                placeholder="Enter Title"
+                id="team_id_b"
+                name="team_id_b"
+                value={info.team_id_b}
+                onChange={(e) => {dispatch({type:'update', fld:'team_id_b', val: e.target.value})}}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label>Match Venue</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter Title"
+                id="match_venue"
+                name="match_venue"
+                value={info.match_venue}
+                onChange={(e) => {dispatch({type:'update', fld:'match_venue', val: e.target.value})}}
               />
             </div>
     
             <div className="mb-3">
-              <label>Start Date</label>
+              <label>Match Date</label>
               <input
                 type="date"
                 className="form-control"
                 placeholder="Start Date"
-                id="Start_Date"
-                name="Start_Date"
-                value={info.start_date}
-                onChange={(e) => {dispatch({type:'update', fld:'start_date', val: e.target.value})}}
+                id="match_date"
+                name="match_date"
+                value={info.match_date}
+                onChange={(e) => {dispatch({type:'update', fld:'match_date', val: e.target.value})}}
               />
             </div>
-    
-            <div className="mb-3">
-              <label>End Date</label>
-              <input
-                type="date"
-                className="form-control"
-                placeholder="End Date"
-                id="End_Date"
-                name="End_Date"
-                value={info.end_date}
-                onChange={(e) => {dispatch({type:'update', fld:'end_date', val: e.target.value})}}
-              />
-            </div>
-    
-            <div className="mb-3">
-              <label>Deadline Date</label>
-              <input
-                type="date"
-                className="form-control"
-                placeholder="Deadline Date"
-                id="Deadline_Date"
-                name="Deadline_Date"
-                value={info.participation_deadline}
-                onChange={(e) => {dispatch({type:'update', fld:'participation_deadline', val: e.target.value})}}
-              />
-            </div>
-    
             <div className="d-grid">
               <button type="submit" className="btn btn-primary" onClick={(e) => {sendData(e)}}>
                 Submit
@@ -110,5 +97,4 @@ export default function GenerateMatchForm(){
           </form>
           </div>
         )
-    
 }

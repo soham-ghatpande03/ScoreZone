@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import FrontHome from './components/FrontHome'
 import LogoutComp from './components/LogoutComp'
 import Tournamentform from './components/TournamentForm'
+import GenerateMatchForm from './components/GenerateMatchForm'
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />
               <Route path="/creattour" element={<Tournamentform/>} />
+              <Route path="/generateMatches" element={<GenerateMatchForm/>} />
             </Routes>
           </div>
         </div>

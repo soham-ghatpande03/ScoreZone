@@ -18,4 +18,9 @@ public class MatchService {
 		return mrepo.findAll();
 	}
 	
+	public Match generateMatches(Match m)
+	{
+		return mrepo.save(m);
+	}
+	
 }
