@@ -15,39 +15,56 @@ public class TournamentPlayer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	
-	@Column(name="PLAYER_ID")
-	int player_id;
+	@Column
+	int PLAYER_ID;
 	
-	@Column(name="TOURNAMENT_ID")
-	int tournament_id;
+	@Column
+	int TOURNAMENT_ID;
 	
-	@Column(name="TOURNAMENT_GOALS")
-	int tournament_goals;
+	@Column
+	int TOURNAMENT_GOALS;
 
+	public TournamentPlayer() {
+		PLAYER_ID=1;
+		TOURNAMENT_ID=4;
+		TOURNAMENT_GOALS=45;
+	}
+	
+	public TournamentPlayer(int pLAYER_ID, int tOURNAMENT_ID, int tOURNAMENT_GOALS) {
+		super();
+		PLAYER_ID = pLAYER_ID;
+		TOURNAMENT_ID = tOURNAMENT_ID;
+		TOURNAMENT_GOALS = tOURNAMENT_GOALS;
+	}
+
+	public int getPLAYER_ID() {
+		return PLAYER_ID;
+	}
+
+	public void setPLAYER_ID(int pLAYER_ID) {
+		PLAYER_ID = pLAYER_ID;
+	}
+
+	public int getTOURNAMENT_ID() {
+		return TOURNAMENT_ID;
+	}
+
+	public void setTOURNAMENT_ID(int tOURNAMENT_ID) {
+		TOURNAMENT_ID = tOURNAMENT_ID;
+	}
+
+	public int getTOURNAMENT_GOALS() {
+		return TOURNAMENT_GOALS;
+	}
+
+	public void setTOURNAMENT_GOALS(int tOURNAMENT_GOALS) {
+		TOURNAMENT_GOALS = tOURNAMENT_GOALS;
+	}
 	
 	
-	public int getPlayer_id() {
-		return player_id;
-	}
-
-	public void setPlayer_id(int player_id) {
-		this.player_id = player_id;
-	}
-
-	public int getTournament_id() {
-		return tournament_id;
-	}
-
-	public void setTournament_id(int tournament_id) {
-		this.tournament_id = tournament_id;
-	}
-
-	public int getTournament_goals() {
-		return tournament_goals;
-	}
-
-	public void setTournament_goals(int tournament_goals) {
-		this.tournament_goals = tournament_goals;
-	}
+	
+	
+	
+	
 
 }

@@ -1,8 +1,22 @@
 import '../forms.css';
-import { useReducer} from "react";
+import { useReducer ,useEffect, useState} from "react";
 
 
 export default function Tournamentform(){
+
+  const [tm,setTm] = useState(null);
+  const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
+  /*useEffect(()=>{
+ 
+  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
+  console.log(uid)
+   fetch("http://localhost:8082/getuser?uid="+uid)
+   .then(resp => resp.json())
+   .then(obj => {
+     localStorage.setItem("loggedTourMan", JSON.stringify(obj))
+     setTm(obj);
+   })
+  } ,[])*/
 
     const init = {
 
@@ -36,28 +50,10 @@ export default function Tournamentform(){
         .then(resp => console.log(resp))
     }
 
-    // return(
-    //     <div>
-    //         <form>
-    //             Enter Title : <input type="text" name="title" id="title"
-    //              onChange={(e) => {dispatch({type:'update', fld:'tournament_title', val: e.target.value})}}/><br/>
-    //             Enter ManagerId : <input type="number" name="managerid" id="managerid"
-    //              onChange={(e) => {dispatch({type:'update', fld:'tournament_manager_id', val: e.target.value})}}/><br/>
-    //             Enter Start Date : <input type="date" name="sdate" id="sdate"
-    //              onChange={(e) => {dispatch({type:'update', fld:'start_date', val: e.target.value})}}/><br/>
-    //             Enter End Date : <input type="date" name="edate" id="edate"
-    //              onChange={(e) => {dispatch({type:'update', fld:'end_date', val: e.target.value})}}/><br/>
-    //             Enter Deadline Date : <input type="date" name="ddate" id="ddate" 
-    //              onChange={(e) => {dispatch({type:'update', fld:'participation_deadline', val: e.target.value})}}/><br/>
-    //             <button type="submit" onClick={(e) => {sendData(e)}}>Submit</button>
-    //             <button type="reset" onClick={() => {dispatch({type:'reset'})}}>Clear</button>
-    //         </form>
-    //     </div>
-    // )
-
-
 return(
-    <div>
+  
+  <div className="auth-wrapper">
+  <div className="auth-inner"> 
       <form>
         <h3>Create Tournament</h3>
         <div className="mb-3">
@@ -78,10 +74,11 @@ return(
           <input
             type="number"
             className="form-control"
-            placeholder="Enter ManagerId"
+            placeholder={tmanager.uid}
             id="ManagerId"
             name="ManagerId"
             value={info.tournament_manager_id}
+            readOnly
             onChange={(e) => {dispatch({type:'update', fld:'tournament_manager_id', val: e.target.value})}}
           />
         </div>
@@ -132,6 +129,8 @@ return(
         </div>
       </form>
       </div>
-    )
+      </div>
+
+)
 
 }

@@ -5,9 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import com.example.demo.entities.Player;
 import com.example.demo.entities.User;
 import com.example.demo.repositories.UserRepository;
 
@@ -40,9 +37,7 @@ public class UserService {
 		return urepo.getUser(id);
 	}
 	
-	
-	public User saveUser(@RequestBody User u) {
+	public User saveUser(User u) {
 		return urepo.save(u);
 	}
-	
 }

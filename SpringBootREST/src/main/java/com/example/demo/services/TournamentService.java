@@ -3,7 +3,6 @@ package com.example.demo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import com.example.demo.entities.Tournament;
 import com.example.demo.repositories.TournamentRepository;
@@ -17,11 +16,5 @@ public class TournamentService {
 	public List<Tournament> getAll()
 	{
 		return trepo.findAll();
-	}
-	
-	@Modifying
-	public Tournament createTournament(Tournament t)
-	{
-		return trepo.save(t);
 	}
 }

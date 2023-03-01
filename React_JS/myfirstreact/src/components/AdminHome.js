@@ -25,23 +25,23 @@ export default function AdminHome() {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-in'}>
+                  <Link className="nav-link" to={'/home'}>
                     Approve Tournament Manager
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-up'}>
+                  <Link className="nav-link" to={'/home'}>
                     Approve Team Manager
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-up'}>
+                  <Link className="nav-link" to={'/home'}>
                     Add Venues
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-up'}>
+                  <Link className="nav-link" to={'/logout'}>
                     Logout
                   </Link>
                 </li>

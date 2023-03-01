@@ -37,8 +37,8 @@ public class UserController {
 		return uservice.getUser(uid);
 	}
 	
-	@PostMapping("/saveuser")
-	public User savePlayer(@RequestBody User ue) {
-		return uservice.saveUser(ue);
+	@PostMapping("/saveUser")
+	public User saveUser(@RequestBody User u ) {
+		return uservice.saveUser(u);
 	}
 }
