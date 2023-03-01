@@ -31,7 +31,7 @@ export default function TmHome() {
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/'}>
+                          <Link className="nav-link" to={'/creatematch'}>
                             Generate Matches
                           </Link>
                         </li>

@@ -12,6 +12,7 @@ import LogoutComp from './components/LogoutComp'
 import Tournamentform from './components/TournamentForm'
 import './index.css';
 import Signup from './components/UserRegister'
+import GenerateMatchForm from './components/GenerateMatch'
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
               <Route path="/tem_home" element={<TemHome/>} />
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />
+              <Route path="/creatematch" element={<GenerateMatchForm/>} />
               <Route path="/creattour" element={<Tournamentform/>} className="auth-inner" />
             </Routes>
           </div>  

@@ -18,5 +18,10 @@ public class TeamService {
 	{
 		return terepo.findAll();
 	}
+	
+	public Team getTeamById(int id) 
+	{
+		return terepo.findById(id).get();
+	}
 }
 

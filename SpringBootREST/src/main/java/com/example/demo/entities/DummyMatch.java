@@ -2,64 +2,49 @@ package com.example.demo.entities;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-@Entity
-@Table(name="matches")
-public class Match {
+public class DummyMatch {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="MATCH_ID")
+
 	int match_id;
 	
 	
-	@Column(name="TOURNAMENT_ID")
-	Tournament tournament_id;
-	
-
-	@Column(name="TEAM_ID_A")
-	Team team_id_a;
+	int tournament_id;
 	
 	
-	@Column(name="TEAM_ID_B")
-	Team team_id_b;
+	Integer team_id_a;
 	
-	@Column(name="TEAM_A_SCORE")
+	
+	Integer team_id_b;
+	
+	
 	Integer team_a_score;
 	
-	@Column(name="TEAM_B_SCORE")
+	
 	Integer team_b_score;
 	
-	@Column(name="MATCH_STATUS")
+	
 	int match_status;
 	
-	@Column(name=" MATCH_VENUE")
+	
 	String match_venue;
 	
-	@JsonFormat(pattern = "DD-MM-YYYY")
-	@Column(name="MATCH_DATE")
+	
 	Date match_date;
 	
-	@Column(name="REMARKS")
+
 	String remarks;
 
-	public Match() {
+	public DummyMatch() {
 		super();
 	}
+	
+	
 
-	public Match(Tournament tournament_id, Team team_id_a, Team team_id_b, Integer team_a_score, Integer team_b_score,
-			int match_status, String match_venue, Date match_date, String remarks) {
+	public DummyMatch(int match_id, int tournament_id, Integer team_id_a, Integer team_id_b, Integer team_a_score,
+			Integer team_b_score, int match_status, String match_venue, Date match_date, String remarks) {
 		super();
+		this.match_id = match_id;
 		this.tournament_id = tournament_id;
 		this.team_id_a = team_id_a;
 		this.team_id_b = team_id_b;
@@ -71,18 +56,7 @@ public class Match {
 		this.remarks = remarks;
 	}
 
-	public Match(Tournament tournament_id, Team team_id_a, Team team_id_b, int match_status,
-			String match_venue, Date match_date, String remarks) {
-		super();
-		
-		this.tournament_id = tournament_id;
-		this.team_id_a = team_id_a;
-		this.team_id_b = team_id_b;
-		this.match_status = match_status;
-		this.match_venue = match_venue;
-		this.match_date = match_date;
-		this.remarks = remarks;
-	}
+
 
 	public int getMatch_id() {
 		return match_id;
@@ -92,27 +66,27 @@ public class Match {
 		this.match_id = match_id;
 	}
 
-	public Tournament getTournament_id() {
+	public int getTournament_id() {
 		return tournament_id;
 	}
 
-	public void setTournament_id(Tournament tournament_id) {
+	public void setTournament_id(int tournament_id) {
 		this.tournament_id = tournament_id;
 	}
 
-	public Team getTeam_id_a() {
+	public Integer getTeam_id_a() {
 		return team_id_a;
 	}
 
-	public void setTeam_id_a(Team team_id_a) {
+	public void setTeam_id_a(Integer team_id_a) {
 		this.team_id_a = team_id_a;
 	}
 
-	public Team getTeam_id_b() {
+	public Integer getTeam_id_b() {
 		return team_id_b;
 	}
 
-	public void setTeam_id_b(Team team_id_b) {
+	public void setTeam_id_b(Integer team_id_b) {
 		this.team_id_b = team_id_b;
 	}
 
