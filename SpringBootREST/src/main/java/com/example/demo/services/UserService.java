@@ -37,5 +37,7 @@ public class UserService {
 		return urepo.getUser(id);
 	}
 	
-	public User 
+	public User saveUser(User u) {
+		return urepo.save(u);
+	}
 }

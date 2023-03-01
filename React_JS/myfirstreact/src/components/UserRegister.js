@@ -5,7 +5,6 @@ import { useReducer} from "react";
 export default function Signup(){
 
     const init = {
-
         first_name: "",
         last_name: "",
         email: "",
@@ -15,14 +14,13 @@ export default function Signup(){
         type_id:"",
         security_qid: "",
         q_answer: ""
-
     }
 
     const reducer = (state, action) => {
         switch(action.type)
         {
             case 'update' :
-                return {...state , [action.fld]:action.val}
+                return {...state,[action.fld]:action.val}
             case 'reset' :
                 return init;
         }
@@ -129,10 +127,10 @@ return(
 
         <div className="mb-3">
           <label>Security Question</label><br></br>
-          <select>
-            <option value={info.security_qid}   onChange={(e) => {dispatch({type:'update', fld:'security_qid', val: 1})}}>Place</option>
-            <option value={info.security_qid}   onChange={(e) => {dispatch({type:'update', fld:'security_qid', val: 2})}}>Color</option>
-            <option value={info.security_qid}   onChange={(e) => {dispatch({type:'update', fld:'security_qid', val: 3})}}>Pet</option>
+          <select value={info.security_qid}   onChange={(e) => {dispatch({type:'update', fld:'security_qid', val: e.target.value})}}>
+            <option value={1} >Place</option>
+            <option value={2}>Color</option>
+            <option value={3}>Pet</option>
             </select>
         </div>
 
@@ -151,9 +149,9 @@ return(
 
         <div className="mb-3">
           <label>User type</label><br></br>
-          <select>
-            <option value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:1})}}>Tournament Manager</option>
-            <option value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:2})}}>Team Manager</option>
+          <select value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:e.target.value})}}>
+            <option value={1}>Tournament Manager</option>
+            <option value={2}>Team Manager</option>
             </select>
         </div>
 
@@ -164,7 +162,10 @@ return(
         </div>
       </form>
       </div>
+      <p>{JSON.stringify(info)}</p>
       </div>
+
+      
     )
 
 }

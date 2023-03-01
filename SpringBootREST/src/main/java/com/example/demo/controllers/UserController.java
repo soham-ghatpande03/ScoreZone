@@ -36,4 +36,9 @@ public class UserController {
 	public User getUser(@RequestParam("uid") int uid ) {
 		return uservice.getUser(uid);
 	}
+	
+	@PostMapping("/saveUser")
+	public User saveUser(@RequestBody User u ) {
+		return uservice.saveUser(u);
+	}
 }
