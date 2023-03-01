@@ -21,12 +21,12 @@ public class PlayerController {
 	PlayerService pservice;
 	
 	
-	@GetMapping("/allPlayers")
+	@GetMapping("/allplayers")
 	public List<Player> getAll() {
 		return pservice.getAll();
 	}
 	
-	@PostMapping("/savePlayer")
+	@PostMapping("/saveplayer")
 	public Player savePlayer(@RequestBody Player pe) {
 		return pservice.savePlayer(pe);
 	}

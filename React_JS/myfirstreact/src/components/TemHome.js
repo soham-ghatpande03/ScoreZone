@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { useReducer, useState, useEffect} from "react";
+import RegisterTeam from './RegisterTeam';
 export default function TemHome() {
 
 
@@ -30,7 +31,7 @@ const [tem,setTem] = useState(null);
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/sign-up'}>
+                          <Link className="nav-link" to={'/RegisterTeam'}>
                             Participate
                           </Link>
                         </li>
