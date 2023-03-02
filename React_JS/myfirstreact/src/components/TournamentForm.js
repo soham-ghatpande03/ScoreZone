@@ -7,8 +7,7 @@ export default function Tournamentform(){
   const [tm,setTm] = useState(null);
   const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
 
-    const init = {
-
+    const init = {      
         tournament_title:"",
         tournament_manager_id:"",
         start_date:"",
