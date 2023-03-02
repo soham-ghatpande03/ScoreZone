@@ -53,4 +53,9 @@ public class UserController {
 		return uservice.saveUser(u);
 	}
 	
+	@GetMapping("/getuser")
+	public List<User> approveTourMan() {
+		return uservice.approveTourMan();
+	}
+	
 }

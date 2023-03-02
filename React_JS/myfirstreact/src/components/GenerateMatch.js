@@ -3,7 +3,14 @@ import {useReducer, useState, useEffect} from "react";
 
 export default function GenerateMatchForm(){
 
-
+  const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
+  console.log(tmanager.uid)
+  const [tours,setTour] = useState([]);
+  useEffect(()=>{
+   fetch("http://localhost:8082/getTourById?uid="+tmanager.uid)
+   .then(resp => resp.json())
+   .then(obj => setTour(obj))
+  } ,[])
 
   const [teams,setTeam] = useState([]);
   useEffect(()=>{
@@ -49,16 +56,18 @@ export default function GenerateMatchForm(){
         <form>
           <h3>Generate Match</h3>
           <div className="mb-3">
-            <label>Tournament Id</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter Title"
-              id="tournament_id"
-              name="tournamnet_id"
-              value={info.tournament_id}
-              onChange={(e) => {dispatch({type:'update', fld:'tournament_id', val: e.target.value})}}
-            />
+            <label>Tournament Name</label>
+            <select 
+            className="form-control" 
+            id="tournament_id"
+            name="tournament_id"
+            onChange={(e) => {dispatch({type:'update', fld:'tournament_id', val: e.target.value})}}>
+            {
+              tours.map(tour => {
+                return <option value={tour.tournament_id}>{tour.tournament_title}</option>
+            })
+            }
+          </select>
           </div>
 
 
@@ -123,6 +132,7 @@ export default function GenerateMatchForm(){
             </button>
           </div>
         </form>
+        <p>{JSON.stringify(info)}</p>
         </div>
       )
 }

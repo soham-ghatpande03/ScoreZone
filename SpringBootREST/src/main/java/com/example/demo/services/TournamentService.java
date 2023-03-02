@@ -26,4 +26,9 @@ public class TournamentService {
 	{
 		return trepo.save(t);
 	}
+	
+	public List<Tournament> getTourById(int id)
+	{
+		return trepo.getTourById(id);
+	}
 }

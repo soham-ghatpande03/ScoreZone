@@ -41,7 +41,13 @@ public class UserService {
 		return urepo.save(u);
 	}
 	
-	public User getUserById (int id) {
+	public User getUserById (int id) 
+	{
 		return urepo.findById(id).get();
+	}
+	
+	public List<User> approveTourMan()
+	{
+		return urepo.approveTourMan();
 	}
 }

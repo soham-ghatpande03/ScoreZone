@@ -1,10 +1,9 @@
 import '../forms.css';
-import { useReducer ,useEffect, useState} from "react";
+import { useReducer } from "react";
 
 
 export default function Tournamentform(){
 
-  const [tm,setTm] = useState(null);
   const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
 
     const init = {      
