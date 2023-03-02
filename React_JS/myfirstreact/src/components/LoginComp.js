@@ -6,9 +6,6 @@ import { login } from "./slice";
 
 var FirstForm = ()=>{
 
-    var[flag,setFlag] = useState(false)
-    var[nm,setNm] = useState("")
-
     const init = {
         uid: "",
         pwd :"",

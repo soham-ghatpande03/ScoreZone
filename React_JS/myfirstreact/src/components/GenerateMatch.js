@@ -5,13 +5,11 @@ export default function GenerateMatchForm(){
 
 
 
-  const [team,setTeam] = useState(null);
+  const [teams,setTeam] = useState([]);
   useEffect(()=>{
-   fetch("http://localhost:8082/getTeamsNames")
+   fetch("http://localhost:8082/getTeams")
    .then(resp => resp.json())
-   .then(obj => {
-     console.log(obj)
-   })
+   .then(obj => setTeam(obj))
   } ,[])
 
     const init = {
@@ -52,25 +50,35 @@ export default function GenerateMatchForm(){
         <div>
           <form>
             <h3>Generate Match</h3>
-            <div className="mb-3">
-            {/* <select onChange={(e) => {dispatch({type:'update', fld:'team_id_b', val: team.team_id})}}>
 
-                    <option>
-                    </option> 
-              </select> */}
-            </div>
-    
             <div className="mb-3">
-              <label>Team 2 Id</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Title"
-                id="team_id_b"
-                name="team_id_b"
-                value={info.team_id_b}
-                onChange={(e) => {dispatch({type:'update', fld:'team_id_b', val: e.target.value})}}
-              />
+            <label>Select Team A</label>
+            <select 
+            className="form-control" 
+            id="team_id_a"
+            name="team_id_a"
+            onChange={(e) => {dispatch({type:'update', fld:'team_id_a', val: e.target.value})}}>
+            {
+              teams.map(team => {
+                return <option value={team.team_id}> {team.team_name} </option>
+            })
+            }
+          </select>
+            </div>
+      
+            <div className="mb-3">
+            <label>Select Team B</label>
+            <select 
+            className="form-control" 
+            id="team_id_b"
+            name="team_id_b"
+            onChange={(e) => {dispatch({type:'update', fld:'team_id_b', val: e.target.value})}}>
+            {
+              teams.map(team => {
+                return <option value={team.team_id}> {team.team_name} </option>
+            })
+            }
+          </select>
             </div>
 
             <div className="mb-3">

@@ -20,10 +20,6 @@ public class TeamService {
 		return terepo.findAll();
 	}
 	
-	public List<Team> getTeamsNames()
-	{
-		return terepo.getTeamsNames();
-	}
 	
 	public Team getTeamById(int id) 
 	{
