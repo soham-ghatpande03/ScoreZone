@@ -4,6 +4,21 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "./slice";
 
+
+const [groups, setGroups] = useState([]);
+const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+
+    fetch('http://localhost:8082/getTeamsNames')
+      .then(response => response.json())
+      .then(data => {
+        setGroups(data);
+        setLoading(false);
+      })
+  }, []);
+
 var FirstForm = ()=>{
 
     var[flag,setFlag] = useState(false)
