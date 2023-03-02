@@ -21,4 +21,9 @@ public class TournamentService {
 	public Tournament getById(int id) {
 		return trepo.findById(id).get();
 	}
+	
+	public Tournament saveTournament(Tournament t) 
+	{
+		return trepo.save(t);
+	}
 }
