@@ -41,7 +41,7 @@ body, html, .App, #root, .auth-wrapper {
   flex-direction: column;
   text-align: left;
 }
-.auth-inner {
+  .auth-inner {
   width: 850px;
   margin: auto;
   background: #ffffff;
@@ -49,7 +49,7 @@ body, html, .App, #root, .auth-wrapper {
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
   transition: all .3s;
-} 
+}   
 
 .auth-wrapper .form-control:focus {
   border-color: #167bff;

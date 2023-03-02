@@ -1,13 +1,20 @@
 import '../forms.css';
-import {useReducer} from "react";
+import {useReducer, useState, useEffect} from "react";
 
 export default function GenerateMatchForm(){
 
+
+
+  const [team,setTeam] = useState(null);
+  useEffect(()=>{
+   fetch("http://localhost:8082/getTeams")
+   .then(resp => resp.json())
+   .then(obj => {
+     console.log(obj)
+   })
+  } ,[])
+
     const init = {
-<<<<<<< HEAD
-=======
-        tournament_id:"",
->>>>>>> origin/soham
         team_id_a:"",
         team_id_b:"",
         match_venue:"",
@@ -39,36 +46,18 @@ export default function GenerateMatchForm(){
 
 
     return(
+
+        <div className="auth-wrapper">
+  <div className="auth-inner"> 
         <div>
           <form>
             <h3>Generate Match</h3>
             <div className="mb-3">
-<<<<<<< HEAD
-=======
-              <label>Tournament Id</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Title"
-                id="tournament_id"
-                name="tournamnet_id"
-                value={info.tournament_id}
-                onChange={(e) => {dispatch({type:'update', fld:'tournament_id', val: e.target.value})}}
-              />
-            </div>
+            {/* <select onChange={(e) => {dispatch({type:'update', fld:'team_id_b', val: team.team_id})}}>
 
-            <div className="mb-3">
->>>>>>> origin/soham
-              <label>Team 1 Id</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Title"
-                id="team1"
-                name="team1"
-                value={info.team_id_a}
-                onChange={(e) => {dispatch({type:'update', fld:'team_id_a', val: e.target.value})}}
-              />
+                    <option>
+                    </option> 
+              </select> */}
             </div>
     
             <div className="mb-3">
@@ -115,6 +104,8 @@ export default function GenerateMatchForm(){
               </button>
             </div>
           </form>
+          </div>
+          </div>
           </div>
         )
 }
