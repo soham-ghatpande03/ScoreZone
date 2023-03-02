@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.kotlin.CoroutineCrudRepository;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Player;
@@ -27,6 +28,13 @@ public class TeamService {
 		return terepo.save(te);
 	}
 	
+	public boolean upload(int id,byte[] logo) {
+		if(terepo.uploadLogo(id, logo)==1) 
+			return true;
+		else 
+			return false;
 	
+		
+	}
 }
 

@@ -1,10 +1,13 @@
 import '../forms.css';
 import { useReducer} from "react";
 
+import React, { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 
 export default function RegisterTeam(){
-
+            const navigate = useNavigate();
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
@@ -43,7 +46,31 @@ export default function RegisterTeam(){
        
         fetch("http://localhost:8082/saveTeam", reqOptions)
         .then(resp => console.log(resp))
-
+        //shanchange
+        .then(obj=>{
+          const fd=new FormData();
+          fd.append("file",file);
+          const reqOptions1 ={
+            method:'POST',
+            headers:{'content-type':'multipart/form-data'},
+            body:fd
+          }
+          
+          fetch("http://localhost:8082:uploadLogo/"+obj.tem_id,reqOptions1)
+          .then(resp=>resp.json())
+          .then(obj=>{
+            if(obj){
+              alert("uploaded successfully");
+              navigate('/');
+            }
+            else{
+              alert("uploaded sucessfully");
+              navigate('/');
+            }
+          })
+          
+        })
+        //shan change
 
 
     }
@@ -91,6 +118,12 @@ return(
             onChange={(e) => {dispatch({type:'update', fld:'tem_id', val: e.target.value})}}
           />
         </div>
+
+        <div className="mb-3">
+          <label for="formFileMultiple" class="form-label">Team Logo</label>
+          <input class="form-control" type="file" id="formFileMultiple" multiple />
+        </div>
+
         <div>
          {date}
         </div>

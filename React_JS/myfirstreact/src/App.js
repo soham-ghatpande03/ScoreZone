@@ -13,6 +13,7 @@ import Tournamentform from './components/TournamentForm'
 import './index.css';
 import Signup from './components/UserRegister'
 import RegisterTeam from './components/RegisterTeam'
+import AddPlayers from './components/RegisterTeamPlayers'
 
 function App() {
 
@@ -45,6 +46,11 @@ function App() {
                     Register Team
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/register-players'}>
+                    AddPlayers
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -63,12 +69,14 @@ function App() {
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />
               <Route path="/register-team" element={<RegisterTeam/>} />
+              <Route path="/register-players" element={<AddPlayers/>} />
               <Route path="/creattour" element={<Tournamentform/>} className="auth-inner" />
             </Routes>
           </div>  
         </div>        
-
     </Router>
+
+    
   )
 
   
