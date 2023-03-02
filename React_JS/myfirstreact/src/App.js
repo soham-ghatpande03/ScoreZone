@@ -1,7 +1,7 @@
 import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { FirstForm, Signup } from './components/LoginComp'
+import { FirstForm } from './components/LoginComp'
 import AdminHome from './components/AdminHome'
 import TemHome from './components/TemHome'
 import TmHome from './components/TmHome'
@@ -11,6 +11,9 @@ import FrontHome from './components/FrontHome'
 import LogoutComp from './components/LogoutComp'
 import Tournamentform from './components/TournamentForm'
 import './index.css';
+import Signup from './components/UserRegister'
+import GenerateMatchForm from './components/GenerateMatch'
+import RegisterTeam from './components/CreateTeam'
 
 function App() {
 
@@ -51,11 +54,15 @@ function App() {
               <Route path="/home" element={<FrontHome/>} />
               <Route path="/sign-up" element={<Signup/> }className="auth-inner" />
               <Route path="/admin_home" element={<AdminHome/>} />
-              <Route path="/tm_home" element={<TmHome/>} />
-              <Route path="/tem_home" element={<TemHome/>} />
+              <Route path="/tem_home" element={<TemHome/>} >
+                <Route path="createteam" element={<RegisterTeam/>} />
+                </Route>  
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />
-              <Route path="/creattour" element={<Tournamentform/>} className="auth-inner" />
+              <Route path="/tm_home" element={<TmHome/>} >
+                <Route path="creatematch" element={<GenerateMatchForm/>} />
+                <Route path="creattour" element={<Tournamentform/>} />
+              </Route>  
             </Routes>
           </div>  
         </div>        

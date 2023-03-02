@@ -17,4 +17,8 @@ public class TournamentService {
 	{
 		return trepo.findAll();
 	}
+	
+	public Tournament getById(int id) {
+		return trepo.findById(id).get();
+	}
 }
