@@ -33,6 +33,12 @@ public class TeamController {
 		return teservice.getAll();
 	}
 	
+	@GetMapping("/getTeamsNames")
+	public List<Team> getTeamsNames()
+	{
+		return teservice.getTeamsNames();
+	}
+	
 	@PostMapping("/saveTeam")
 	public Team saveTeam(@RequestBody DummyTeam dte) 
 	{

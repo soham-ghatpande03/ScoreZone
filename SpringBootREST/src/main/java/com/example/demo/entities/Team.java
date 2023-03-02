@@ -123,6 +123,12 @@ public class Team {
 				+ Arrays.toString(team_logo) + "]";
 	}
 
+	public Team(int team_id, String team_name) {
+		super();
+		this.team_id = team_id;
+		this.team_name = team_name;
+	}
+
 	
 
 }

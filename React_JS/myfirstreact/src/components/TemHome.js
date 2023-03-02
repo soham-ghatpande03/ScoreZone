@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
 import { useReducer, useState, useEffect} from "react";
 export default function TemHome() {
 
@@ -64,6 +64,7 @@ const [tem,setTem] = useState(null);
                 <div>
                     <h1>Welcome {tem && tem.first_name} </h1>
                 </div>
+                <Outlet />
                 </div>
     )
 }

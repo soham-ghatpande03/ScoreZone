@@ -9,7 +9,7 @@ export default function RegisterTeam(){
 
     const init = {
         team_name:"",
-        manager_id: teamMan.uid,
+        team_manager_id: teamMan.uid,
         registration_date: date,
         team_description:"",
         team_logo:"",    

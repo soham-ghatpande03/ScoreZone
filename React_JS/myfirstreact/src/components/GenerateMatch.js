@@ -1,7 +1,18 @@
 import '../forms.css';
-import {useReducer} from "react";
+import {useReducer, useState, useEffect} from "react";
 
 export default function GenerateMatchForm(){
+
+
+
+  const [team,setTeam] = useState(null);
+  useEffect(()=>{
+   fetch("http://localhost:8082/getTeamsNames")
+   .then(resp => resp.json())
+   .then(obj => {
+     console.log(obj)
+   })
+  } ,[])
 
     const init = {
         team_id_a:"",
@@ -42,16 +53,11 @@ export default function GenerateMatchForm(){
           <form>
             <h3>Generate Match</h3>
             <div className="mb-3">
-              <label>Team 1 Id</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Title"
-                id="team1"
-                name="team1"
-                value={info.team_id_a}
-                onChange={(e) => {dispatch({type:'update', fld:'team_id_a', val: e.target.value})}}
-              />
+            {/* <select onChange={(e) => {dispatch({type:'update', fld:'team_id_b', val: team.team_id})}}>
+
+                    <option>
+                    </option> 
+              </select> */}
             </div>
     
             <div className="mb-3">
