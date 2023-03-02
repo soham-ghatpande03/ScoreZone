@@ -7,7 +7,7 @@ export default function GenerateMatchForm(){
 
   const [team,setTeam] = useState(null);
   useEffect(()=>{
-   fetch("http://localhost:8082/getTeamsNames")
+   fetch("http://localhost:8082/getTeams")
    .then(resp => resp.json())
    .then(obj => {
      console.log(obj)
