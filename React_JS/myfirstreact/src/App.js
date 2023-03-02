@@ -10,14 +10,10 @@ import { useSelector } from 'react-redux'
 import FrontHome from './components/FrontHome'
 import LogoutComp from './components/LogoutComp'
 import Tournamentform from './components/TournamentForm'
-<<<<<<< HEAD
-import GenerateMatchForm from './components/GenerateMatchForm'
-=======
 import './index.css';
 import Signup from './components/UserRegister'
 import GenerateMatchForm from './components/GenerateMatch'
 import RegisterTeam from './components/CreateTeam'
->>>>>>> origin/soham
 
 function App() {
 
@@ -63,15 +59,10 @@ function App() {
                 </Route>  
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />
-<<<<<<< HEAD
-              <Route path="/creattour" element={<Tournamentform/>} />
-              <Route path="/generateMatches" element={<GenerateMatchForm/>} />
-=======
               <Route path="/tm_home" element={<TmHome/>} >
                 <Route path="creatematch" element={<GenerateMatchForm/>} />
                 <Route path="creattour" element={<Tournamentform/>} />
               </Route>  
->>>>>>> origin/soham
             </Routes>
           </div>  
         </div>        

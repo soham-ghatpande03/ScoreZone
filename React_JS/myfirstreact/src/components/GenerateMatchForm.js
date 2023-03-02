@@ -4,10 +4,7 @@ import {useReducer} from "react";
 export default function GenerateMatchForm(){
 
     const init = {
-<<<<<<< HEAD
-=======
         tournament_id:"",
->>>>>>> origin/soham
         team_id_a:"",
         team_id_b:"",
         match_venue:"",
@@ -43,8 +40,6 @@ export default function GenerateMatchForm(){
           <form>
             <h3>Generate Match</h3>
             <div className="mb-3">
-<<<<<<< HEAD
-=======
               <label>Tournament Id</label>
               <input
                 type="text"
@@ -58,7 +53,6 @@ export default function GenerateMatchForm(){
             </div>
 
             <div className="mb-3">
->>>>>>> origin/soham
               <label>Team 1 Id</label>
               <input
                 type="text"
