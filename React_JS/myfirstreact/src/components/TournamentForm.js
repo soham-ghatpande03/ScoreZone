@@ -10,7 +10,7 @@ export default function Tournamentform(){
     const init = {
 
         tournament_title:"",
-        tournament_manager_id:"",
+        tournament_manager_id:tmanager.uid,
         start_date:"",
         end_date:"",
         participation_deadline:""
@@ -43,7 +43,7 @@ return(
   
   <div className="auth-wrapper">
   <div className="auth-inner"> 
-      <form>
+      <form action="/">
         <h3>Create Tournament</h3>
         <div className="mb-3">
           <label>Title</label>
@@ -55,20 +55,6 @@ return(
             name="title"
             value={info.tournament_title}
             onChange={(e) => {dispatch({type:'update', fld:'tournament_title', val: e.target.value})}}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label>ManagerId</label>
-          <input
-            type="number"
-            className="form-control"
-            placeholder={tmanager.uid}
-            id="ManagerId"
-            name="ManagerId"
-            value={info.tournament_manager_id}
-            readOnly
-            onChange={(e) => {dispatch({type:'update', fld:'tournament_manager_id', val: e.target.value})}}
           />
         </div>
 
@@ -118,6 +104,7 @@ return(
         </div>
       </form>
       </div>
+      {/*<p>{JSON.stringify(info)}</p>*/}
       </div>
 
 )

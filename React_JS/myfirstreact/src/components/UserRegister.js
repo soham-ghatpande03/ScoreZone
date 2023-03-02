@@ -161,6 +161,7 @@ return(
         </div>
       </form>
       </div>
+      <p>{JSON.stringify(info)}</p>
       </div>
 
       
