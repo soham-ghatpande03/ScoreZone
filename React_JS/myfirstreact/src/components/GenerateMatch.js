@@ -46,13 +46,15 @@ export default function GenerateMatchForm(){
           headers: {'content-type':'application/json'},
           body: JSON.stringify(info)
       }
-      fetch("http://localhost:8082/generateMatches", reqOptions)
+      fetch("http://localhost:8082/ ", reqOptions)
       .then(resp => console.log(resp))
   }
 
 
   return(
       <div>
+        <div className="auth-wrapper">
+      <div className="auth-inner">
         <form>
           <h3>Generate Match</h3>
           <div className="mb-3">
@@ -62,7 +64,9 @@ export default function GenerateMatchForm(){
             id="tournament_id"
             name="tournament_id"
             onChange={(e) => {dispatch({type:'update', fld:'tournament_id', val: e.target.value})}}>
+            <option>Select Tournament</option>
             {
+              
               tours.map(tour => {
                 return <option value={tour.tournament_id}>{tour.tournament_title}</option>
             })
@@ -78,6 +82,7 @@ export default function GenerateMatchForm(){
             id="team_id_a"
             name="team_id_a"
             onChange={(e) => {dispatch({type:'update', fld:'team_id_a', val: e.target.value})}}>
+              <option>Select Team A</option>
             {
               teams.map(team => {
                 return <option value={team.team_id}> {team.team_name} </option>
@@ -93,6 +98,7 @@ export default function GenerateMatchForm(){
             id="team_id_b"
             name="team_id_b"
             onChange={(e) => {dispatch({type:'update', fld:'team_id_b', val: e.target.value})}}>
+              <option>Select Team B</option>
             {
               teams.map(team => {
                 return <option value={team.team_id}> {team.team_name} </option>
@@ -133,6 +139,8 @@ export default function GenerateMatchForm(){
           </div>
         </form>
         <p>{JSON.stringify(info)}</p>
+        </div>
+        </div>
         </div>
       )
 }

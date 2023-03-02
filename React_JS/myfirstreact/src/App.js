@@ -14,6 +14,7 @@ import './index.css';
 import Signup from './components/UserRegister'
 import GenerateMatchForm from './components/GenerateMatch'
 import RegisterTeam from './components/CreateTeam'
+import { ApproveTeamMan, ApproveTourMan } from './components/Approve'
 
 function App() {
 
@@ -53,7 +54,10 @@ function App() {
               <Route exact path="/" element={<FrontHome/>} />
               <Route path="/home" element={<FrontHome/>} />
               <Route path="/sign-up" element={<Signup/> }className="auth-inner" />
-              <Route path="/admin_home" element={<AdminHome/>} />
+              <Route path="/admin_home" element={<AdminHome/>} >
+                <Route path="approveTour" element={<ApproveTourMan/>} /> 
+                <Route path="approveTeamM" element={<ApproveTeamMan/>} />
+                </Route>
               <Route path="/tem_home" element={<TemHome/>} >
                 <Route path="createteam" element={<RegisterTeam/>} />
                 </Route>  

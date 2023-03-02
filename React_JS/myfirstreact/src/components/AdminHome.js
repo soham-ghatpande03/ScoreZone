@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
 import { useReducer, useState, useEffect} from "react";
 export default function AdminHome() {
 
@@ -19,18 +19,18 @@ export default function AdminHome() {
 <div>
 <nav className="navbar navbar-expand-lg navbar-light fixed-right fixed-top ">
           <div className="container">
-            <Link className="navbar-brand" to={'/sign-in'}>
+            <Link className="navbar-brand" to={'/'}>
               ScoreZone
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/home'}>
+                  <Link className="nav-link" to={'approveTour'}>
                     Approve Tournament Manager
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/home'}>
+                  <Link className="nav-link" to={'approveTeamM'}>
                     Approve Team Manager
                   </Link>
                 </li>
@@ -54,6 +54,7 @@ export default function AdminHome() {
             <h1>AdminHome</h1>
             <h1>Welcome {ad && ad.first_name}</h1>
         </div>
+        <Outlet />
         </div>
     )
 }

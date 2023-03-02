@@ -20,4 +20,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query("select u from User u where user_status = 0 and type_id = 1")
 	public List<User> approveTourMan();
 	
+	@Query("select u from User u where user_status = 0 and type_id = 2")
+	public List<User> approveTeamMan();
+	
 }

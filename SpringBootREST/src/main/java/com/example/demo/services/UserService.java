@@ -50,4 +50,9 @@ public class UserService {
 	{
 		return urepo.approveTourMan();
 	}
+	
+	public List<User> approveTeamMan()
+	{
+		return urepo.approveTeamMan();
+	}
 }

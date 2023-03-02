@@ -148,7 +148,8 @@ return(
 
         <div className="mb-3">
           <label>User type</label><br></br>
-          <select value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:e.target.value})}}>
+          <select className="form-control" value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:e.target.value})}}>
+          <option>Select User Type</option>
             <option value={1}>Tournament Manager</option>
             <option value={2}>Team Manager</option>
             </select>
