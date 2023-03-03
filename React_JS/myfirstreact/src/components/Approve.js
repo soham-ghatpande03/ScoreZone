@@ -13,73 +13,39 @@ var ApproveTourMan = ()=>{
 <div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Table #03</h2>
+					
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<h4 class="text-center mb-4">Create Your Domain Name</h4>
+					<h4 class="text-center mb-4">List of Pending Approvals </h4>
 					<div class="table-wrap">
 						<table class="table">
 					    <thead class="thead-primary">
 					      <tr>
-					        <th>TLD</th>
-					        <th>Duration</th>
-					        <th>Registration</th>
-					        <th>Renewal</th>
-					        <th>Transfer</th>
-					        <th>Register</th>
+					        <th>Tournament Manager ID</th>
+					        <th>Tournament Manager Name</th>
+					        <th>Email</th>
+					        <th>UserName</th>					        
+					        <th>Approve </th>
+							<th>Reject </th>
 					      </tr>
+			
 					    </thead>
-					    <tbody>
-					      <tr>
-					        <th scope="row" class="scope" >.com</th>
-					        <td>1 Year</td>
-					        <td>$70.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope" >.net</th>
-					        <td>1 Year</td>
-					        <td>$75.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope" >.org</th>
-					        <td>1 Year</td>
-					        <td>$65.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope" >.biz</th>
-					        <td>1 Year</td>
-					        <td>$60.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope" >.info</th>
-					        <td>1 Year</td>
-					        <td>$50.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope border-bottom-0">.me</th>
-					        <td class="border-bottom-0">1 Year</td>
-					        <td class="border-bottom-0">$45.00</td>
-					        <td class="border-bottom-0">$5.00</td>
-					        <td class="border-bottom-0">$5.00</td>
-					        <td class="border-bottom-0"><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
+						<tbody>
+{
+	utour.map(ut =>{
+
+		return <tr> <td>{ut.uid}</td>
+		<td>{ut.first_name} {ut.last_name}</td>
+		<td>{ut.email}</td>
+		<td>{ut.username}</td>
+		<td><a href="#" class="btn btn-primary">Approve</a></td>
+		<td><a href="#" class="btn btn-danger">Reject</a></td>
+		</tr>
+
+	})
+}
 					    </tbody>
 					  </table>
 					</div>
@@ -94,83 +60,49 @@ var ApproveTeamMan = ()=>{
 
     const [uteam,setUTeam] = useState([]);
     useEffect(()=>{
-     fetch("http://localhost:8082/approveTourMan")
+     fetch("http://localhost:8082/approveTeamMan")
      .then(resp => resp.json())
      .then(obj => setUTeam(obj))
     } ,[])
 
     return(
+		<div className="auth-wrapper">
+		
         <div>
 <div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Table #03</h2>
+					
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<h4 class="text-center mb-4">Create Your Domain Name</h4>
+					<h4 class="text-center mb-4">List of Pending Approvals </h4>
 					<div class="table-wrap">
 						<table class="table">
 					    <thead class="thead-primary">
 					      <tr>
-					        <th>TLD</th>
-					        <th>Duration</th>
-					        <th>Registration</th>
-					        <th>Renewal</th>
-					        <th>Transfer</th>
-					        <th>Register</th>
+					        <th>Team Manager ID</th>
+					        <th>Team Manager Name</th>
+					        <th>Email</th>
+					        <th>UserName</th>					        
+					        <th>Approve </th>
+							<th>Reject </th>
 					      </tr>
+			
 					    </thead>
-					    <tbody>
-					      <tr>
-					        <th scope="row" class="scope" >.com</th>
-					        <td>1 Year</td>
-					        <td>$70.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope" >.net</th>
-					        <td>1 Year</td>
-					        <td>$75.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope" >.org</th>
-					        <td>1 Year</td>
-					        <td>$65.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope" >.biz</th>
-					        <td>1 Year</td>
-					        <td>$60.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope" >.info</th>
-					        <td>1 Year</td>
-					        <td>$50.00</td>
-					        <td>$5.00</td>
-					        <td>$5.00</td>
-					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
-					      <tr>
-					        <th scope="row" class="scope border-bottom-0">.me</th>
-					        <td class="border-bottom-0">1 Year</td>
-					        <td class="border-bottom-0">$45.00</td>
-					        <td class="border-bottom-0">$5.00</td>
-					        <td class="border-bottom-0">$5.00</td>
-					        <td class="border-bottom-0"><a href="#" class="btn btn-primary">Sign Up</a></td>
-					      </tr>
+						<tbody>
+{
+	uteam.map(uut =>{
+		return <tr> <td>{uut.uid}</td>
+		<td>{uut.first_name} {uut.last_name}</td>
+		<td>{uut.email}</td>
+		<td>{uut.username}</td>
+		<td><a href="#" class="btn btn-primary">Approve</a></td>
+		<td><a href="#" class="btn btn-danger">Reject</a></td>
+		</tr>
+	})
+}
 					    </tbody>
 					  </table>
 					</div>
@@ -178,10 +110,9 @@ var ApproveTeamMan = ()=>{
 			</div>
 		</div>
         </div>
+		</div>
+		
     )
-
-
-
 }
 
 export {ApproveTeamMan , ApproveTourMan};

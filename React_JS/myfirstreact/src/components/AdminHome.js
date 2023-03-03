@@ -51,8 +51,7 @@ export default function AdminHome() {
         </nav>
 
         <div>
-            <h1>AdminHome</h1>
-            <h1>Welcome {ad && ad.first_name}</h1>
+            <h1 style={{textAlign: "center"}}>Welcome {ad && ad.first_name}</h1>
         </div>
         <Outlet />
         </div>
