@@ -17,10 +17,16 @@ public class MatchService {
 	{
 		return mrepo.findAll();
 	}
-	
+
+	public Match saveMatch(Match m) 
+	{
+		return mrepo.save(m);
+	}
+
 	public Match generateMatch(Match m)
 	{
 		return mrepo.save(m);
 	}
 	
+
 }

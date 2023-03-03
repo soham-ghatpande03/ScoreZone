@@ -16,7 +16,7 @@ export default function MuHome() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-up'}>
+                  <Link className="nav-link" to={'/logout'}>
                     Logout
                   </Link>
                 </li>
@@ -24,7 +24,8 @@ export default function MuHome() {
             </div>
           </div>
         </nav>
-
+        <br/>
+        <br/>
         <div>
             <h1>Match Updater</h1>
         </div>

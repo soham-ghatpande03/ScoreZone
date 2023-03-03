@@ -1,0 +1,48 @@
+/* CSS used here will be applied after bootstrap.css */
+html,body {
+  height:100%;
+    
+}
+
+.first {
+  height:100vh;
+  min-height:400px;
+  background-size:cover;
+  background-image:url('img/stadium.jpg');
+}
+
+.affix {
+  -webkit-transition:padding 0.2s ease-out;
+  -moz-transition:padding 0.2s ease-out;  
+  -o-transition:padding 0.2s ease-out;         
+  transition:padding 0.2s ease-out;
+
+}
+
+@media (min-width:768px) {
+    .affix-top {
+      /* navbar style at top */
+      background:transparent;
+      border-color:transparent;
+      padding: 15px;
+      -webkit-transition:all 0.5s ease;
+      -moz-transition:all 0.5s ease; 
+      -o-transition:all 0.5s ease;         
+      transition:all 0.5s ease;  
+    }
+}
+
+.affix-top .nav>li>a {
+   color: #000;
+}
+
+.affix-top.navbar .nav>li>a:hover,
+.affix-top.navbar .navbar-brand
+{
+   color: #333;
+}
+
+section {
+  height:calc(90% - 50px);
+  height: 90vh;
+}
