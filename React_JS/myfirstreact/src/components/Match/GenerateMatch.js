@@ -1,4 +1,4 @@
-import '../forms.css';
+
 import {useReducer, useState, useEffect} from "react";
 
 export default function GenerateMatchForm(){
@@ -52,6 +52,8 @@ export default function GenerateMatchForm(){
       }
       fetch("http://localhost:8082/saveMatch ", reqOptions)
       .then(resp => console.log(resp))
+      .then(alert('You have Sucessfully Generate a Match'))
+        .then(window.location.reload(false))
   }
 
 
@@ -142,7 +144,6 @@ export default function GenerateMatchForm(){
             </button>
           </div>
         </form>
-        <p>{JSON.stringify(info)}</p>
         </div>
         </div>
         </div>

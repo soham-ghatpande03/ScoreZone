@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "./slice";
+import { logout } from "../slice";
 
 export default function LogoutComp(){
 

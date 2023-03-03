@@ -1,5 +1,5 @@
 import '../bgim.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
 export default function FrontHome() 
 {
     return (
@@ -17,9 +17,16 @@ export default function FrontHome()
                   Login
                 </Link>
               </li>
+
               <li className="nav-item">
-                <Link className="nav-link" to={'/sign-up'}>
-                  Sign up
+                <Link className="nav-link" to={'/sign-in'}>
+                  View Matches
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" to={'/allteams'}>
+                  View Teams
                 </Link>
               </li>
             </ul>
@@ -35,6 +42,7 @@ export default function FrontHome()
 </div>
 
 </section>
+<Outlet/>
       </div>
     )
 }

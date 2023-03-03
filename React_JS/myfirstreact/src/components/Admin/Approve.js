@@ -8,6 +8,7 @@ var ApproveTourMan = ()=>{
      .then(obj => setUTour(obj))
     } ,[])
 
+
     return(
         <div>
 <div class="container">
@@ -27,8 +28,7 @@ var ApproveTourMan = ()=>{
 					        <th>Tournament Manager Name</th>
 					        <th>Email</th>
 					        <th>UserName</th>					        
-					        <th>Approve </th>
-							<th>Reject </th>
+					        <th colSpan="2" style={ {textAlign:"center"}}>Remark </th>		
 					      </tr>
 			
 					    </thead>
@@ -65,6 +65,13 @@ var ApproveTeamMan = ()=>{
      .then(obj => setUTeam(obj))
     } ,[])
 
+	const [appteamM,appTeam] = useState();
+    useEffect(()=>{
+     fetch("http://localhost:8082/updateTeamManStatus?uid=")
+     .then(resp => resp.json())
+     .then(obj => appTeam(obj))
+    } ,[])
+
     return(
 		<div className="auth-wrapper">
 		
@@ -86,8 +93,7 @@ var ApproveTeamMan = ()=>{
 					        <th>Team Manager Name</th>
 					        <th>Email</th>
 					        <th>UserName</th>					        
-					        <th>Approve </th>
-							<th>Reject </th>
+					        <th colSpan="2" align="center">Remark </th>
 					      </tr>
 			
 					    </thead>
@@ -98,8 +104,8 @@ var ApproveTeamMan = ()=>{
 		<td>{uut.first_name} {uut.last_name}</td>
 		<td>{uut.email}</td>
 		<td>{uut.username}</td>
-		<td><a href="#" class="btn btn-primary">Approve</a></td>
-		<td><a href="#" class="btn btn-danger">Reject</a></td>
+		<td><button type="submit" className="btn btn-primary" onClick={(e)=>{}}>Approve</button></td>
+		<td><button type="submit" className="btn btn-danger" >Reject</button></td>
 		</tr>
 	})
 }

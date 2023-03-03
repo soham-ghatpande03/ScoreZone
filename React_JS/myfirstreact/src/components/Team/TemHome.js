@@ -5,7 +5,6 @@ export default function TemHome() {
 
 const [tem,setTem] = useState(null);
  useEffect(()=>{
-
  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
  console.log(uid);
   fetch("http://localhost:8082/getuser?uid="+uid)
@@ -31,7 +30,7 @@ const [tem,setTem] = useState(null);
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/'} >
+                          <Link className="nav-link" to={'viewteam'} >
                             View My Team
                           </Link>
                         </li>
@@ -41,7 +40,7 @@ const [tem,setTem] = useState(null);
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'/'}>
+                          <Link className="nav-link" to={'allteams'}>
                             Teams
                           </Link>
                         </li>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.example.demo.entities.User;
@@ -22,5 +23,13 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	@Query("select u from User u where user_status = 0 and type_id = 2")
 	public List<User> approveTeamMan();
+	
+	@Modifying
+	@Query("update User set user_status = 1 where uid = ?1 ")
+	public int updateTourManStatus(int id);
+	
+	@Modifying
+	@Query("update User set user_status = 1 where uid = ?1 ")
+	public int updateTeamManStatus(int id);
 	
 }

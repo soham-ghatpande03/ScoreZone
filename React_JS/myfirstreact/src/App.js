@@ -1,20 +1,21 @@
 import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { FirstForm } from './components/LoginComp'
-import AdminHome from './components/AdminHome'
-import TemHome from './components/TemHome'
-import TmHome from './components/TmHome'
+import { FirstForm } from './components/Logging/LoginComp'
+import AdminHome from './components/Admin/AdminHome'
+import TemHome from './components/Team/TemHome'
+import TmHome from './components/Tournament/TmHome'
 import MuHome from './components/MuHome'
 import { useSelector } from 'react-redux'
 import FrontHome from './components/FrontHome'
-import LogoutComp from './components/LogoutComp'
-import Tournamentform from './components/TournamentForm'
+import LogoutComp from './components/Logging/LogoutComp'
+import Tournamentform from './components/Tournament/TournamentForm'
 import './index.css';
 import Signup from './components/UserRegister'
-import GenerateMatchForm from './components/GenerateMatch'
-import RegisterTeam from './components/CreateTeam'
-import { ApproveTeamMan, ApproveTourMan } from './components/Approve'
+import GenerateMatchForm from './components/Match/GenerateMatch'
+import RegisterTeam from './components/Team/CreateTeam'
+import { ApproveTeamMan, ApproveTourMan } from './components/Admin/Approve'
+import { ViewAllTeams, Viewteam } from './components/Team/DisplayTeam'
 
 function App() {
 
@@ -30,36 +31,28 @@ function App() {
             <Link className="navbar-brand" to={"/"}>
               ScoreZone
             </Link>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-in'}>
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-up'}>
-                    Sign up
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            
           </div>
         </nav>
         </div>
         <div className="auth-wrapper">
             {/* <div className="auth-inner"> */}
           <Routes>
-              <Route path="/sign-in" element={<FirstForm/>} className="auth-inner" />
-              <Route exact path="/" element={<FrontHome/>} />
+              
+              <Route exact path="/" element={<FrontHome/>}/ >
+                <Route path="/sign-in" element={<FirstForm/>} />
+         
               <Route path="/home" element={<FrontHome/>} />
-              <Route path="/sign-up" element={<Signup/> }className="auth-inner" />
+              <Route path="/sign-up" element={<Signup/> } />
+              <Route path="/allteams" element={<ViewAllTeams/> } />
               <Route path="/admin_home" element={<AdminHome/>} >
                 <Route path="approveTour" element={<ApproveTourMan/>} /> 
                 <Route path="approveTeamM" element={<ApproveTeamMan/>} />
                 </Route>
               <Route path="/tem_home" element={<TemHome/>} >
                 <Route path="createteam" element={<RegisterTeam/>} />
+                <Route path="viewteam" element={<Viewteam/>} />
+                <Route path="allteams" element={<ViewAllTeams/> } />
                 </Route>  
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />

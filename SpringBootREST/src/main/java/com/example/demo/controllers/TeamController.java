@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.DummyTeam;
@@ -42,5 +43,11 @@ public class TeamController {
 		Team t = new Team(dte.getTeam_name(),teamM ,dte.getRegistration_date(), dte.getTeam_description(), dte.getTeam_logo());
 		System.out.println(t);
 		return teservice.saveTeam(t);
+	}
+	
+	@GetMapping("/getTeamByTManId")
+	public Team getTeamByTManId(@RequestParam("uid") int id)
+	{
+		return teservice.getTeamByTManId(id);
 	}
 }

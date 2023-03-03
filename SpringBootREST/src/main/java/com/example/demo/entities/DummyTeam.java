@@ -22,7 +22,7 @@ public class DummyTeam {
 	String team_description;
 	
 
-	byte[] team_logo;
+	String team_logo;
 	
 
 	public DummyTeam() {
@@ -31,7 +31,7 @@ public class DummyTeam {
 	}
 	
 	public DummyTeam(int team_id, String team_name, int team_manager_id, Date registration_date, String team_description,
-			byte[] team_logo) {
+			String team_logo) {
 		super();
 		this.team_id = team_id;
 		this.team_name = team_name;
@@ -41,11 +41,11 @@ public class DummyTeam {
 		this.team_logo = team_logo;
 	}
 
-	public byte[] getTeam_logo() {
+	public String getTeam_logo() {
 		return team_logo;
 	}
 
-	public void setTeam_logo(byte[] team_logo) {
+	public void setTeam_logo(String team_logo) {
 		this.team_logo = team_logo;
 	}
 
@@ -93,7 +93,7 @@ public class DummyTeam {
 	public String toString() {
 		return "DummyTeam [team_id=" + team_id + ", team_name=" + team_name + ", team_manager_id=" + team_manager_id
 				+ ", registration_date=" + registration_date + ", team_description=" + team_description + ", team_logo="
-				+ Arrays.toString(team_logo) + "]";
+				+ "]";
 	}
 
 	
