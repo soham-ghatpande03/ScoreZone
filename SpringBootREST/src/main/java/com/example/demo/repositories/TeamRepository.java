@@ -13,5 +13,6 @@ import com.example.demo.entities.Team;
 @Transactional
 public interface TeamRepository extends JpaRepository<Team, Integer> {
 	
-
+	@Query("select t from Team t where team_id = ?1")
+	public Team getTeamByTManId(int id);
 }

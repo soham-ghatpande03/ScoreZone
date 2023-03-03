@@ -25,11 +25,15 @@ public class TeamService {
 	{
 		return terepo.findById(id).get();
 	}
-	
-	@Modifying
+
 	public Team saveTeam(Team t) 
 	{
 		return terepo.save(t);
+	}
+	
+	public Team getTeamByTManId(int id)
+	{
+		return terepo.getTeamByTManId(id);
 	}
 }
 
