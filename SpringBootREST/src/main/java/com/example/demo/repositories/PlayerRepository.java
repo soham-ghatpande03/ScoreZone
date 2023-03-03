@@ -14,6 +14,6 @@ import com.example.demo.entities.Player;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
-	@Query("select p from Player p where team_id= ?1")
+	@Query("select p from Player p where team_id = ?1")
 	public List<Player> getPlayersByTeam(int id);
 }
