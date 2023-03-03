@@ -13,11 +13,15 @@ export default function GenerateMatchForm(){
   } ,[])
 
   const [teams,setTeam] = useState([]);
+  const[seleteam,setSelTeam] = useState([]);
+
   useEffect(()=>{
    fetch("http://localhost:8082/getTeams")
    .then(resp => resp.json())
    .then(obj => setTeam(obj))
   } ,[])
+  
+  useEffect(()=>{})
 
   const init = {
       tournament_id:"",

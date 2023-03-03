@@ -5,8 +5,8 @@ export default function FrontHome()
     return (
       
       <div >
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-        <div className="container">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+        <div className="container-fluid">
           <Link className="navbar-brand" to={'/'}>
             ScoreZone
           </Link>

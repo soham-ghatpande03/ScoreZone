@@ -6,6 +6,11 @@ import { login } from "./slice";
 
 var FirstForm = ()=>{
 
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
+ 
+    setPasswordShown(!passwordShown);
+  };
     const init = {
         uid: "",
         pwd :"",
@@ -92,7 +97,7 @@ var FirstForm = ()=>{
             <div className="mb-3">
               <label>Username</label>
               <input
-                type="text"
+                type ="text"
                 className="form-control"
                 placeholder="Enter email"
                 id="uid"
@@ -104,7 +109,7 @@ var FirstForm = ()=>{
             <div className="mb-3">
               <label>Password</label>
               <input
-                type="password"
+                type={passwordShown ? "text" : "password"}
                 className="form-control"
                 placeholder="Enter password"
                 id="pwd"
@@ -119,9 +124,10 @@ var FirstForm = ()=>{
                   type="checkbox"
                   className="custom-control-input"
                   id="customCheck1"
+                  onClick={togglePassword}
                 />
                 <label className="custom-control-label" htmlFor="customCheck1">
-                  Remember me
+                   Show Password
                 </label>
               </div>
             </div>
