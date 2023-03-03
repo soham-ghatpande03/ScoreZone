@@ -55,4 +55,15 @@ public class UserService {
 	{
 		return urepo.approveTeamMan();
 	}
+	
+	public int updateTourManStatus(int id)
+	{
+		return urepo.updateTourManStatus(id);
+	}
+	
+	public int updateTeamManStatus(int id)
+	{
+		return urepo.updateTeamManStatus(id);
+	}
+	
 }

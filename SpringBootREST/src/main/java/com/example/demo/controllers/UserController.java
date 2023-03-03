@@ -62,4 +62,16 @@ public class UserController {
 	public List<User> approveTeamMan() {
 		return uservice.approveTeamMan();
 	}
+	
+	@GetMapping("/updateTourManStatus")
+	public int updateTourManStatus(@RequestParam("uid") int id)
+	{
+		return uservice.updateTourManStatus(id);
+	}
+	
+	@GetMapping("/updateTeamManStatus")
+	public int updateTeamManStatus(@RequestParam("uid") int id)
+	{
+		return uservice.updateTeamManStatus(id);
+	}
 }

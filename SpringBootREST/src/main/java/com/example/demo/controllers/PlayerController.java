@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Player;
@@ -30,5 +31,10 @@ public class PlayerController {
 	public Player savePlayer(@RequestBody Player pe) {
 		return pservice.savePlayer(pe);
 	}
-
+	
+	@GetMapping("/getPlayersByTeam")
+	public List<Player> getPlayersByTeam(@RequestParam("team_id") int id)
+	{
+		return pservice.getPlayersByTeam(id);
+	}
 }
