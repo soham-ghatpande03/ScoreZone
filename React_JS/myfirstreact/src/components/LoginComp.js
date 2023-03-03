@@ -6,63 +6,232 @@ import { login } from "./slice";
 
 var FirstForm = ()=>{
 
-  const [passwordShown, setPasswordShown] = useState(false);
-  const togglePassword = () => {
+  // const [passwordShown, setPasswordShown] = useState(false);
+  // const togglePassword = () => {
  
-    setPasswordShown(!passwordShown);
-  };
-    const init = {
-        uid: "",
-        pwd :"",
-    }
+  //   setPasswordShown(!passwordShown);
+  // };
+  //   const init = {
+  //       uid: "",
+  //       pwd :"",
+  //   }
 
-    const reducer =(state,action)=>{
+  //   const reducer =(state,action)=>{
+  //       switch(action.type)
+  //       {
+  //           case 'update':
+  //               return {...state,[action.fld]:action.val}
+  //           case 'reset':
+  //               return init;
+    
+  //       }
+  //   }
+    
+  //   const [info,dispatch] = useReducer(reducer,init);
+  //   const [msg,setMsg]  = useState("");
+  //   const navigate = useNavigate();
+  //   const reduxAction =  useDispatch();
+
+
+  //   let sendData1 = (e) =>{
+  //       e.preventDefault();
+  //       const regOptions ={
+  //           method:'POST',
+  //           headers:{'content-type':'application/json'},
+  //           body: JSON.stringify(info)
+  //       }
+  //       fetch("http://localhost:8082/loginchk",regOptions)
+  //       .then(resp=> {if(resp.ok)
+  //                        return resp.text();
+  //                   else
+  //                   throw new Error("server error")
+                    
+  //                       })
+  //       .then(text => text.length ? JSON.parse(text) : {})
+  //       .then(obj => {
+
+  //           if(Object.keys(obj).length === 0)
+  //           {
+  //               setMsg("Wrong Username / Password ")
+  //           } 
+  //           else
+  //           {
+
+  //               if(obj.status === false)
+  //               {
+  //                   alert("req not approveed");
+  //               }
+  //               else{
+
+                    // reduxAction(login());
+                    // localStorage.setItem("loggeduser" , JSON.stringify(obj));
+                    // if(obj.type_id.type_id === 1)
+                    // {
+                    //     navigate("/tm_home");
+                    // }
+                    // else if(obj.type_id.type_id === 2)
+                    // {
+                    //     navigate("/tem_home");
+                    // }
+                    // else if(obj.type_id.type_id === 3)
+                    // {
+                    //     navigate("/mu_home");
+                    // }
+                    // else if(obj.type_id.type_id === 0)
+                    // {
+                    //     navigate("/admin_home");
+                    // }
+  //               }
+  //           }
+  //       })
+  //       .catch((error) => alert("server error...try after some time"));
+  //   }
+
+
+  //   return(
+  //     <div className="auth-wrapper">
+  //     <div className="auth-inner"> 
+  //       <div>
+  //         <form>
+  //           <h3>Sign In</h3>
+  //           <div className="mb-3">
+  //             <label>Username</label>
+  //             <input
+  //               type ="text"
+  //               className="form-control"
+  //               placeholder="Enter email"
+  //               id="uid"
+  //               name="uid"
+  //               value={info.uid}
+  //               onChange={(e)=>{dispatch({type:'update',fld:'uid',val:e.target.value})}}
+  //             />
+  //           </div>
+  //           <div className="mb-3">
+  //             <label>Password</label>
+  //             <input
+  //               type={passwordShown ? "text" : "password"}
+  //               className="form-control"
+  //               placeholder="Enter password"
+  //               id="pwd"
+  //               name="pwd"
+  //               value={info.pwd}
+  //               onChange={(e)=>{dispatch({type:'update',fld:'pwd',val:e.target.value})}}
+  //             />
+  //           </div>
+  //           <div className="mb-3">
+  //             <div className="custom-control custom-checkbox">
+  //               <input
+  //                 type="checkbox"
+  //                 className="custom-control-input"
+  //                 id="customCheck1"
+  //                 onClick={togglePassword}
+  //               />
+  //               <label className="custom-control-label" htmlFor="customCheck1">
+  //                  Show Password
+  //               </label>
+  //             </div>
+  //           </div>
+  //           <div className="d-grid">
+  //             <button type="submit" className="btn btn-primary" onClick={(e)=>{sendData1(e)}}>
+  //               Submit
+  //             </button>
+  //           </div>
+  //           <p className="forgot-password text-right">
+  //             Forgot <a href="#">password?</a>
+  //           </p>
+  //         </form>
+  //         </div>
+  //         <p>{msg}</p>
+  //         </div>
+  //     </div>
+  //       )
+
+
+  const init = {
+    uid: {value:"",error:"",valid:false, touched:false},
+    pwd:{value:"",error:"",valid:false, touched:false}
+}
+
+const reducer = (state, action) => {
         switch(action.type)
         {
             case 'update':
-                return {...state,[action.fld]:action.val}
-            case 'reset':
-                return init;
-    
+                 return {...state , [action.fld]: {  ...state[action.fld],value: action.value, error: action.error, valid: action.valid, touched: action.touched}}
+            case 'reset' :
+                 return init;
         }
-    }
-    
-    const [info,dispatch] = useReducer(reducer,init);
-    const [msg,setMsg]  = useState("");
-    const navigate = useNavigate();
-    const reduxAction =  useDispatch();
+}
 
+const [info, dispatch] = useReducer(reducer,init) ;
+const [msg, setMsg] = useState("");
+const navigate = useNavigate();
+const reduxAction  = useDispatch();
 
-    let sendData1 = (e) =>{
-        e.preventDefault();
-        const regOptions ={
-            method:'POST',
-            headers:{'content-type':'application/json'},
-            body: JSON.stringify(info)
-        }
-        fetch("http://localhost:8082/loginchk",regOptions)
-        .then(resp=> {if(resp.ok)
-                         return resp.text();
-                    else
-                    throw new Error("server error")
-                    
-                        })
-        .then(text => text.length ? JSON.parse(text) : {})
-        .then(obj => {
+const validate = (nm,val) => {
+   console.log(nm+ " : "+val)
+    let error = "";
+    let valid = false;
+    let touched = true;
+    switch(nm)
+    {
+        case 'uid' :
+             const exp1 = /[A-Za-z0-9._-]{5,12}/
+             if(!exp1.test(val))
+             {
+                error = "Invalid UID";                    
+             }
+             else
+             {
+                error ="";
+                valid = true;
+             }
+             break;
 
-            if(Object.keys(obj).length === 0)
+        case 'pwd':
+            const exp2 = /[A-Za-z0-9._-]{3,12}/
+            if(!exp2.test(val))
             {
-                setMsg("Wrong Username / Password ")
-            } 
+               error = "Invalid pwd";                    
+            }
             else
             {
+               error ="";
+               valid = true;
+            }
+             break;     
+    }
+    console.log(val+","+error+","+valid)
+    dispatch({type: 'update', fld: nm,value: val,error, valid, touched})
+}
 
-                if(obj.status === false)
-                {
-                    alert("req not approveed");
-                }
-                else{
 
+const sendData = (e) => {
+    e.preventDefault();
+    const reqOptions = {
+        method: 'POST',
+        headers: {'content-type':'application/json'},
+        body: JSON.stringify({uid: info.uid.value, pwd:info.pwd.value})
+    }
+    fetch("http://localhost:8082/loginchk",reqOptions)
+    .then(resp =>  {if(resp.ok)
+                    {
+                        console.log(resp.status)
+                        return resp.text();
+                    }    
+                     else
+                     {
+                        console.log(resp.statusText)
+                         throw new Error("Server error"); 
+                     }
+                    })
+    .then(text => text.length ? JSON.parse(text) : {})
+    .then(obj =>  {
+                   if(Object.keys(obj).length === 0)
+                   {
+                        setMsg("Wrong UID/PWD");
+                   } 
+                   else
+                   {
                     reduxAction(login());
                     localStorage.setItem("loggeduser" , JSON.stringify(obj));
                     if(obj.type_id.type_id === 1)
@@ -81,71 +250,59 @@ var FirstForm = ()=>{
                     {
                         navigate("/admin_home");
                     }
-                }
-            }
-        })
-        .catch((error) => alert("server error...try after some time"));
-    }
+                  
+                       }
+                       
+            })
+     .catch((error) => alert("Server error. Try after some time"));       
+}
 
 
-    return(
-      <div className="auth-wrapper">
-      <div className="auth-inner"> 
-        <div>
-          <form>
-            <h3>Sign In</h3>
+return (
+    <div>
+        <div className="auth-wrapper">
+        <div className="auth-inner">
+        <h1> Login Page </h1>
+        <form>
             <div className="mb-3">
-              <label>Username</label>
-              <input
-                type ="text"
-                className="form-control"
-                placeholder="Enter email"
-                id="uid"
-                name="uid"
-                value={info.uid}
-                onChange={(e)=>{dispatch({type:'update',fld:'uid',val:e.target.value})}}
-              />
+                <label htmlFor="uid" className="form-label">Enter uid : </label>
+                <input type="text" 
+                className="form-control" 
+                id="uid" 
+                name="uid" 
+                value={info.uid.value}
+                onChange={(e)=>{validate("uid", e.target.value)}}   />
+                <div 
+                id="emailHelp"
+                 className="form-text" 
+                 style={{display: (!info.uid.valid&&info.uid.touched)?"block":"none"}}>
+                {info.uid.error}
+                </div>
             </div>
             <div className="mb-3">
-              <label>Password</label>
-              <input
-                type={passwordShown ? "text" : "password"}
-                className="form-control"
-                placeholder="Enter password"
-                id="pwd"
-                name="pwd"
-                value={info.pwd}
-                onChange={(e)=>{dispatch({type:'update',fld:'pwd',val:e.target.value})}}
-              />
-            </div>
-            <div className="mb-3">
-              <div className="custom-control custom-checkbox">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="customCheck1"
-                  onClick={togglePassword}
+                <label htmlFor="pwd" className="form-label">Enter pwd : </label>
+                <input type="password" className="form-control" id="pwd" name="pwd"  value={info.pwd.value} 
+                onChange={(e)=>{validate("pwd", e.target.value)}} 
+                onBlur={(e)=>{validate("pwd", e.target.value)}} 
                 />
-                <label className="custom-control-label" htmlFor="customCheck1">
-                   Show Password
-                </label>
-              </div>
+                <div id="emailHelp"
+                 className="form-text" 
+                 style={{display: !info.pwd.valid&&info.pwd.touched?"block":"none"}}> 
+                {info.pwd.error}
+                </div>
             </div>
-            <div className="d-grid">
-              <button type="submit" className="btn btn-primary" onClick={(e)=>{sendData1(e)}}>
-                Submit
-              </button>
-            </div>
-            <p className="forgot-password text-right">
-              Forgot <a href="#">password?</a>
-            </p>
-          </form>
-          </div>
-          <p>{msg}</p>
-          </div>
-      </div>
-        )
+            <button type="submit" disabled={info.uid.valid && info.pwd.valid ? false : true} className="btn btn-primary mb-3" onClick={(e)=> {sendData(e)}}>Submit</button>
+            <button type="reset" className="btn btn-primary mb-3" onClick={()=> {dispatch({type:'reset'})}} > Clear </button>
 
+          
+        </form>
+
+        <p> {JSON.stringify(info)}</p>
+        <p> {msg}</p>
+    </div>
+    </div>
+    </div>
+)
 }
 
 // var Signup = ()=>{

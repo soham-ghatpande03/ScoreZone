@@ -50,7 +50,7 @@ export default function GenerateMatchForm(){
           headers: {'content-type':'application/json'},
           body: JSON.stringify(info)
       }
-      fetch("http://localhost:8082/ ", reqOptions)
+      fetch("http://localhost:8082/saveMatch ", reqOptions)
       .then(resp => console.log(resp))
   }
 
