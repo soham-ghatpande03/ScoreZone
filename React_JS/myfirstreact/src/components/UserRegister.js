@@ -5,14 +5,14 @@ import { useReducer} from "react";
 export default function Signup(){
 
     const init = {
-        first_name: "",
-        last_name: "",
+        fname: "",
+        lname: "",
         email: "",
         contact: "",
         username: "",
         password: "",
         type_id:"",
-        security_qid: "",
+        q_id: "",
         q_answer: ""
     }
 
@@ -37,7 +37,6 @@ export default function Signup(){
         }
         fetch("http://localhost:8082/saveUser", reqOptions)
         .then(resp => console.log(resp))
-
     }
 
 return(
@@ -55,8 +54,8 @@ return(
             placeholder="Enter First Name"
             id="First_Name"
             name="First_Name"
-            value={info.first_name}
-            onChange={(e) => {dispatch({type:'update', fld:'first_name', val: e.target.value})}}
+            value={info.fname}
+            onChange={(e) => {dispatch({type:'update', fld:'fname', val: e.target.value})}}
           />
         </div>
 
@@ -68,8 +67,8 @@ return(
             placeholder="Enter Last Name"
             id="Last_Name"
             name="Last_Name"
-            value={info.last_name}
-            onChange={(e) => {dispatch({type:'update', fld:'last_name', val: e.target.value})}}
+            value={info.lname}
+            onChange={(e) => {dispatch({type:'update', fld:'lname', val: e.target.value})}}
           />
         </div>
 
@@ -127,7 +126,7 @@ return(
 
         <div className="mb-3">
           <label>Security Question</label><br></br>
-          <select value={info.security_qid}   onChange={(e) => {dispatch({type:'update', fld:'security_qid', val: e.target.value})}}>
+          <select value={info.q_id}   onChange={(e) => {dispatch({type:'update', fld:'q_id', val: e.target.value})}}>
             <option value={1} >Place</option>
             <option value={2}>Color</option>
             <option value={3}>Pet</option>
@@ -142,14 +141,15 @@ return(
             placeholder="Enter Answer"
             id="Answer"
             name="Answer"
-            value={info.q_answer}
-            onChange={(e) => {dispatch({type:'update', fld:'q_answer', val: e.target.value})}}
+            value={info.qanswer}
+            onChange={(e) => {dispatch({type:'update', fld:'qanswer', val: e.target.value})}}
           />
         </div>
 
         <div className="mb-3">
           <label>User type</label><br></br>
-          <select value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:e.target.value})}}>
+          <select className="form-control" value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:e.target.value})}}>
+          <option>Select User Type</option>
             <option value={1}>Tournament Manager</option>
             <option value={2}>Team Manager</option>
             </select>

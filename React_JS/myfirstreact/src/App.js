@@ -12,8 +12,11 @@ import LogoutComp from './components/LogoutComp'
 import Tournamentform from './components/TournamentForm'
 import './index.css';
 import Signup from './components/UserRegister'
-import RegisterTeam from './components/RegisterTeam'
-import AddPlayers from './components/RegisterTeamPlayers'
+import GenerateMatchForm from './components/GenerateMatch'
+import RegisterTeam from './components/CreateTeam'
+import { ApproveTeamMan, ApproveTourMan } from './components/Approve'
+import Timer from './components/Score'
+import Score from './components/Score'
 
 function App() {
 
@@ -21,6 +24,7 @@ function App() {
   const mystate = useSelector((state)=>state.logged);
 
   return (
+    <div>
     <Router>
       <div className="App">
         <div style={{display: mystate.loggedin ? "none" : "block"}}>
@@ -41,20 +45,25 @@ function App() {
                     Sign up
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/register-team'}>
-                    Register Team
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/register-players'}>
-                    AddPlayers
-                  </Link>
-                </li>
               </ul>
             </div>
           </div>
         </nav>
+        {/*shanchange*/}
+        <React.Fragment>
+        
+        
+        <div className='card' >
+          <img className ='card' src='https://picsum.photos/seed/picsum/200/300'></img> 
+          <div className='card-body'>
+            <h5 className='card-title'>Knowit Cup</h5>
+            <p class="card-text">Exciting Tournament</p>
+            <a href={'/Score'} className='score-btn' to={'/Timer'}>click to see</a>
+          </div>
+        </div>
+        </React.Fragment>
+
+        {/*shanchange*/}
         </div>
         <div className="auth-wrapper">
             {/* <div className="auth-inner"> */}
@@ -63,20 +72,28 @@ function App() {
               <Route exact path="/" element={<FrontHome/>} />
               <Route path="/home" element={<FrontHome/>} />
               <Route path="/sign-up" element={<Signup/> }className="auth-inner" />
-              <Route path="/admin_home" element={<AdminHome/>} />
-              <Route path="/tm_home" element={<TmHome/>} />
-              <Route path="/tem_home" element={<TemHome/>} />
+              <Route path="/admin_home" element={<AdminHome/>} >
+                <Route path="approveTour" element={<ApproveTourMan/>} /> 
+                <Route path="approveTeamM" element={<ApproveTeamMan/>} />
+                </Route>
+              <Route path="/tem_home" element={<TemHome/>} >
+                <Route path="createteam" element={<RegisterTeam/>} />
+                </Route>  
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />
-              <Route path="/register-team" element={<RegisterTeam/>} />
-              <Route path="/register-players" element={<AddPlayers/>} />
-              <Route path="/creattour" element={<Tournamentform/>} className="auth-inner" />
+              <Route path="/tm_home" element={<TmHome/>} >
+                <Route path="creatematch" element={<GenerateMatchForm/>} />
+                <Route path="creattour" element={<Tournamentform/>} />
+                <Route path="ScoreUpdate" element={<Score/>} />
+              </Route>  
             </Routes>
+           
           </div>  
+          
         </div>        
     </Router>
-
-    
+   
+  </div>
   )
 
   

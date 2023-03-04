@@ -1,27 +1,18 @@
 import '../forms.css';
 import { useReducer} from "react";
-
-import React, { useState } from "react";
-
-import { useNavigate } from "react-router-dom";
-
+import { format } from 'date-fns'
 
 export default function RegisterTeam(){
-            const navigate = useNavigate();
-            var today = new Date();
-            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+    const date = format(new Date(), 'yyyy-MM-dd')
+    const teamMan = JSON.parse(localStorage.getItem("loggedTeamMan"));
 
     const init = {
-
-        //team specification
-        tem_id:"",
         team_name:"",
-        registration_date:"",
+        team_manager_id: teamMan.uid,
+        registration_date: date,
         team_description:"",
-        team_logo:"",
-        //registration_date:{date}.toJson
-        
-
+        team_logo:"",    
     }
 
     const reducer = (state, action) => {
@@ -43,43 +34,19 @@ export default function RegisterTeam(){
             headers: {'content-type':'application/json'},
             body: JSON.stringify(info)
         }
-       
         fetch("http://localhost:8082/saveTeam", reqOptions)
         .then(resp => console.log(resp))
-        //shanchange
-        .then(obj=>{
-          const fd=new FormData();
-          fd.append("file",file);
-          const reqOptions1 ={
-            method:'POST',
-            headers:{'content-type':'multipart/form-data'},
-            body:fd
-          }
-          
-          fetch("http://localhost:8082:uploadLogo/"+obj.tem_id,reqOptions1)
-          .then(resp=>resp.json())
-          .then(obj=>{
-            if(obj){
-              alert("uploaded successfully");
-              navigate('/');
-            }
-            else{
-              alert("uploaded sucessfully");
-              navigate('/');
-            }
-          })
-          
-        })
-        //shan change
-
 
     }
 
 return(
+    <div className="auth-wrapper">
+    <div className="auth-inner">
     <div>
       <form>
         <h3>Team Registration Form</h3>
 
+      
         <div className="mb-3">
           <label>Team Name</label>
           <input
@@ -105,34 +72,17 @@ return(
             onChange={(e) => {dispatch({type:'update', fld:'team_description', val: e.target.value})}}
           />
         </div>
-      
-        <div className="mb-3">
-          <label>Team Manager ID</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Your ID"
-            id="Tem_Id"
-            name="Tem_Id"
-            value={info.Team_name}
-            onChange={(e) => {dispatch({type:'update', fld:'tem_id', val: e.target.value})}}
-          />
-        </div>
+        
 
-        <div className="mb-3">
-          <label for="formFileMultiple" class="form-label">Team Logo</label>
-          <input class="form-control" type="file" id="formFileMultiple" multiple />
-        </div>
-
-        <div>
-         {date}
-        </div>
         <div className="d-grid">
           <button type="submit" className="btn btn-primary" onClick={(e) => {sendData(e)}}>
             Submit
           </button>
         </div>
       </form>
+      </div>
+      </div>
+      <p>{JSON.stringify(info)}</p>
       </div>
     )
 

@@ -6,12 +6,9 @@ import { login } from "./slice";
 
 var FirstForm = ()=>{
 
-    var[flag,setFlag] = useState(false)
-    var[nm,setNm] = useState("")
-
     const init = {
-        uid: "",
-        pwd :"",
+      uid: {value:"",error:"",valid:false, touched:false},
+      pwd:{value:"",error:"",valid:false, touched:false}
     }
 
     const reducer =(state,action)=>{
@@ -30,13 +27,51 @@ var FirstForm = ()=>{
     const navigate = useNavigate();
     const reduxAction =  useDispatch();
 
+    const validate = (nm,val) => {
+      let error = "";
+      let valid = false;
+      let touched = true;
+      switch(nm)
+      {
+          case 'uid' :
+               const exp1 = /[A-Za-z0-9._-]{5,12}/
+               if(!exp1.test(val))
+               {
+                  error = "Invalid UID";                    
+               }
+               else
+               {
+                  error ="";
+                  valid = true;
+               }
+               break;
+
+          case 'pwd':
+
+          const exp2 = /[A-Za-z0-9._-]{3,12}/
+               if(!exp2.test(val))
+               {
+                  error = "Invalid UID";                    
+               }
+               else
+               {
+                  error ="";
+                  valid = true;
+               }
+               break;    
+      }
+      console.log(val+","+error+","+valid)
+      dispatch({type: 'update', fld: nm,value: val,error, valid, touched})
+  }
+
+
 
     let sendData1 = (e) =>{
         e.preventDefault();
         const regOptions ={
             method:'POST',
             headers:{'content-type':'application/json'},
-            body: JSON.stringify(info)
+            body: JSON.stringify({uid: info.uid.value , pwd:info.pwd.value})
         }
         fetch("http://localhost:8082/loginchk",regOptions)
         .then(resp=> {if(resp.ok)

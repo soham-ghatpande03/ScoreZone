@@ -1,20 +1,22 @@
 package com.example.demo.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
-
+import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.entities.DummyTeam;
 import com.example.demo.entities.Team;
-import com.example.demo.entities.User;
 import com.example.demo.services.TeamService;
-import com.example.demo.services.UserService;
+
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -23,24 +25,36 @@ public class TeamController {
 	@Autowired
 	TeamService teservice;
 	
-	@Autowired
-	UserService uservice;
-	
-	
-	@GetMapping("/getTeams")
+	@GetMapping("/teams")
 	public List<Team> getAll()
 	{
 		return teservice.getAll();
 	}
 	
-	
 	@PostMapping("/saveTeam")
-	public Team saveTeam(@RequestBody DummyTeam dte) 
-	{
-		System.out.println(dte);
-		User teamM = uservice.getUserById(dte.getTeam_manager_id());
-		Team t = new Team(dte.getTeam_name(),teamM ,dte.getRegistration_date(), dte.getTeam_description(), dte.getTeam_logo());
-		System.out.println(t);
-		return teservice.saveTeam(t);
+	public Team savePlayer(@RequestBody Team te) {
+		return teservice.saveTeam(te);
 	}
+	
+	@PostMapping(value="/uploadLogo/{temid}",consumes="multipart/form-data")
+	public boolean uploadLogo(@PathVariable("temid") int temid, @RequestBody MultipartFile file) {
+		System.out.println("hiiicontroller");
+		boolean flag=true;
+		try {
+			flag = teservice.upload(temid, file.getBytes());
+	}
+		catch(Exception e) {
+			flag=false;
+		}
+		
+		return flag;
+	}
+	
+
+	
+	
+	
+	
+	
+	
 }

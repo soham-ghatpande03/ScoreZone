@@ -1,15 +1,15 @@
 package com.example.demo.entities;
 
+
+
 import java.sql.Date;
-import java.util.Arrays;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -26,8 +26,7 @@ public class Team {
 	@Column(name="TEAM_NAME")
 	String team_name;
 	
-	@ManyToOne
-	@JoinColumn(name="team_manager_id")
+	@Column(name="TEAM_MANAGER_ID")
 	User team_manager_id;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
@@ -50,17 +49,6 @@ public class Team {
 			byte[] team_logo) {
 		super();
 		this.team_id = team_id;
-		this.team_name = team_name;
-		this.team_manager_id = team_manager_id;
-		this.registration_date = registration_date;
-		this.team_description = team_description;
-		this.team_logo = team_logo;
-	}
-	
-
-	public Team(String team_name, User team_manager_id, Date registration_date, String team_description,
-			byte[] team_logo) {
-		super();
 		this.team_name = team_name;
 		this.team_manager_id = team_manager_id;
 		this.registration_date = registration_date;
@@ -114,19 +102,6 @@ public class Team {
 
 	public void setTeam_description(String team_description) {
 		this.team_description = team_description;
-	}
-
-	@Override
-	public String toString() {
-		return "Team [team_id=" + team_id + ", team_name=" + team_name + ", team_manager_id=" + team_manager_id
-				+ ", registration_date=" + registration_date + ", team_description=" + team_description + ", team_logo="
-				+ Arrays.toString(team_logo) + "]";
-	}
-
-	public Team(int team_id, String team_name) {
-		super();
-		this.team_id = team_id;
-		this.team_name = team_name;
 	}
 
 	

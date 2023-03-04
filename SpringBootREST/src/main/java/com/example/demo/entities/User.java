@@ -36,8 +36,9 @@ public class User {
 	@Column(name="PASSWORD")
 	String password;
 	
-	@Column(name="TYPE_ID")
-	Integer type_id;
+	@ManyToOne
+	@JoinColumn(name="type_id")
+	UserType type_id;
 	
 	@Column(name="USER_STATUS")
 	int user_status;
@@ -55,9 +56,12 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String first_name, String last_name, String email, String contact, String username, String password,
-			Integer type_id, int user_status, int security_qid, String q_answer) {
+
+
+	public User(String first_name, String last_name, String email, String contact, String username,
+			String password, UserType type_id, int user_status, int security_qid, String q_answer) {
 		super();
+
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
@@ -69,6 +73,8 @@ public class User {
 		this.security_qid = security_qid;
 		this.q_answer = q_answer;
 	}
+
+
 
 	public int getUid() {
 		return uid;
@@ -126,11 +132,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Integer getType_id() {
+	public UserType getType_id() {
 		return type_id;
 	}
 
-	public void setType_id(Integer type_id) {
+	public void setType_id(UserType type_id) {
 		this.type_id = type_id;
 	}
 

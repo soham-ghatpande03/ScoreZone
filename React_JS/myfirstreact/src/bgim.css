@@ -5,12 +5,20 @@ html,body {
 }
 
 .first {
+
   height:100vh;
   min-height:400px;
   background-size:cover;
-  background-image:url('img/stadium.jpg');
+  /*background-image:url('img/stadium.jpg');
+  background-attachment: fixed;*/
 }
 
+.card {
+  height:50vh;
+  width: 200px;
+  background-size:cover;
+  /*background-image:url('img/stadium.jpg');*/
+}
 .affix {
   -webkit-transition:padding 0.2s ease-out;
   -moz-transition:padding 0.2s ease-out;  

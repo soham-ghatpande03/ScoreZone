@@ -40,4 +40,19 @@ public class UserService {
 	public User saveUser(User u) {
 		return urepo.save(u);
 	}
+	
+	public User getUserById (int id) 
+	{
+		return urepo.findById(id).get();
+	}
+	
+	public List<User> approveTourMan()
+	{
+		return urepo.approveTourMan();
+	}
+	
+	public List<User> approveTeamMan()
+	{
+		return urepo.approveTeamMan();
+	}
 }
