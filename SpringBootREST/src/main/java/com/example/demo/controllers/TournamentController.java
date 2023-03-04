@@ -37,5 +37,4 @@ public class TournamentController {
 	{
 		return tservice.getTourById(id);
 	}
-
 }

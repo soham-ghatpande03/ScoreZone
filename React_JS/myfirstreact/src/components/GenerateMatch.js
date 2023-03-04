@@ -3,6 +3,8 @@ import {useReducer, useState, useEffect} from "react";
 
 export default function GenerateMatchForm(){
 
+  
+  
   const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
   console.log(tmanager.uid)
   const [tours,setTour] = useState([]);
@@ -14,6 +16,7 @@ export default function GenerateMatchForm(){
 
   const [teams,setTeam] = useState([]);
   const[seleteam,setSelTeam] = useState([]);
+  const[teamid, setTeamId] = useState();
 
   useEffect(()=>{
    fetch("http://localhost:8082/getTeams")
@@ -21,8 +24,20 @@ export default function GenerateMatchForm(){
    .then(obj => setTeam(obj))
   } ,[])
   
+  const teamsarr = (teams) => {
+    teams.map(teams1 => {
+      return teams1;
+    })
+    }
+
+  console.log(teamsarr);
+
   useEffect(()=>{})
 
+  const getTeamA = (tid) => {
+
+
+  }
   const init = {
       tournament_id:"",
       team_id_a:"",
@@ -56,6 +71,7 @@ export default function GenerateMatchForm(){
 
 
   return(
+
       <div>
         <div className="auth-wrapper">
       <div className="auth-inner">
