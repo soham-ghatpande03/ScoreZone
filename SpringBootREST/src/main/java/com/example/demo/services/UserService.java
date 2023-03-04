@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.entities.User;
+import com.example.demo.entities.UserType;
 import com.example.demo.repositories.UserRepository;
 
 @Service
@@ -51,9 +52,9 @@ public class UserService {
 		return urepo.approveTourMan();
 	}
 	
-	public List<User> approveTeamMan()
+	public List<User> approveTeamMan(UserType ut)
 	{
-		return urepo.approveTeamMan();
+		return urepo.approveTeamMan(ut);
 	}
 	
 	public int updateTourManStatus(int id)
@@ -61,9 +62,15 @@ public class UserService {
 		return urepo.updateTourManStatus(id);
 	}
 	
-	public int updateTeamManStatus(int id)
+	public boolean updateTeamManStatus(int id)
 	{
-		return urepo.updateTeamManStatus(id);
+		int n = urepo.updateTeamManStatus(id);
+	if(n==1) {
+		return true;
+	}
+		
+	else
+		return false;
 	}
 	
 }

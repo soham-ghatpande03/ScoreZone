@@ -5,7 +5,7 @@ export default function FrontHome()
     return (
       
       <div >
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+      <nav className="navbar navbar-expand-sm bg-light fixed-top ">
         <div className="container-fluid">
           <Link className="navbar-brand" to={'/'}>
             ScoreZone

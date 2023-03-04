@@ -1,4 +1,5 @@
 import {useReducer, useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 var ApproveTourMan = ()=>{
 
     const [utour,setUTour] = useState([]);
@@ -9,6 +10,21 @@ var ApproveTourMan = ()=>{
     } ,[])
 
 
+	/*const approve = (uid) =>{
+		console.log(uid)
+		fetch("http://localhost:8082/updateTeamManStatus?uid="+uid)
+     .then(resp => resp.json())
+     .then(obj => {
+		if(obj)
+		{
+			alert("Updation done")
+			window.location.reload(false)
+		}
+		else
+			alert("Updation failed")
+	
+	})
+	}*/
     return(
         <div>
 <div class="container">
@@ -36,11 +52,11 @@ var ApproveTourMan = ()=>{
 {
 	utour.map(ut =>{
 
-		return <tr> <td>{ut.uid}</td>
+		return <tr key={ut.uid}> <td>{ut.uid}</td>
 		<td>{ut.first_name} {ut.last_name}</td>
 		<td>{ut.email}</td>
 		<td>{ut.username}</td>
-		<td><a href="#" class="btn btn-primary">Approve</a></td>
+		<td><button onClick={()=>{console.log("hi")} } className="btn btn-primary">Approve</button></td>
 		<td><a href="#" class="btn btn-danger">Reject</a></td>
 		</tr>
 
@@ -57,6 +73,25 @@ var ApproveTourMan = ()=>{
 }
 
 var ApproveTeamMan = ()=>{
+
+
+	const nav = useNavigate();
+	const approve = (uid) =>{
+		console.log(uid)
+		fetch("http://localhost:8082/updateTeamManStatus?uid="+uid)
+     .then(resp => resp.json())
+     .then(obj => { console.log(JSON.stringify(obj))
+		if(obj)
+		{
+			alert("Updation done")
+			nav("/admin_home/approveTeamM")
+			window.location.reload();
+		}
+		else
+			alert("Updation failed")
+	
+	})
+	}
 
     const [uteam,setUTeam] = useState([]);
     useEffect(()=>{
@@ -104,7 +139,7 @@ var ApproveTeamMan = ()=>{
 		<td>{uut.first_name} {uut.last_name}</td>
 		<td>{uut.email}</td>
 		<td>{uut.username}</td>
-		<td><button type="submit" className="btn btn-primary" onClick={(e)=>{}}>Approve</button></td>
+		<td><button onClick={()=>{approve(uut.uid)}} class="btn btn-primary">Approve</button></td>
 		<td><button type="submit" className="btn btn-danger" >Reject</button></td>
 		</tr>
 	})

@@ -24,8 +24,6 @@ import com.example.demo.services.TournamentService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 
-import com.example.demo.entities.Match;
-import com.example.demo.services.MatchService;
 
 
 @RestController
@@ -44,7 +42,7 @@ public class MatchController {
 	@GetMapping("/allMatches")
 	public List<Match> getMatches(){
 		
-		return mservice.getAll();
+		return mservice.getMatches();
 	}
 	
 	@PostMapping("/saveMatch")
@@ -56,12 +54,12 @@ public class MatchController {
 		Match m = new Match(t1,team1,team2,dm.getMatch_status(),dm.getMatch_venue(),dm.getMatch_date(),dm.getRemarks());
 		
 		return mservice.saveMatch(m);
-
-	@GetMapping("getMatches")
-	public List<Match> getMatches()
-	{
-		return mservice.getMatches();
 	}
+//	@GetMapping("getMatches")
+//	public List<Match> getMatches()
+//	{
+//		return mservice.getMatches();
+//	}
 	
 	@PostMapping("/generateMatch")
 	public Match generateMatch(@RequestBody Match m)

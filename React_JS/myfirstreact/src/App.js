@@ -26,7 +26,7 @@ function App() {
     <Router>
       <div className="App">
         <div style={{display: mystate.loggedin ? "none" : "block"}}>
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <nav className="navbar navbar-expand-sm bg-light fixed-top">
           <div className="container">
             <Link className="navbar-brand" to={"/"}>
               ScoreZone
