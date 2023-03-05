@@ -16,6 +16,7 @@ import GenerateMatchForm from './components/Match/GenerateMatch'
 import RegisterTeam from './components/Team/CreateTeam'
 import { ApproveTeamMan, ApproveTourMan } from './components/Admin/Approve'
 import { ViewAllTeams, Viewteam } from './components/Team/DisplayTeam'
+import ViewMatch from './components/Match/ViewMatch'
 
 function App() {
 
@@ -39,9 +40,11 @@ function App() {
             {/* <div className="auth-inner"> */}
           <Routes>
               
-              <Route exact path="/" element={<FrontHome/>}/ >
-                <Route path="/sign-in" element={<FirstForm/>} />
-         
+              <Route exact path="/" element={<FrontHome/>} >
+                <Route path="sign-in" element={<FirstForm/>} />  
+                <Route path="viewmatch" element={<ViewMatch/>} />  
+                <Route path="allteams" element={<ViewAllTeams/>} />  
+                </Route>       
               <Route path="/home" element={<FrontHome/>} />
               <Route path="/sign-up" element={<Signup/> } />
               <Route path="/allteams" element={<ViewAllTeams/> } />
@@ -49,17 +52,22 @@ function App() {
                 <Route path="approveTour" element={<ApproveTourMan/>} /> 
                 <Route path="approveTeamM" element={<ApproveTeamMan/>} />
                 </Route>
+
+
               <Route path="/tem_home" element={<TemHome/>} >
                 <Route path="createteam" element={<RegisterTeam/>} />
                 <Route path="viewteam" element={<Viewteam/>} />
                 <Route path="allteams" element={<ViewAllTeams/> } />
                 </Route>  
+
               <Route path="/mu_home" element={<MuHome/>} />
               <Route path="/logout" element={<LogoutComp/>} />
+
               <Route path="/tm_home" element={<TmHome/>} >
                 <Route path="creatematch" element={<GenerateMatchForm/>} />
                 <Route path="creattour" element={<Tournamentform/>} />
-              </Route>  
+              </Route> 
+
             </Routes>
           </div>  
         </div>        

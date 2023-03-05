@@ -1,0 +1,13 @@
+.main
+{width: 30vw;height: auto;background-image: linear-gradient(to bottom right, #0d47a1, black);;margin: auto;position: relative;top: 15vh;padding: 2vw;color: white}
+body#000000#ffffff
+{background-color: white;font-family: 'Roboto', sans-serif}
+.flag{height: 3vw;width: 4vw}.overs{color: silver;position: relative;bottom: 1vw}
+.score{position: relative;bottom: 0.5vw;color: white}span{color: white}
+tr{border: 2px solid white}.right1{text-align: right}
+.head{font-size: 1.3vw}.day{font-size: 1vw;color: silver}
+target{font-size: 1vw}.res{font-size: 1.5vw}
+.match{color: silver}@media only screen and (max-width: 425px)
+{.main{width: 100vw;height: 100vw;padding: 4vw}
+.flag{width: 10vw;height: 8vw}.head{font-size: 5vw}
+.day{font-size: 4vw}.target{font-size: 4vw}.res{font-size: 5vw}}
