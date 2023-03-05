@@ -16,7 +16,7 @@ export default function GenerateMatchForm(){
   const[seleteam,setSelTeam] = useState([]);
 
   useEffect(()=>{
-   fetch("http://localhost:8082/getTeams")
+   fetch("http://localhost:8082/getTeamsByMatchStatus")
    .then(resp => resp.json())
    .then(obj => setTeam(obj))
   } ,[])
@@ -54,6 +54,11 @@ export default function GenerateMatchForm(){
       .then(resp => console.log(resp))
       .then(alert('You have Sucessfully Generate a Match'))
         .then(window.location.reload(false))
+  }
+
+  const changeStatus= () => {
+    fetch("http://localhost:8082/changeTeamMatchStatus?t1="+info.team_id_a+"&t2="+info.team_id_b)
+    .then(resp => console.log(resp))
   }
 
 
@@ -107,7 +112,8 @@ export default function GenerateMatchForm(){
               <option>Select Team B</option>
             {
               teams.map(team => {
-                return <option value={team.team_id}> {team.team_name} </option>
+                {console.log(info.team_id_a+" / "+ team.team_id)}
+                return ( (info.team_id_a!=team.team_id) && <option value={team.team_id}> {team.team_name} </option>)
             })
             }
           </select>
@@ -139,7 +145,11 @@ export default function GenerateMatchForm(){
             />
           </div>
           <div className="d-grid">
-            <button type="submit" className="btn btn-primary" onClick={(e) => {sendData(e)}}>
+            <button type="submit" className="btn btn-primary" onClick={(e) => {
+              changeStatus()
+              sendData(e)
+            }
+          }>
               Submit
             </button>
           </div>
