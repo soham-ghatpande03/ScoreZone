@@ -1,18 +1,17 @@
-import { BrowserRouter as Router, Routes, Route, Link , Outlet} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
 import { useReducer, useState, useEffect} from "react";
-export default function TmHome() {
+export default function TemHome() {
 
 
-  const [tm,setTm] = useState(null);
+const [tem,setTem] = useState(null);
  useEffect(()=>{
-
  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
  console.log(uid);
   fetch("http://localhost:8082/getuser?uid="+uid)
   .then(resp => resp.json())
   .then(obj => {
-    localStorage.setItem("loggedTourMan", JSON.stringify(obj))
-    setTm(obj);
+    localStorage.setItem("loggedTeamMan", JSON.stringify(obj))
+    setTem(obj);
   })
  } ,[])
 
@@ -25,21 +24,31 @@ export default function TmHome() {
                     </Link>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                       <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                          <Link className="nav-link" to={'creattour'}>
-                            Create Tournament
+                      <li className="nav-item">
+                          <Link className="nav-link" to={'createteam'} >
+                            Create Team
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to={'creatematch'}>
-                            Generate Matches
+                          <Link className="nav-link" to={'viewteam'} >
+                            View My Team
                           </Link>
                         </li>
                         <li className="nav-item">
                           <Link className="nav-link" to={'/'}>
+                            Participate
+                          </Link>
+                        </li>
+                        <li className="nav-item">
+                          <Link className="nav-link" to={'allteams'}>
                             Teams
                           </Link>
-                        </li>                  
+                        </li>
+                        <li className="nav-item">
+                          <Link className="nav-link" to={'/'}>
+                            Matches
+                          </Link>
+                        </li>
                         <li className="nav-item">
                         <Link className="nav-link" to={'/logout'}>
                             Logout
@@ -49,15 +58,12 @@ export default function TmHome() {
                     </div>
                   </div>
                 </nav>
-        <br/>
+                <br/>
         <br/>
                 <div>
-                    <h1>Tournament Manager</h1>
-                    <h1>Welcome {tm && tm.first_name} </h1>
-
-                    
-                </div>  
-                <Outlet/>
+                    <h1>Welcome {tem && tem.first_name} </h1>
+                </div>
+                <Outlet />
                 </div>
     )
 }

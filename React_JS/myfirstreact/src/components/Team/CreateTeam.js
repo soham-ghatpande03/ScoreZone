@@ -1,4 +1,4 @@
-import '../forms.css';
+
 import { useReducer} from "react";
 import { format } from 'date-fns'
 
@@ -36,6 +36,8 @@ export default function RegisterTeam(){
         }
         fetch("http://localhost:8082/saveTeam", reqOptions)
         .then(resp => console.log(resp))
+        .then(alert('You have Sucessfully Created Your Team'))
+        .then(window.location.reload(false))
 
     }
 
@@ -82,7 +84,6 @@ return(
       </form>
       </div>
       </div>
-      <p>{JSON.stringify(info)}</p>
       </div>
     )
 

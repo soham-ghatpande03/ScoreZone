@@ -17,32 +17,30 @@ export default function AdminHome() {
     return(
 
 <div>
-<nav className="navbar navbar-expand-lg navbar-light fixed-right fixed-top ">
+<div>
+            <h1>Welcome {ad && ad.first_name}</h1>
+        </div>
+<nav className="navbar navbar-expand-lg navbar-light  ">
           <div className="container">
-            <Link className="navbar-brand" to={'/'}>
+            <Link class="font-weight-bold" className="navbar-brand" to={'/'}>
               ScoreZone
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to={'approveTour'}>
+                  <Link className="nav-link" to="approveTour">
                     Approve Tournament Manager
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'approveTeamM'}>
+                  <Link className="nav-link" to="approveTeamM">
                     Approve Team Manager
                   </Link>
                 </li>
 
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/home'}>
-                    Add Venues
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/logout'}>
-                    Logout
+                <li className="nav-item" >
+                  <Link className="nav-link" to={'/logout'}  class="text-right">
+                  <a name="" id="" class="btn btn-primary" href="#" role="button" >Logout</a>
                   </Link>
                 </li>
               </ul>
@@ -50,9 +48,7 @@ export default function AdminHome() {
           </div>
         </nav>
 
-        <div>
-            <h1 style={{textAlign: "center"}}>Welcome {ad && ad.first_name}</h1>
-        </div>
+        
         <Outlet />
         </div>
     )

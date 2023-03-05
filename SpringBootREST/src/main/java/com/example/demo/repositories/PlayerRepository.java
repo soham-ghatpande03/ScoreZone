@@ -11,9 +11,11 @@ import org.springframework.stereotype.*;
 import com.example.demo.entities.Player;
 
 @Transactional
-@Repository
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
-	@Query("select p from Player p where team_id = ?1")
+
+	@Query(value = "select * from players p inner join teams t on p.team_id = t.team_id  WHERE t.team_manager_id = ?1 ",
+            nativeQuery=true
+    )
 	public List<Player> getPlayersByTeam(int id);
 }

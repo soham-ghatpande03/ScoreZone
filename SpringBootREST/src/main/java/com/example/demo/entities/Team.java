@@ -37,9 +37,11 @@ public class Team {
 	@Column(name="TEAM_DESCRIPTION")
 	String team_description;
 	
-	@Column(name="TEAM_LOGO")
-	byte[] team_logo;
+	@Column(name="TEAM_LOGO1")
+	String team_logo1;
 	
+	@Column(name="TEAM_MATCH_STATUS")
+	int team_match_status;
 
 	public Team() {
 		super();
@@ -47,33 +49,42 @@ public class Team {
 	}
 	
 	public Team(int team_id, String team_name, User team_manager_id, Date registration_date, String team_description,
-			byte[] team_logo) {
+			String team_logo1, int team_match_status) {
 		super();
 		this.team_id = team_id;
 		this.team_name = team_name;
 		this.team_manager_id = team_manager_id;
 		this.registration_date = registration_date;
 		this.team_description = team_description;
-		this.team_logo = team_logo;
+		this.team_logo1 = team_logo1;
+		this.team_match_status = team_match_status;
 	}
 	
 
 	public Team(String team_name, User team_manager_id, Date registration_date, String team_description,
-			byte[] team_logo) {
+			String team_logo1) {
 		super();
 		this.team_name = team_name;
 		this.team_manager_id = team_manager_id;
 		this.registration_date = registration_date;
 		this.team_description = team_description;
-		this.team_logo = team_logo;
+		this.team_logo1 = team_logo1;
 	}
 
-	public byte[] getTeam_logo() {
-		return team_logo;
+	public int getTeam_match_status() {
+		return team_match_status;
 	}
 
-	public void setTeam_logo(byte[] team_logo) {
-		this.team_logo = team_logo;
+	public void setTeam_match_status(int team_match_status) {
+		this.team_match_status = team_match_status;
+	}
+
+	public String getTeam_logo() {
+		return team_logo1;
+	}
+
+	public void setTeam_logo(String team_logo1) {
+		this.team_logo1 = team_logo1;
 	}
 
 	public int getTeam_id() {
@@ -120,7 +131,7 @@ public class Team {
 	public String toString() {
 		return "Team [team_id=" + team_id + ", team_name=" + team_name + ", team_manager_id=" + team_manager_id
 				+ ", registration_date=" + registration_date + ", team_description=" + team_description + ", team_logo="
-				+ Arrays.toString(team_logo) + "]";
+				+  "]";
 	}
 
 	public Team(int team_id, String team_name) {

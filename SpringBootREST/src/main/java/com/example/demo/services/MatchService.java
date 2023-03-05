@@ -13,13 +13,20 @@ public class MatchService {
 	@Autowired
 	MatchRepository mrepo;
 	
-	public List<Match> getAll()
+	public List<Match> getMatches()
 	{
 		return mrepo.findAll();
 	}
-	
+
 	public Match saveMatch(Match m) 
 	{
 		return mrepo.save(m);
 	}
+
+	public Match generateMatch(Match m)
+	{
+		return mrepo.save(m);
+	}
+	
+
 }
