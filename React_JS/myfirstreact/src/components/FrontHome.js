@@ -5,36 +5,38 @@ export default function FrontHome()
     return (
       
       <div >
-      {/* <nav className="navbar navbar-expand-sm bg-light fixed-top ">
+       <nav className="navbar navbar-expand-sm bg-light fixed-top ">
         <div className="container-fluid">
+
           <Link className="navbar-brand" to={'/'}>
             ScoreZone
           </Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link" to={'/sign-in'}>
+                <Link className="nav-link" to={'sign-in'}>
                   Login
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" to={'/sign-in'}>
+                <Link className="nav-link" to={'viewmatch'}>
                   View Matches
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" to={'/allteams'}>
+                <Link className="nav-link" to={'allteams'}>
                   View Teams
                 </Link>
+                
               </li>
             </ul>
           </div>
         </div>
 
-      </nav> */}
-
+      </nav> 
+{/* 
 <nav
           className="navbar navbar-expand-lg bg-light fixed-top"
           
@@ -109,7 +111,7 @@ export default function FrontHome()
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
 
 
 <Outlet/>
