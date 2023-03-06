@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.*;
 
 import com.example.demo.entities.TournamentTeam;
+import com.example.demo.entities.TournamentTeamId;
 import com.example.demo.repositories.TournamentTeamRepository;
 
 
@@ -19,7 +20,7 @@ public class TournamentTeamService {
 		return trepo.findAll();
 	}
 	
-	public TournamentTeam saveTeam(@RequestBody TournamentTeam t) {
+	public TournamentTeam saveTeam(TournamentTeam t) {
 		return trepo.save(t);
 		
 	}

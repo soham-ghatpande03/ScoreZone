@@ -3,10 +3,12 @@ package com.example.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 import com.example.demo.entities.TournamentTeam;
+import com.example.demo.entities.TournamentTeamId;
 import com.example.demo.services.TournamentTeamService;
 
 @RestController
@@ -24,5 +26,14 @@ public class TournamentTeamController {
 	public TournamentTeam saveTeamTournamentID(TournamentTeam t) {
 		return tservice.saveTeam(t);
 		
+	}
+	
+	@GetMapping("/participate")
+	public TournamentTeam participate(@RequestParam("tmid") int teamid, @RequestParam("tour_id") int tour_id)
+	{
+		TournamentTeam ttid = new TournamentTeam();
+		ttid.setTeam_id(teamid);
+		ttid.setTour_id(tour_id);
+		return tservice.saveTeam(ttid);
 	}
 }
