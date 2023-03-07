@@ -5,6 +5,8 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Column;
 
 
@@ -13,45 +15,39 @@ import javax.persistence.Column;
 public class TournamentTeam {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="tournament_id")
+	int tournamnet_id;
 	
-	@Column
-	int TOURNAMENT_ID;
-	
-	@Column
-	int TEAM_ID;
-	
-	
+
+	@Column(name="team_id")
+	int team_id;
+
+	public TournamentTeam(int tournamnet_id, int team_id) {
+		super();
+		this.tournamnet_id = tournamnet_id;
+		this.team_id = team_id;
+	}
+
 	public TournamentTeam() {
-		TOURNAMENT_ID = 101;
-		TEAM_ID =101;
-	}
-	
-	
-	
-
-	public TournamentTeam(int tOURNAMENT_ID, int tEAM_ID) {
-		TOURNAMENT_ID = tOURNAMENT_ID;
-		TEAM_ID = tEAM_ID;
-	}
-	
-
-	public int getTOURNAMENT_ID() {
-		return TOURNAMENT_ID;
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setTOURNAMENT_ID(int tOURNAMENT_ID) {
-		TOURNAMENT_ID = tOURNAMENT_ID;
+	public int getTournamnet_id() {
+		return tournamnet_id;
 	}
 
-	public int getTEAM_ID() {
-		return TEAM_ID;
+	public void setTournamnet_id(int tournamnet_id) {
+		this.tournamnet_id = tournamnet_id;
 	}
 
-	public void setTEAM_ID(int tEAM_ID) {
-		TEAM_ID = tEAM_ID;
+	public int getTeam_id() {
+		return team_id;
 	}
-	
+
+	public void setTeam_id(int team_id) {
+		this.team_id = team_id;
+	}
 	
 	
 	

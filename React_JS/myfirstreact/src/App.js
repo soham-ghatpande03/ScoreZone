@@ -12,11 +12,11 @@ import LogoutComp from './components/Logging/LogoutComp'
 import Tournamentform from './components/Tournament/TournamentForm'
 import './index.css';
 import Signup from './components/UserRegister'
-import GenerateMatchForm from './components/Match/GenerateMatch'
 import RegisterTeam from './components/Team/CreateTeam'
 import { ApproveTeamMan, ApproveTourMan } from './components/Admin/Approve'
 import { ViewAllTeams, Viewteam } from './components/Team/DisplayTeam'
 import ViewMatch from './components/Match/ViewMatch'
+import GenerateMatch from './components/Match/GenerateMatch'
 
 function App() {
 
@@ -64,7 +64,7 @@ function App() {
               <Route path="/logout" element={<LogoutComp/>} />
 
               <Route path="/tm_home" element={<TmHome/>} >
-                <Route path="creatematch" element={<GenerateMatchForm/>} />
+                <Route path="creatematch" element={<GenerateMatch/>} />
                 <Route path="creattour" element={<Tournamentform/>} />
               </Route> 
 

@@ -151,7 +151,7 @@ export default function Signup(){
     }
 
 return(
-  <div className="h-auto d-inline-block">
+ 
     <div className="auth-wrapper">
       <div className="auth-inner">
           
@@ -313,7 +313,8 @@ return(
       </form>
       </div>
       </div>
-      </div>
+      
+  
       
     )
 

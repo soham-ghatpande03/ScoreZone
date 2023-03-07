@@ -8,7 +8,7 @@ html,body {
   height:100vh;
   min-height:400px;
   background-size:cover;
-  background-image:url('img/stadium.jpg');
+  background-image:url('stadium.jpg');
 }
 
 .affix {

@@ -1,4 +1,4 @@
-import '../bgim.css';
+//import '../bgim.css';
 import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
 export default function FrontHome() 
 {
@@ -35,7 +35,7 @@ export default function FrontHome()
           </div>
         </div>
 
-      </nav> 
+      </nav>
 {/* 
 <nav
           className="navbar navbar-expand-lg bg-light fixed-top"
