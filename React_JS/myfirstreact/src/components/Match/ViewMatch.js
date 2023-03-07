@@ -16,7 +16,7 @@ export default function ViewMatch() {
 
     const gettour = (uid)=>{
         console.log(uid)
-        fetch("http://localhost:8082/getMatchesByTour?tour="+uid)
+        fetch("http://localhost:8082/matchByTourId?tour="+uid)
         .then((resp)=>resp.json())
         .then ((obj) => setMatch(obj))
     }
