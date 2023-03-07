@@ -64,11 +64,6 @@ public class Tournament {
 	}
 
 
-	public Tournament(int id) {
-		this.tournament_id = id;
-	}
-
-
 	public byte[] getTournament_logo() {
 		return tournament_logo;
 	}

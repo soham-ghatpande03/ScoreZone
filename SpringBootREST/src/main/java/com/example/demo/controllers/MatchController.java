@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -56,14 +55,16 @@ public class MatchController {
 		
 		return mservice.saveMatch(m);
 	}
-
-	@GetMapping("/getMatchesByTour")
-	public List<Match> getMatchesByTour (@RequestParam("tour") int id)
+//	@GetMapping("getMatches")
+//	public List<Match> getMatches()
+//	{
+//		return mservice.getMatches();
+//	}
+	
+	@PostMapping("/generateMatch")
+	public Match generateMatch(@RequestBody Match m)
 	{
-		Tournament t1 = new Tournament(id);
-		return mservice.getMatchesByTour(t1);
-	}
+		return mservice.generateMatch(m);
 
-	
-	
+	}
 }
