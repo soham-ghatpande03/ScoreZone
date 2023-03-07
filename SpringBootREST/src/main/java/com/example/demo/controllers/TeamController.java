@@ -34,6 +34,22 @@ public class TeamController {
 		return teservice.getAll();
 	}
 	
+	@GetMapping("/getTeamsByMatchStatus")
+	public List<Team> getTeamsByMatchStatus()
+	{
+		return teservice.getTeamsByMatchStatus();
+	}
+	
+	@GetMapping("/changeTeamMatchStatus")
+	public boolean changeTeamMatchStatus(@RequestParam("t1") int t1, @RequestParam("t2") int t2)
+	{
+		int a = teservice.changeTeamMatchStatus(t1);
+		int b = teservice.changeTeamMatchStatus(t2);
+		if(a>=1 && b>=1)
+			return true;
+		return false;
+	}
+	
 	
 	@PostMapping("/saveTeam")
 	public Team saveTeam(@RequestBody DummyTeam dte) 
