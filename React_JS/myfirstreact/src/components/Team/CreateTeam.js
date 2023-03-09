@@ -75,6 +75,18 @@ return(
           />
         </div>
         
+        <div className="mb-3">
+          <label>Team Logo</label>
+          <input
+            type="tv "
+            className="form-control"
+            placeholder="Enter URL of Team Logo"
+            id="team_logo"
+            name="team_logo"
+            value={info.team_logo}
+            onChange={(e) => {dispatch({type:'update', fld:'team_logo', val: e.target.value})}}
+          />
+        </div>
 
         <div className="d-grid">
           <button type="submit" className="btn btn-primary" onClick={(e) => {sendData(e)}}>

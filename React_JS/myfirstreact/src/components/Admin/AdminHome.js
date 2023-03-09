@@ -20,7 +20,7 @@ export default function AdminHome() {
 <div>
             <h1>Welcome {ad && ad.first_name}</h1>
         </div>
-<nav className="navbar navbar-expand-lg navbar-light  ">
+{/* <nav className="navbar navbar-expand-lg navbar-light  ">
           <div className="container">
             <Link class="font-weight-bold" className="navbar-brand" to={'/'}>
               ScoreZone
@@ -40,16 +40,50 @@ export default function AdminHome() {
 
                 <li className="nav-item" >
                   <Link className="nav-link" to={'/logout'}  class="text-right">
-                  <a name="" id="" class="btn btn-primary" href="#" role="button" >Logout</a>
+                  <a name="" id="" className="btn btn-primary" href="#" role="button" >Logout</a>
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
+<nav className="navbar navbar-expand-lg bg-dark fixed-top">
+        <div className="container-fluid">
+          <a style={{color:'white'}} className="navbar-brand" href="/">
+            <b>ScoreZone</b>
+          </a>
+          
+          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a style={{color:'white'}} className="nav-link" href="/admin_home/approveTour">
+                  <b>Approve Tournament Manager</b>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a style={{color:'white'}} className="nav-link " href="/admin_home/approveTeamM">
+                <b>Approve Team Manager</b>
+                </a>
+              </li>
+          
+               <li className="nav-item">
+                <a  style = {{textAlign:'right',position:'absolute',top:'12%',left:'93%'}}
+                 className="nav-link btn btn-light"  
+                 href="/logout">
+                <b>Logout</b>
+                </a>
+              </li>
 
+<span><h4 style = {{textAlign:'right',position:'absolute',top:'25%',left:'78%'}}>
+Welcome, {ad && ad.first_name}
+  </h4></span>
+            </ul>
+          </div>
+        </div>
+      </nav> 
         
         <Outlet />
         </div>
     )
+
 }

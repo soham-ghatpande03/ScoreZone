@@ -17,52 +17,54 @@ const [tem,setTem] = useState(null);
 
     return(
         <div>
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-                  <div className="container">
-                    <Link className="navbar-brand" to={'/'}>
-                      ScoreZone
-                    </Link>
-                    <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                      <ul className="navbar-nav ml-auto">
-                      <li className="nav-item">
-                          <Link className="nav-link" to={'createteam'} >
-                            Create Team
-                          </Link>
-                        </li>
-                        <li className="nav-item">
-                          <Link className="nav-link" to={'viewteam'} >
-                            View My Team
-                          </Link>
-                        </li>
-                        <li className="nav-item">
-                          <Link className="nav-link" to={'/'}>
-                            Participate
-                          </Link>
-                        </li>
-                        <li className="nav-item">
-                          <Link className="nav-link" to={'allteams'}>
-                            Teams
-                          </Link>
-                        </li>
-                        <li className="nav-item">
-                          <Link className="nav-link" to={'/'}>
-                            Matches
-                          </Link>
-                        </li>
-                        <li className="nav-item">
-                        <Link className="nav-link" to={'/logout'}>
-                            Logout
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </nav>
-                <br/>
-        <br/>
-                <div>
-                    <h1>Welcome {tem && tem.first_name} </h1>
-                </div>
+            <nav className="navbar navbar-expand-lg bg-dark fixed-top">
+          <div className="container-fluid">
+            <Link style={{color:'white'}} className="navbar-brand" to={'/'}>
+              <b>ScoreZone</b>
+            </Link>
+            
+            <div className="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link style={{color:'white'}} className="nav-link" to={'createteam'}>
+                    <b>Create Team</b>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link style={{color:'white'}} className="nav-link " to={'viewteam'}>
+                  <b>View My Team</b>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link style={{color:'white'}} className="nav-link " to={'/'} >
+                  <b>Participate</b>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link style={{color:'white'}} className="nav-link "  to={'allteams1'}>
+                  <b>View Teams</b>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link style={{color:'white'}} className="nav-link "  to={'/'} >
+                  <b>Profile</b>
+                  </Link>
+                </li>
+                 <li className="nav-item">
+                  <Link  style = {{textAlign:'right',position:'absolute',top:'12%',left:'93%'}}
+                   className="nav-link btn btn-light"  
+                   to={'allteams1'}>
+                  <b>Logout</b>
+                  </Link>
+                </li>
+
+  <span><h4 style = {{textAlign:'right',position:'absolute',top:'25%',left:'78%'}}>
+  Welcome, {tem && tem.first_name}
+    </h4></span>
+              </ul>
+            </div>
+          </div>
+        </nav> 
                 <Outlet />
                 </div>
     )

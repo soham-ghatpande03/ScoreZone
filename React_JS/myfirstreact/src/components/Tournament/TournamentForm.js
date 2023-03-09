@@ -11,7 +11,8 @@ export default function Tournamentform(){
         tournament_manager_id:tmanager.uid,
         start_date:"",
         end_date:"",
-        participation_deadline:""
+        participation_deadline:"",
+        tournament_type:""
     }
 
     const reducer = (state, action) => {

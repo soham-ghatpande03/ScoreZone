@@ -1,49 +1,19 @@
 //import '../bgim.css';
 import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import '../index.css'
 export default function FrontHome() 
 {
+
+  const mystate = useSelector((state)=>state.logged);
     return (
       
       <div >
-       <nav className="navbar navbar-expand-sm bg-light fixed-top ">
-        <div className="container-fluid">
-
-          <Link className="navbar-brand" to={'/'}>
-            ScoreZone
-          </Link>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to={'sign-in'}>
-                  Login
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" to={'viewmatch'}>
-                  View Matches
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" to={'allteams'}>
-                  View Teams
-                </Link>
-                
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </nav>
-{/* 
-<nav
-          className="navbar navbar-expand-lg bg-light fixed-top"
-          
-        >
+        <div style={{display: mystate.loggedin ? "none" : "block"}} >
+<nav className="navbar navbar-expand-lg bg-dark fixed-top">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/">
-              VSMS
+            <a style={{color:'white'}} className="navbar-brand" href="/">
+              <b>ScoreZone</b>
             </a>
             <button
               className="navbar-toggler"
@@ -59,62 +29,32 @@ export default function FrontHome()
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">
-                    Home
+                  <a style={{color:'white'}} className="nav-link" href="viewmatch">
+                    <b>View Matches</b>
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/contactus">
-                    Contact Us
+                  <a style={{color:'white'}} className="nav-link " href="allteams">
+                  <b>View Teams</b>
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/servicecenters">
-                    Service Centers
+                  <a  style = {{textAlign:'right',position:'absolute',top:'10%',left:'93%'}}
+                   className="nav-link btn btn-light"  
+                   href="sign-in">
+                  <b>Login</b>
                   </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/userlogin">
-                    Login
-                  </a>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Register
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a className="dropdown-item" href="/customerregistration">
-                        User
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="/servicecenterregistration"
-                      >
-                        Service Center
-                      </a>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </div>
           </div>
-        </nav> */}
-
+        </nav> 
+        
+        </div>
+       
 
 <Outlet/>
+
       </div>
     )
 }
