@@ -98,6 +98,22 @@ return(
           />
         </div>
 
+        <div className="mb-3">
+          <label>Tournament Type</label>
+          <select 
+              className="form-control"
+              id="tournament_type"
+              name="tournament_type"
+              value={info.tournament_type.value}
+              onChange={(e) => {dispatch({type:'update', fld:'tournament_type', val: e.target.value})}}>
+            
+              <option>Select Tournament Type</option>
+              <option value={0}>Round Robin</option>
+              <option value={1}>Group Stage</option>
+              
+              </select>
+        </div>
+
         <div className="d-grid">
           <button type="submit" className="btn btn-primary" onClick={(e) => {sendData(e)}}>
             Submit

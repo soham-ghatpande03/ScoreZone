@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react"
-import "./mtch.css"
+
 export default function ViewMatch() {
 
     const[tours,setTours] = useState([]);
