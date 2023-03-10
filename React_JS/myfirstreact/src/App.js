@@ -17,12 +17,11 @@ import { ApproveTeamMan, ApproveTourMan } from './components/Admin/Approve'
 import { ViewAllTeams, Viewteam } from './components/Team/DisplayTeam'
 import ViewMatch from './components/Match/ViewMatch'
 import { AddTeam } from './components/Team/Participate'
-import GenerateMatch from './components/Match/GenerateMatch'
+import GenerateMatch from './components/Match/GenerateMatch' 
 
 function App() {
 
-  //initialState of loggedSlice
-  const mystate = useSelector((state) => state.logged);
+ 
   
 
   return (
