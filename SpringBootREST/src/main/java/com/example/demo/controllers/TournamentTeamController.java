@@ -28,7 +28,7 @@ public class TournamentTeamController {
 	}
 	
 	@GetMapping("/participate")
-	public TournamentTeam participate(@RequestParam("tmid") int teamid, @RequestParam("tour_id") int tour_id)
+	public TournamentTeam participate(@RequestParam("teamid") int teamid, @RequestParam("tourid") int tour_id)
 	{
 		TournamentTeam ttid = new TournamentTeam();
 		ttid.setTeam_id(teamid);

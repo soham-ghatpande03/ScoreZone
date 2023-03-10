@@ -6,7 +6,7 @@ var AddTeam = () => {
     var tmid = JSON.parse(localStorage.getItem("loggedTeamMan")).uid;
     const nav = useNavigate();
     const participate = (t) => {
-        fetch("http://localhost:8082/addTeam?tmid=" + tmid + "$tourid=" + t.tournament_id)
+        fetch("http://localhost:8082/addTeam?teamid=" + teamid + "$tourid=" + t.tournament_id)
             .then(resp => resp.json())
             .then(obj => {
                 console.log(JSON.stringify(obj))
@@ -22,10 +22,17 @@ var AddTeam = () => {
     }
 
     const [tour, setTour] = useState([]);
+    const [teamid, setTeamId] = useState();
     useEffect(() => {
         fetch("http://localhost:8082/getTournaments")
             .then(resp => resp.json())
             .then(obj => setTour(obj))
+    }, [])
+
+    useEffect(() => {
+        fetch("http://localhost:8082/getTeamByTManId?tmid="+ tmid )
+            .then(resp => resp.json())
+            .then(obj => setTeamId(obj))
     }, [])
 
     return (
