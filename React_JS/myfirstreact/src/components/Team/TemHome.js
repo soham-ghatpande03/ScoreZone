@@ -1,5 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
-import { useReducer, useState, useEffect} from "react";
+import { useState , useEffect} from "react";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import img1 from '../logo1.png';
 export default function TemHome() {
 
 
@@ -15,57 +21,43 @@ const [tem,setTem] = useState(null);
   })
  } ,[])
 
-    return(
-        <div>
-            <nav className="navbar navbar-expand-lg bg-dark fixed-top">
-          <div className="container-fluid">
-            <Link style={{color:'white'}} className="navbar-brand" to={'/'}>
-              <b>ScoreZone</b>
-            </Link>
-            
-            <div className="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <Link style={{color:'white'}} className="nav-link" to={'createteam'}>
-                    <b>Create Team</b>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link style={{color:'white'}} className="nav-link " to={'viewteam'}>
-                  <b>View My Team</b>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link style={{color:'white'}} className="nav-link " to={'/'} >
-                  <b>Participate</b>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link style={{color:'white'}} className="nav-link "  to={'allteams1'}>
-                  <b>View Teams</b>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link style={{color:'white'}} className="nav-link "  to={'/'} >
-                  <b>Profile</b>
-                  </Link>
-                </li>
-                 <li className="nav-item">
-                  <Link  style = {{textAlign:'right',position:'absolute',top:'12%',left:'93%'}}
-                   className="nav-link btn btn-light"  
-                   to={'allteams1'}>
-                  <b>Logout</b>
-                  </Link>
-                </li>
-
-  <span><h4 style = {{textAlign:'right',position:'absolute',top:'25%',left:'78%'}}>
-  Welcome, {tem && tem.first_name}
-    </h4></span>
-              </ul>
-            </div>
-          </div>
-        </nav> 
-                <Outlet />
-                </div>
-    )
+  return(
+    <div >
+  <Navbar style={{fontSize:"15px", fontFamily:"Century Gothic"}}bg="dark" variant="dark" expand="lg">
+  <Container fluid>
+  <Navbar.Brand href="/tem_home">
+        <img
+          src={img1}
+          width="350"
+          height="40"
+          className="d-inline-block align-top"
+          alt="React Bootstrap logo"
+        /> 
+      </Navbar.Brand>&nbsp
+    <Navbar.Toggle aria-controls="navbarScroll" />
+    <Navbar.Collapse id="navbarScroll">
+      <Nav
+        className="me-auto my-2 my-lg-0"
+        style={{ maxHeight: '90px' }}
+        navbarScroll>
+        <Nav.Link href="/tem_home/createteam">Create Team</Nav.Link>&nbsp
+        <Nav.Link href="/tem_home">Participate</Nav.Link>&nbsp
+        <Nav.Link href="/tem_home/viewteam">My Team</Nav.Link>&nbsp
+        <Nav.Link href="/tem_home/allteams1">Teams</Nav.Link>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <Nav.Link style={{fontSize:"15px", fontFamily:"Century Gothic"}}>Welcome, {tem && tem.first_name}!</Nav.Link>
+      </Nav> 
+  <DropdownButton
+  align="end"
+  title="Profile"
+  id="dropdown-button-dark-example1" 
+  variant="secondary">
+  <Dropdown.Item eventKey="1" href="">Update Profile</Dropdown.Item>
+  <Dropdown.Item eventKey="2" href="/logout">Logout</Dropdown.Item>
+</DropdownButton>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
+<Outlet/>
+  </div>
+  )
 }

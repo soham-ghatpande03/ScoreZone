@@ -6,7 +6,6 @@ import AdminHome from './components/Admin/AdminHome'
 import TemHome from './components/Team/TemHome'
 import TmHome from './components/Tournament/TmHome'
 import MuHome from './components/MuHome'
-
 import FrontHome from './components/FrontHome'
 import LogoutComp from './components/Logging/LogoutComp'
 import Tournamentform from './components/Tournament/TournamentForm'
@@ -20,11 +19,8 @@ import GenerateMatch from './components/Match/GenerateMatch'
 
 function App() {
 
-  //initialState of loggedSlice
-  
-
   return (
-    
+
     <Router>
       <Routes>
               
@@ -36,13 +32,10 @@ function App() {
                 <Route path="/logout" element={<LogoutComp/>} />
                 </Route>   
                 
-              
-
               <Route path="/admin_home" element={<AdminHome/>} >
                 <Route path="approveTour" element={<ApproveTourMan/>} /> 
                 <Route path="approveTeamM" element={<ApproveTeamMan/>} />
                 </Route>
-
 
               <Route path="/tem_home" element={<TemHome/>} >
                 <Route path="createteam" element={<RegisterTeam/>} />
@@ -52,12 +45,14 @@ function App() {
                 </Route>  
 
               <Route path="/mu_home" element={<MuHome/>} />
-              <Route path="/logout" element={<LogoutComp/>} />
-
+              
               <Route path="/tm_home" element={<TmHome/>} >
                 <Route path="creatematch" element={<GenerateMatch/>} />
                 <Route path="creattour" element={<Tournamentform/>} />
               </Route> 
+
+
+              <Route path="/logout" element={<LogoutComp/>} />
 
             </Routes>
     </Router>
