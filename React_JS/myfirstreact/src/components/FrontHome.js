@@ -48,7 +48,7 @@ export default function FrontHome()
     </Navbar>
 </div>
 <Outlet/>
-<Footer/>
+<Footer/> 
       </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { FirstForm } from './components/Logging/LoginComp'
 import AdminHome from './components/Admin/AdminHome'
 import TemHome from './components/Team/TemHome'
@@ -16,6 +16,7 @@ import { ApproveTeamMan, ApproveTourMan } from './components/Admin/Approve'
 import { ViewAllTeams, Viewteam } from './components/Team/DisplayTeam'
 import ViewMatch from './components/Match/ViewMatch'
 import GenerateMatch from './components/Match/GenerateMatch'
+import { AddTeam } from './components/Team/Participate'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
               <Route path="/tem_home" element={<TemHome/>} >
                 <Route path="createteam" element={<RegisterTeam/>} />
                 <Route path="viewteam" element={<Viewteam/>} />
+                <Route path="participate" element={<AddTeam/>} /> 
                 <Route path="allteams1" element={<ViewAllTeams/> } />
                 <Route path="viewmatch" element={<ViewMatch/>} />  
                 </Route>  

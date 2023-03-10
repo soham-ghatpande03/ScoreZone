@@ -41,9 +41,9 @@ const [tem,setTem] = useState(null);
         style={{ maxHeight: '90px' }}
         navbarScroll>
         <Nav.Link href="/tem_home/createteam">Create Team</Nav.Link>&nbsp
-        <Nav.Link href="/tem_home">Participate</Nav.Link>&nbsp
+        <Nav.Link href="/tem_home/participate">Participate</Nav.Link>&nbsp
         <Nav.Link href="/tem_home/viewteam">My Team</Nav.Link>&nbsp
-        <Nav.Link href="/tem_home/allteams1">Teams</Nav.Link>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <Nav.Link href="/tem_home/allteams1">Teams</Nav.Link>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <Nav.Link style={{fontSize:"15px", fontFamily:"Century Gothic"}}>Welcome, {tem && tem.first_name}!</Nav.Link>
       </Nav> 
   <DropdownButton
