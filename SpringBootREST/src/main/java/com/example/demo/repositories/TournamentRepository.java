@@ -16,5 +16,5 @@ public interface TournamentRepository extends JpaRepository<Tournament, Integer>
 
 	@Query("select t from Tournament t where tournament_manager_id = ?1 ")
 	public List<Tournament> getTourById(int id);
-	
+
 }
