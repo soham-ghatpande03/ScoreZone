@@ -49,7 +49,8 @@ function App() {
                 <Route path="createteam" element={<RegisterTeam/>} />
                 <Route path="viewteam" element={<Viewteam/>} />
                 <Route path="allteams1" element={<ViewAllTeams/> } />
-                <Route path="viewmatch" element={<ViewMatch/>} />  
+                <Route path="viewmatch" element={<ViewMatch/>} />
+                <Route path="participate" element={<AddTeam/>} />   
                 </Route>  
 
             <Route path="/mu_home" element={<MuHome />} />

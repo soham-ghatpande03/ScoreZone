@@ -36,7 +36,7 @@ export default function TemHome() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link style={{color:'white'}} className="nav-link " to={'/'} >
+                  <Link style={{color:'white'}} className="nav-link " to={'participate'} >
                   <b>Participate</b>
                   </Link>
                 </li>

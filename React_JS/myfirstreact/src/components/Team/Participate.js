@@ -6,13 +6,13 @@ var AddTeam = () => {
     var tmid = JSON.parse(localStorage.getItem("loggedTeamMan")).uid;
     const nav = useNavigate();
     const participate = (t) => {
-        fetch("http://localhost:8082/addTeam?teamid=" + teamid + "$tourid=" + t.tournament_id)
+        fetch("http://localhost:8082/addTeam?teamid=" + teamid.team_id + "&tourid=" + t.tournament_id)
             .then(resp => resp.json())
             .then(obj => {
                 console.log(JSON.stringify(obj))
                 if (obj) {
                     alert("Team Added")
-                    nav("/participate")
+                    nav("/tem_home/participate")
                     window.location.reload();
                 }
                 else
@@ -30,7 +30,7 @@ var AddTeam = () => {
     }, [])
 
     useEffect(() => {
-        fetch("http://localhost:8082/getTeamByTManId?tmid="+ tmid )
+        fetch("http://localhost:8082/getTeamByTManId?uid=" + tmid )
             .then(resp => resp.json())
             .then(obj => setTeamId(obj))
     }, [])
