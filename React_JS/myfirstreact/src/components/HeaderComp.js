@@ -14,8 +14,6 @@ function HeaderComp(){
             setScoreB(ScoreB+num2)
         }
 
-    
-
     const[num1,setNum1]=useState(0)
         const incNum1=()=>{
             setNum1(num1+1);

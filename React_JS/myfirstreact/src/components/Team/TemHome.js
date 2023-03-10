@@ -13,7 +13,7 @@ const [tem,setTem] = useState(null);
  useEffect(()=>{
  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
  console.log(uid);
-  fetch("http://localhost:8082/getuser?uid="+uid)
+  fetch("http://localhost:8082/getTeamMan?uid="+uid)
   .then(resp => resp.json())
   .then(obj => {
     localStorage.setItem("loggedTeamMan", JSON.stringify(obj))

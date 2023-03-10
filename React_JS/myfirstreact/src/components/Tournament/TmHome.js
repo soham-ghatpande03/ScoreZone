@@ -15,7 +15,7 @@ export default function TmHome() {
 
  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
  console.log(uid);
-  fetch("http://localhost:8082/getuser?uid="+uid)
+  fetch("http://localhost:8082/getTourMan?uid="+uid)
   .then(resp => resp.json())
   .then(obj => {
     localStorage.setItem("loggedTourMan", JSON.stringify(obj))
@@ -43,7 +43,7 @@ export default function TmHome() {
         navbarScroll>
 <NavDropdown style={{fontSize:"15px", fontFamily:"Century Gothic"}}
              title="Tournament" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/tm_home">My Tournaments</NavDropdown.Item>
+              <NavDropdown.Item href="/tm_home/mytours">My Tournaments</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/tm_home/creattour">Create Tournament</NavDropdown.Item>
             </NavDropdown>&nbsp
@@ -52,10 +52,10 @@ export default function TmHome() {
 <Nav.Link href="/tm_home">Participated Teams</Nav.Link>&nbsp
 <NavDropdown style={{fontSize:"15px", fontFamily:"Century Gothic"}}
              title="Match Updater" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/tm_home">Create Login</NavDropdown.Item>
+              <NavDropdown.Item href="/tm_home/mulogin">Create Login</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/tm_home/creattour">Show Match Updaters</NavDropdown.Item>
-            </NavDropdown>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            </NavDropdown>&nbsp&nbsp&nbsp&nbsp&nbsp
         <Nav.Link style={{fontSize:"15px", fontFamily:"Century Gothic"}}>Welcome, {tm && tm.first_name}!</Nav.Link>
       </Nav> 
   <DropdownButton

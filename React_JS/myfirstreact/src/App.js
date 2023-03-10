@@ -17,6 +17,11 @@ import { ViewAllTeams, Viewteam } from './components/Team/DisplayTeam'
 import ViewMatch from './components/Match/ViewMatch'
 import GenerateMatch from './components/Match/GenerateMatch'
 import { AddTeam } from './components/Team/Participate'
+import MyTournaments from './components/Tournament/MyTournaments'
+import AllPlayers from './components/AllPlayers'
+import MuLogin from './components/MULogin'
+import ViewMatchesMatchUpdator from './components/MatchViewAssigned'
+import HeaderComp from './components/HeaderComp'
 
 function App() {
 
@@ -28,6 +33,7 @@ function App() {
               <Route exact path="/" element={<FrontHome/>} >
                 <Route path="sign-in" element={<FirstForm/>} />  
                 <Route path="/sign-up" element={<Signup/> } />
+                <Route path="players" element={<AllPlayers/> } />
                 <Route path="viewmatch" element={<ViewMatch/>} />  
                 <Route path="allteams" element={<ViewAllTeams/>} />  
                 <Route path="/logout" element={<LogoutComp/>} />
@@ -46,11 +52,16 @@ function App() {
                 <Route path="viewmatch" element={<ViewMatch/>} />  
                 </Route>  
 
-              <Route path="/mu_home" element={<MuHome/>} />
+              <Route path="/mu_home" element={<MuHome/>} >
+              <Route path="matchview" element={<ViewMatchesMatchUpdator/>} />
+              <Route path="updatescore" element={<HeaderComp/>} />   
+              </Route>  
               
               <Route path="/tm_home" element={<TmHome/>} >
                 <Route path="creatematch" element={<GenerateMatch/>} />
+                <Route path="mytours" element={<MyTournaments/>} />
                 <Route path="creattour" element={<Tournamentform/>} />
+                <Route path="mulogin" element={<MuLogin/>} />
               </Route> 
 
 

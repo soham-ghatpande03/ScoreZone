@@ -39,10 +39,26 @@ public class UserController {
 		return uservice.getLogin(lchck.getUid(), lchck.getPwd());
 	}
 	
-	@GetMapping("/getuser")
-	public User getUser(@RequestParam("uid") int uid ) {
-		return uservice.getUser(uid);
+	@GetMapping("/getAdmin")
+	public User getAdmin(@RequestParam("uid") int uid ) {
+		return uservice.getAdmin(uid);
 	}
+	
+	@GetMapping("/getMU")
+	public User getMU(@RequestParam("uid") int uid ) {
+		return uservice.getMU(uid);
+	}
+	
+	@GetMapping("/getTeamMan")
+	public User getTeamMan(@RequestParam("uid") int uid ) {
+		return uservice.getTeamMan(uid);
+	}
+	
+	@GetMapping("/getTourMan")
+	public User getTourMan(@RequestParam("uid") int uid ) {
+		return uservice.getTourMan(uid);
+	}
+	
 	
 	@PostMapping("/saveUser")
 	public User saveUser(@RequestBody DummyUser u1 ) {

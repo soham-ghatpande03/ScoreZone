@@ -46,7 +46,7 @@ const validate = (nm,val) => {
             break;
 
             case 'team_description':
-             const exp2 = /[A-Za-z0-9/s]{5,100}/
+             const exp2 = /[A-Za-z0-9\s]{5,100}/
             if(!exp2.test(val))
             {
                error = "Atleast 1 Capital Letter, 1 Small Letter";                    
@@ -59,8 +59,17 @@ const validate = (nm,val) => {
             break; 
 
              case 'team_logo':
-                valid = true;
-                break; 
+              const exp3 = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
+              if(!exp3.test(val))
+              {
+                 error = "Please Enter A Valid URL";                    
+              }
+              else
+              {
+                 error ="";
+                 valid = true;
+              }
+              break;
 
                         
    }
@@ -80,7 +89,7 @@ const sendData = (e) => {
           team_manager_id:info.team_manager_id.value,
           registration_date:info.registration_date.value,
           team_description:info.team_description.value,
-          team_logo:info.team_logo.value,
+          team_logo:info.team_logo.value
           })
     }
     fetch("http://localhost:8082/saveTeam", reqOptions)
@@ -147,7 +156,12 @@ return(
             value={info.team_logo.value}
             onChange={(e)=>{validate("team_logo", e.target.value)}}
           />
-            
+             <div 
+                    id="emailHelp"
+                     className="form-text" 
+                     style={{display: (!info.team_logo.valid&&info.team_logo.touched)?"block":"none"}}>
+                    {info.team_logo.error}
+                    </div>
         </div>
         <div className="d-grid">
           <button 

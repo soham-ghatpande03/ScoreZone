@@ -34,8 +34,20 @@ public class UserService {
 		
 	}
 	
-	public User getUser(int id) {
-		return urepo.getUser(id);
+	public User getTeamMan(int id) {
+		return urepo.getTeamMan(id);
+	}
+	
+	public User getAdmin(int id) {
+		return urepo.getAdmin(id);
+	}
+	
+	public User getTourMan(int id) {
+		return urepo.getTourMan(id);
+	}
+	
+	public User getMU(int id) {
+		return urepo.getMU(id);
 	}
 	
 	public User saveUser(User u) {

@@ -9,12 +9,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import '../index.css'
 import '../App.css'
 import img1 from '../components/logo1.png'
-import Footer from './Footer';
+
+
 export default function FrontHome() 
 {
   const mystate = useSelector((state)=>state.logged);
     return (
-      <div >
+      <div className='background'>
       <div style={{display: mystate.loggedin ? "none" : "block"}} >
       <Navbar style={{fontSize:"15px", fontFamily:"Century Gothic"}}bg="dark" variant="dark" expand="lg">
       <Container fluid>
@@ -37,10 +38,10 @@ export default function FrontHome()
             <NavDropdown title="Matches" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Live Scores</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">Upcoming Matches</NavDropdown.Item>
+              <NavDropdown.Item href="/viewmatch">Upcoming Matches</NavDropdown.Item>
               </NavDropdown>&nbsp
             <Nav.Link href="/allteams">Teams</Nav.Link>&nbsp
-            <Nav.Link href="/">Players</Nav.Link>
+            <Nav.Link href="/players">Players</Nav.Link>
           </Nav>
           <Nav.Link href="sign-in"><Button variant="outline-success">Login</Button></Nav.Link>
         </Navbar.Collapse>
@@ -48,7 +49,6 @@ export default function FrontHome()
     </Navbar>
 </div>
 <Outlet/>
-<Footer/> 
       </div>
     )
 }
