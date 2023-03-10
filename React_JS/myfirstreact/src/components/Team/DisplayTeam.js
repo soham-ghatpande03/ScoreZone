@@ -58,6 +58,9 @@ var Viewteam = ()=>{
 
 }
 
+
+
+
 var ViewAllTeams = () =>{
 
 	const [allteam,setAllTeam] = useState([]);

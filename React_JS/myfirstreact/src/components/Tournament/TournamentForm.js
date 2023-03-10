@@ -11,7 +11,8 @@ export default function Tournamentform(){
         tournament_manager_id:tmanager.uid,
         start_date:"",
         end_date:"",
-        participation_deadline:""
+        participation_deadline:"",
+        tournament_type:""
     }
 
     const reducer = (state, action) => {
@@ -95,6 +96,22 @@ return(
             value={info.participation_deadline}
             onChange={(e) => {dispatch({type:'update', fld:'participation_deadline', val: e.target.value})}}
           />
+        </div>
+
+        <div className="mb-3">
+          <label>Tournament Type</label>
+          <select 
+              className="form-control"
+              id="tournament_type"
+              name="tournament_type"
+              value={info.tournament_type.value}
+              onChange={(e) => {dispatch({type:'update', fld:'tournament_type', val: e.target.value})}}>
+            
+              <option>Select Tournament Type</option>
+              <option value={0}>Round Robin</option>
+              <option value={1}>Group Stage</option>
+              
+              </select>
         </div>
 
         <div className="d-grid">

@@ -1,120 +1,67 @@
-import '../bgim.css';
+//import '../bgim.css';
 import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import '../index.css'
+import img1 from '../components/logo1.png'
 export default function FrontHome() 
 {
+
+  const mystate = useSelector((state)=>state.logged);
     return (
       
       <div >
-       <nav className="navbar navbar-expand-sm bg-light fixed-top ">
-        <div className="container-fluid">
-
-          <Link className="navbar-brand" to={'/'}>
-            ScoreZone
-          </Link>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to={'sign-in'}>
-                  Login
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" to={'viewmatch'}>
-                  View Matches
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" to={'allteams'}>
-                  View Teams
-                </Link>
-                
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </nav> 
-{/* 
-<nav
-          className="navbar navbar-expand-lg bg-light fixed-top"
-          
-        >
-          <div className="container-fluid">
-            <a className="navbar-brand" href="/">
-              VSMS
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">
-                    Home
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/contactus">
-                    Contact Us
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/servicecenters">
-                    Service Centers
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/userlogin">
-                    Login
-                  </a>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Register
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a className="dropdown-item" href="/customerregistration">
-                        User
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="/servicecenterregistration"
-                      >
-                        Service Center
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav> */}
-
-
+        <div style={{display: mystate.loggedin ? "none" : "block"}} >
+      <Navbar style={{fontSize:"25px", fontFamily:"Century Gothic"}}bg="dark" variant="dark" expand="lg">
+      <Container fluid>
+      <Navbar.Brand href="/">
+            <img
+              src={img1}
+              width="350"
+              height="40"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            /> 
+          </Navbar.Brand>&nbsp
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="/viewmatch"><b>LIVE MATCHES</b></Nav.Link>&nbsp
+            <Nav.Link href="/allteams"><b>TEAMS</b></Nav.Link>&nbsp
+            <Nav.Link href="/"><b>PLAYERS</b></Nav.Link>
+            
+            {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action5">
+                Something else here
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="#" disabled>
+              Link
+            </Nav.Link> */}
+          </Nav>
+          <Nav.Link href="sign-in"><Button variant="outline-success">Login</Button></Nav.Link>
+            
+        
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+</div>
 <Outlet/>
+
       </div>
     )
 }

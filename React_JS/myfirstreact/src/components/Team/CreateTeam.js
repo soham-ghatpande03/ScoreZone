@@ -60,21 +60,32 @@ export default function RegisterTeam() {
                 onChange={(e) => { dispatch({ type: 'update', fld: 'team_name', val: e.target.value }) }}
               />
             </div>
-
-            <div className="mb-3">
-              <label>Team Description</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Description of your Team"
-                id="Team_Description"
-                name="Team_Description"
-                value={info.team_description}
-                onChange={(e) => { dispatch({ type: 'update', fld: 'team_description', val: e.target.value }) }}
-              />
-            </div>
-
-
+        <div className="mb-3">
+          <label>Team Description</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter Description of your Team"
+            id="Team_Description"
+            name="Team_Description"
+            value={info.team_description}
+            onChange={(e) => {dispatch({type:'update', fld:'team_description', val: e.target.value})}}
+          />
+        </div>
+        
+        <div className="mb-3">
+          <label>Team Logo</label>
+          <input
+            type="tv "
+            className="form-control"
+            placeholder="Enter URL of Team Logo"
+            id="team_logo"
+            name="team_logo"
+            value={info.team_logo}
+            onChange={(e) => {dispatch({type:'update', fld:'team_logo', val: e.target.value})}}
+          />
+        </div>
+        
             <div className="d-grid">
               <button type="submit" className="btn btn-primary" onClick={(e) => { sendData(e) }}>
                 Submit

@@ -9,22 +9,24 @@ var ApproveTourMan = ()=>{
      .then(obj => setUTour(obj))
     } ,[])
 
-
-	/*const approve = (uid) =>{
+	const nav = useNavigate();
+	
+	const approve = (uid) =>{
 		console.log(uid)
-		fetch("http://localhost:8082/updateTeamManStatus?uid="+uid)
+		fetch("http://localhost:8082/updateTourManStatus?uid="+uid)
      .then(resp => resp.json())
-     .then(obj => {
+     .then(obj => { console.log(JSON.stringify(obj))
 		if(obj)
 		{
 			alert("Updation done")
-			window.location.reload(false)
+			nav("/admin_home/approveTour")
+			window.location.reload();
 		}
 		else
 			alert("Updation failed")
 	
 	})
-	}*/
+	}
     return(
         <div>
 <div class="container">
@@ -56,8 +58,8 @@ var ApproveTourMan = ()=>{
 		<td>{ut.first_name} {ut.last_name}</td>
 		<td>{ut.email}</td>
 		<td>{ut.username}</td>
-		<td><button onClick={()=>{console.log("hi")} } className="btn btn-primary">Approve</button></td>
-		<td><a href="#" class="btn btn-danger">Reject</a></td>
+		<td><button onClick={()=>{approve(ut.uid)}} className="btn btn-primary">Approve</button></td>
+		<td><a href="/admin_home" class="btn btn-danger">Reject</a></td>
 		</tr>
 
 	})
@@ -72,10 +74,35 @@ var ApproveTourMan = ()=>{
     )
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var ApproveTeamMan = ()=>{
 
 
 	const nav = useNavigate();
+
 	const approve = (uid) =>{
 		console.log(uid)
 		fetch("http://localhost:8082/updateTeamManStatus?uid="+uid)
@@ -98,13 +125,6 @@ var ApproveTeamMan = ()=>{
      fetch("http://localhost:8082/approveTeamMan")
      .then(resp => resp.json())
      .then(obj => setUTeam(obj))
-    } ,[])
-
-	const [appteamM,appTeam] = useState();
-    useEffect(()=>{
-     fetch("http://localhost:8082/updateTeamManStatus?uid=")
-     .then(resp => resp.json())
-     .then(obj => appTeam(obj))
     } ,[])
 
     return(
@@ -134,7 +154,8 @@ var ApproveTeamMan = ()=>{
 					    </thead>
 						<tbody>
 {
-	uteam.map(uut =>{
+	uteam.map(uut => {
+		if(uut !== null){
 		return <tr> <td>{uut.uid}</td>
 		<td>{uut.first_name} {uut.last_name}</td>
 		<td>{uut.email}</td>
@@ -142,6 +163,7 @@ var ApproveTeamMan = ()=>{
 		<td><button onClick={()=>{approve(uut.uid)}} class="btn btn-primary">Approve</button></td>
 		<td><button type="submit" className="btn btn-danger" >Reject</button></td>
 		</tr>
+		}
 	})
 }
 					    </tbody>
