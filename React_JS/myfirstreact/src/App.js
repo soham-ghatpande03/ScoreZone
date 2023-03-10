@@ -18,6 +18,7 @@ import { ViewAllTeams, Viewteam } from './components/Team/DisplayTeam'
 import ViewMatch from './components/Match/ViewMatch'
 import { AddTeam } from './components/Team/Participate'
 import GenerateMatch from './components/Match/GenerateMatch' 
+import MyTournaments from './components/Tournament/MyTournaments'
 
 function App() {
 
@@ -50,7 +51,8 @@ function App() {
                 <Route path="viewteam" element={<Viewteam/>} />
                 <Route path="allteams1" element={<ViewAllTeams/> } />
                 <Route path="viewmatch" element={<ViewMatch/>} />
-                <Route path="participate" element={<AddTeam/>} />   
+                <Route path="participate" element={<AddTeam/>} />
+                
                 </Route>  
 
             <Route path="/mu_home" element={<MuHome />} />
@@ -59,6 +61,7 @@ function App() {
               <Route path="/tm_home" element={<TmHome/>} >
                 <Route path="creatematch" element={<GenerateMatch/>} />
                 <Route path="creattour" element={<Tournamentform/>} />
+                <Route path="mytournaments" element={<MyTournaments/>} />   
               </Route> 
 
             </Routes>

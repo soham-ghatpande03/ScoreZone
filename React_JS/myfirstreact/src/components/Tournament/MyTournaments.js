@@ -1,3 +1,5 @@
+import { useReducer, useState, useEffect } from "react";
+
 export default function MyTournaments()
 {
 
@@ -13,7 +15,6 @@ export default function MyTournaments()
     return(
         <div>
             <div className="auth-wrapper">
-
             <div>
                 <div class="container">
                     <div class="row justify-content-center">
@@ -23,7 +24,7 @@ export default function MyTournaments()
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="text-center mb-4">List of Tournaments </h4>
+                            <h4 class="text-center mb-4">Your Tournaments</h4>
                             <div class="table-wrap">
                                 <table class="table">
                                     <thead class="thead-primary">
@@ -31,7 +32,6 @@ export default function MyTournaments()
                                             <th>Tournament Title</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
-                                            <th>Participation Deadline Date</th>
                                         </tr>
 
                                     </thead>
@@ -41,7 +41,6 @@ export default function MyTournaments()
                                                 return <tr><td>{t.tournament_title}</td>
                                                     <td>{t.start_date}</td>
                                                     <td>{t.end_date}</td>
-                                                    <td>{t.participation_deadline}</td>
                                                 </tr>
                                             })
                                         }
