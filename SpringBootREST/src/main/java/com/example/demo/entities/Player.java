@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 
 
 @Entity
@@ -20,34 +18,29 @@ public class Player {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="PLAYER_ID")
+	@Column (name= "PLAYER_ID")
 	int player_id;
 
-	@Column(name="TEAM_ID")
+	@Column(name= "TEAM_ID")
 	int team_id;
 	
-	@Column(name="FIRST_NAME")
+	@Column(name= "FIRST_NAME")
 	String first_name;
 	
-	@Column(name="LAST_NAME")
+	@Column(name= "LAST_NAME")
 	String last_name;
 	
-	@Column(name="PLAYER_POSITION")
-	String player_position;
+	@Column(name= "PLAYER_POSITION")
+	String player_position ;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	@Column(name="PLAYER_BIRTHDATE")
+	@Column(name= "PLAYER_BIRTHDATE")
 	Date player_birthdate;
 	
-	@Column(name="GOALS")
+	@Column(name= "GOALS")
 	int goals;
 	
-	
-	@Column(name="PLAYER_STATUS")
+	@Column(name= "PLAYER_STATUS")
 	int player_status;
-	
-	
-	
 
 	public Player(int player_id, int team_id, String first_name, String last_name, String player_position,
 			Date player_birthdate, int goals, int player_status) {
@@ -60,11 +53,6 @@ public class Player {
 		this.player_birthdate = player_birthdate;
 		this.goals = goals;
 		this.player_status = player_status;
-	}
-
-	public Player() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getPlayer_id() {
@@ -130,6 +118,18 @@ public class Player {
 	public void setPlayer_status(int player_status) {
 		this.player_status = player_status;
 	}
+
+	public Player() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	
 
+	
+	
+	
+	
+	
 }

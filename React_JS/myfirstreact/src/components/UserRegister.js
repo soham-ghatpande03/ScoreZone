@@ -5,26 +5,127 @@ import { useReducer} from "react";
 export default function Signup(){
 
     const init = {
-        fname: "",
-        lname: "",
-        email: "",
-        contact: "",
-        username: "",
-        password: "",
-        type_id:"",
-        q_id: "",
-        q_answer: ""
-    }
+      fname: {value:"",error:"",valid:false, touched:false},
+      lname: {value:"",error:"",valid:false, touched:false},
+      email: {value:"",error:"",valid:false, touched:false},
+      contact: {value:"",error:"",valid:false, touched:false},
+      username: {value:"",error:"",valid:false, touched:false},
+      password: {value:"",error:"",valid:false, touched:false},
+      type_id: "",
+      q_id: "",
+      q_answer: ""
+  }
 
-    const reducer = (state, action) => {
-        switch(action.type)
-        {
-            case 'update' :
-                return {...state,[action.fld]:action.val}
-            case 'reset' :
-                return init;
-        }
+  const reducer = (state, action) => {
+    switch(action.type)
+    {
+        case 'update':
+             return {...state , [action.fld]: {  ...state[action.fld],value: action.value, error: action.error, valid: action.valid, touched: action.touched}}
+        case 'reset' :
+             return init;
     }
+}
+
+    const validate = (nm,val) => {
+      console.log(nm+ " : "+val)
+       let error = "";
+       let valid = false;
+       let touched = true;
+       switch(nm)
+       {
+           case 'fname' :
+                const exp1 = /[A-Za-z]{2,12}/
+                if(!exp1.test(val))
+                {
+                   error = "Atleast 1 Capital Letter, 1 Small Letter";                    
+                }
+                else
+                {
+                   error ="";
+                   valid = true;
+                }
+                break;
+   
+           case 'lname':
+               const exp2 = /[A-Za-z]{2,12}/
+               if(!exp2.test(val))
+               {
+                  error = "Atleast 1 Capital Letter, 1 Small Letter";                    
+               }
+               else
+               {
+                  error ="";
+                  valid = true;
+               }
+                break;   
+                
+                case 'email':
+                  const exp3 = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+                  if(!exp3.test(val))
+                  {
+                     error = "Invalid pattern";                    
+                  }
+                  else
+                  {
+                     error ="";
+                     valid = true;
+                  }
+                   break;  
+
+                   case 'contact':
+                    const exp4 = /[0-9]{10}/
+                    if(!exp4.test(val))
+                    {
+                       error = "Invalid Length";                    
+                    }
+                    else
+                    {
+                       error ="";
+                       valid = true;
+                    }
+                     break;  
+
+                     case 'username':
+                      const exp5 = /[A-Za-z]{2,12}/
+                      if(!exp5.test(val))
+                      {
+                        error = "Atleast 1 Capital Letter, 1 Small Letter and 1 Number  Required ";                    
+                      }
+                      else
+                      {
+                         error ="";
+                         valid = true;
+                      }
+                       break;  
+
+                       case 'password':
+                        const exp6 = /[A-Za-z]{2,12}/
+                        if(!exp6.test(val))
+                        {
+                           error = "Atleast 1 Capital Letter, 1 Small Letter, 1 Number and 1 Specail Character Required ";                    
+                        }
+                        else
+                        {
+                           error ="";
+                           valid = true;
+                        }
+                         break;  
+
+                         case 'type_id':
+                           valid = true;
+                           break; 
+
+                          case 'q_id':
+                            valid = true;
+                           break; 
+
+                            case 'q_answer':
+                              valid = true;
+                           break; 
+       }
+       console.log(val+","+error+","+valid)
+       dispatch({type: 'update', fld: nm,value: val,error, valid, touched})
+   }
 
     const [info, dispatch] = useReducer(reducer, init)
 
@@ -33,16 +134,27 @@ export default function Signup(){
         const reqOptions = {
             method: 'POST',
             headers: {'content-type':'application/json'},
-            body: JSON.stringify(info)
+            body: JSON.stringify({fname: info.fname.value, 
+              lname:info.lname.value,
+              email:info.email.value,
+              contact:info.contact.value,
+              username:info.username.value,
+              password:info.password.value,
+              type_id:info.type_id.value, 
+              q_id:info.q_id.value,
+              q_answer:info.q_answer.value,})
         }
         fetch("http://localhost:8082/saveUser", reqOptions)
         .then(resp => console.log(resp))
+        .then(alert('You are Succesfully Registered..!!'))
+        .then(window.location.reload(false))
     }
 
 return(
+ 
     <div className="auth-wrapper">
       <div className="auth-inner">
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          
       <form>
       <h3>Sign Up</h3>
 
@@ -54,9 +166,16 @@ return(
             placeholder="Enter First Name"
             id="First_Name"
             name="First_Name"
-            value={info.fname}
-            onChange={(e) => {dispatch({type:'update', fld:'fname', val: e.target.value})}}
+            value={info.fname.value}
+            onChange={(e)=>{validate("fname", e.target.value)}}
           />
+          <div 
+                    id="emailHelp"
+                     className="form-text" 
+                     style={{display: (!info.fname.valid&&info.fname.touched)?"block":"none"}}>
+                    {info.fname.error}
+                    </div>
+        
         </div>
 
         <div className="mb-3">
@@ -67,9 +186,14 @@ return(
             placeholder="Enter Last Name"
             id="Last_Name"
             name="Last_Name"
-            value={info.lname}
-            onChange={(e) => {dispatch({type:'update', fld:'lname', val: e.target.value})}}
-          />
+            value={info.lname.value}
+            onChange={(e)=>{validate("lname", e.target.value)}}/>
+            <div 
+                    id="emailHelp"
+                     className="form-text" 
+                     style={{display: (!info.fname.valid&&info.fname.touched)?"block":"none"}}>
+                    {info.lname.error}
+                    </div>
         </div>
 
         <div className="mb-3">
@@ -80,9 +204,14 @@ return(
             placeholder="Enter Email"
             id="Email"
             name="Email"
-            value={info.email}
-            onChange={(e) => {dispatch({type:'update', fld:'email', val: e.target.value})}}
-          />
+            value={info.email.value}
+            onChange={(e)=>{validate("email", e.target.value)}}/>
+            <div 
+                    id="emailHelp"
+                     className="form-text" 
+                     style={{display: (!info.lname.valid&&info.lname.touched)?"block":"none"}}>
+                    {info.lname.error}
+                    </div>
         </div>
 
         <div className="mb-3">
@@ -93,9 +222,14 @@ return(
             placeholder="Enter Contact No"
             id="Contact"
             name="Contact"
-            value={info.contact}
-            onChange={(e) => {dispatch({type:'update', fld:'contact', val: e.target.value})}}
-          />
+            value={info.contact.value}
+            onChange={(e)=>{validate("contact", e.target.value)}}/>
+             <div 
+                    id="emailHelp"
+                     className="form-text" 
+                     style={{display: (!info.contact.valid&&info.contact.touched)?"block":"none"}}>
+                    {info.contact.error}
+                    </div>
         </div>
 
         <div className="mb-3">
@@ -106,9 +240,14 @@ return(
             placeholder="Enter Username"
             id="Username"
             name="Username"
-            value={info.username}
-            onChange={(e) => {dispatch({type:'update', fld:'username', val: e.target.value})}}
-          />
+            value={info.username.value}
+            onChange={(e)=>{validate("username", e.target.value)}}/>
+            <div 
+                    id="emailHelp"
+                     className="form-text" 
+                     style={{display: (!info.username.valid&&info.username.touched)?"block":"none"}}>
+                    {info.username.error}
+                    </div>
         </div>
 
         <div className="mb-3">
@@ -119,14 +258,22 @@ return(
             placeholder="Enter Password"
             id="Password"
             name="Password"
-            value={info.password}
-            onChange={(e) => {dispatch({type:'update', fld:'password', val: e.target.value})}}
+            value={info.password.value}
+            onChange={(e)=>{validate("password", e.target.value)}}
           />
+          <div 
+                    id="emailHelp"
+                     className="form-text" 
+                     style={{display: (!info.password.valid&&info.password.touched)?"block":"none"}}>
+                    {info.password.error}
+                    </div>
         </div>
 
         <div className="mb-3">
           <label>Security Question</label><br></br>
-          <select value={info.q_id}   onChange={(e) => {dispatch({type:'update', fld:'q_id', val: e.target.value})}}>
+          <select required={true}  className="form-control" value={info.q_id.value} 
+           onChange={(e)=>{validate("q_id", e.target.value)}}>
+          <option>Select Question</option>
             <option value={1} >Place</option>
             <option value={2}>Color</option>
             <option value={3}>Pet</option>
@@ -139,16 +286,17 @@ return(
             type="text"
             className="form-control"
             placeholder="Enter Answer"
+            required={true}
             id="Answer"
             name="Answer"
-            value={info.qanswer}
-            onChange={(e) => {dispatch({type:'update', fld:'qanswer', val: e.target.value})}}
+            value={info.q_answer.value}
+            onChange={(e)=>{validate("q_answer", e.target.value)}}
           />
         </div>
 
         <div className="mb-3">
           <label>User type</label><br></br>
-          <select className="form-control" value={info.type_id}  onChange={(e) => {dispatch({type:'update', fld:'type_id', val:e.target.value})}}>
+          <select required="true" className="form-control" value={info.type_id.value}  onChange={(e)=>{validate("type_id", e.target.value)}}>
           <option>Select User Type</option>
             <option value={1}>Tournament Manager</option>
             <option value={2}>Team Manager</option>
@@ -156,15 +304,17 @@ return(
         </div>
 
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary" onClick={(e) => {sendData(e)}}>
+          <button type="submit" 
+          disabled={info.fname.valid && info.lname.valid && info.password.valid && info.email.valid && info.type_id.valid ? false : true} 
+          className="btn btn-primary" onClick={(e) => {sendData(e)}}>
             Submit
           </button>
         </div>
       </form>
       </div>
-      <p>{JSON.stringify(info)}</p>
       </div>
-
+      
+  
       
     )
 

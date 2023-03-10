@@ -1,4 +1,4 @@
-import '../forms.css';
+
 import { useReducer } from "react";
 
 
@@ -11,7 +11,8 @@ export default function Tournamentform(){
         tournament_manager_id:tmanager.uid,
         start_date:"",
         end_date:"",
-        participation_deadline:""
+        participation_deadline:"",
+        tournament_type:""
     }
 
     const reducer = (state, action) => {
@@ -35,8 +36,10 @@ export default function Tournamentform(){
         }
         fetch("http://localhost:8082/createTournament", reqOptions)
         .then(resp => console.log(resp))
+        .then(alert('You have Sucessfully Created the Tournament'))
+        .then(window.location.reload(false))
     }
-
+   
 return(
   
   <div className="auth-wrapper">
@@ -102,7 +105,8 @@ return(
         </div>
       </form>
       </div>
-      {/*<p>{JSON.stringify(info)}</p>*/}
+      <div> {}</div>
+     
       </div>
 
 )

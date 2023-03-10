@@ -55,11 +55,25 @@ public class UserController {
 	
 	@GetMapping("/approveTourMan")
 	public List<User> approveTourMan() {
+		
 		return uservice.approveTourMan();
 	}
 	
 	@GetMapping("/approveTeamMan")
 	public List<User> approveTeamMan() {
-		return uservice.approveTeamMan();
+		UserType ut= utservice.getById(2);
+		return uservice.approveTeamMan(ut);
+	}
+	
+	@GetMapping("/updateTourManStatus")
+	public int updateTourManStatus(@RequestParam("uid") int id)
+	{
+		return uservice.updateTourManStatus(id);
+	}
+	
+	@GetMapping("/updateTeamManStatus")
+	public boolean updateTeamManStatus(@RequestParam("uid") int id)
+	{
+		return uservice.updateTeamManStatus(id);
 	}
 }
