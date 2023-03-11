@@ -10,6 +10,6 @@ import com.example.demo.entities.Tournament;
 
 public interface MatchRepository extends JpaRepository<Match, Integer> {
 
-	@Query("select m from Match m where m.tournament_id = ?1 ")
+	@Query("select m from Match m where m.tournament_id = ?1 and match_status=0")
 	public List<Match> getMatchByTourId(Tournament t);
 }

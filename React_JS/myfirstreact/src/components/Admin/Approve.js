@@ -27,6 +27,7 @@ var ApproveTourMan = () => {
 
 			})
 	}
+	
 	return (
 		<div>
 			<div class="container">
