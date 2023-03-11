@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router,Link } from 'react-router-dom'
 import { useState,useEffect } from 'react';
 
 export default function MuHome() {
@@ -26,7 +26,7 @@ export default function MuHome() {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/MatchViewAssigned'}>
+                  <Link className="nav-link" to={'/mu_home/MatchViewAssigned'}>
                     View Matches
                   </Link>
                 </li>

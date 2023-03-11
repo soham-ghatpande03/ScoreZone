@@ -1,8 +1,9 @@
 
 import { useState,useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
+import { BrowserRouter as Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
-export default function ViewMatchesMatchUpdator() {
+export default function MatchViewAssigned() {
 
     var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
 
@@ -13,7 +14,7 @@ export default function ViewMatchesMatchUpdator() {
       fetch("http://localhost:8082/getMatchesByMuId?mu_id="+uid)
       .then(resp => resp.json())
       .then(obj => setTid(obj))
-      },[])
+      })
 
     let tourid = '';
       if (tid.length > 0) {
@@ -27,14 +28,33 @@ export default function ViewMatchesMatchUpdator() {
       .then ((obj) => setMatch(obj))
       },[tourid])
 
-      let fmatch = '';
-      if (matches.length > 0) {
-        fmatch = Object.values(matches)[1].match_id;
+      
+      ///
+      const nav = useNavigate();
+      const startMatch = (matchid) =>{
+        console.log(matchid)
+        fetch("http://localhost:8082/changeMatchStatus?matchid="+matchid)
+         .then(resp => resp.json())
+         .then(obj => { console.log(JSON.stringify(obj))
+        if(obj)
+        {
+          alert("Updation done")
+          nav("/mu_home/ScoreUpdate")
+          //window.location.reload();
+        }
+        else
+          alert("Updation failed")
+      
+      })
       }
+
+
+      ///
 
 
       return(
         <div>
+          <h1>h</h1>
         <div>
           <table class="table">
             <thead class="thead-dark">
@@ -44,6 +64,7 @@ export default function ViewMatchesMatchUpdator() {
                 <th scope="col">Team B</th>
                 <th scope="col">Venue</th>
                 <th scope="col">Date</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -56,6 +77,7 @@ export default function ViewMatchesMatchUpdator() {
                     <td>{match.team_id_b.team_name}</td>
                     <td>{match.match_venue}</td>
                     <td>{match.match_date}</td>
+                    <td><button  onClick={()=>{startMatch(match.match_id)}} className="btn btn-primary">Start Match</button></td>
                   </tr>
                 );
               })}

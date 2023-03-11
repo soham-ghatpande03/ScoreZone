@@ -1,8 +1,8 @@
-import '../forms.css';
+import '../../forms.css' 
 import { useReducer} from "react";
 
 
-export default function Signup(){
+export default function MuLogin(){
 
     const init = {
       fname: {value:"",error:"",valid:false, touched:false},
@@ -11,9 +11,9 @@ export default function Signup(){
       contact: {value:"",error:"",valid:false, touched:false},
       username: {value:"",error:"",valid:false, touched:false},
       password: {value:"",error:"",valid:false, touched:false},
-      type_id: "",
-      q_id: "",
-      q_answer: ""
+      type_id: {value: 3},
+      q_id: {value: 1},
+      q_answer: {value: ""}
   }
 
   const reducer = (state, action) => {
@@ -156,7 +156,7 @@ return(
       <div className="auth-inner">
           
       <form>
-      <h3>Sign Up</h3>
+      <h3>Match Updater Registration</h3>
 
         <div className="mb-3">
           <label>First Name</label>
@@ -269,43 +269,9 @@ return(
                     </div>
         </div>
 
-        <div className="mb-3">
-          <label>Security Question</label><br></br>
-          <select required={true}  className="form-control" value={info.q_id.value} 
-           onChange={(e)=>{validate("q_id", e.target.value)}}>
-          <option>Select Question</option>
-            <option value={1}>Place</option>
-            <option value={2}>Color</option>
-            <option value={3}>Pet</option>
-            </select>
-        </div>
-
-        <div className="mb-3">
-          <label>Security Answer</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Answer"
-            required={true}
-            id="Answer"
-            name="Answer"
-            value={info.q_answer.value}
-            onChange={(e)=>{validate("q_answer", e.target.value)}}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label>User type</label><br></br>
-          <select required="true" className="form-control" value={info.type_id.value}  onChange={(e)=>{validate("type_id", e.target.value)}}>
-          <option>Select User Type</option>
-            <option value={1}>Tournament Manager</option>
-            <option value={2}>Team Manager</option>
-            </select>
-        </div>
-
         <div className="d-grid">
           <button type="submit" 
-          disabled={info.fname.valid && info.lname.valid && info.password.valid && info.email.valid && info.type_id.valid ? false : true} 
+          disabled={info.fname.valid && info.lname.valid && info.password.valid && info.email.valid ? false : true} 
           className="btn btn-primary" onClick={(e) => {sendData(e)}}>
             Submit
           </button>

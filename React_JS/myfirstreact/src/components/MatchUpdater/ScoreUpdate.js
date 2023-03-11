@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-function HeaderComp(){
+function ScoreUpdate(){
     
    // const currentTime = Date.now();
 
@@ -13,8 +13,6 @@ function HeaderComp(){
         const incScoreB=()=>{
             setScoreB(ScoreB+num2)
         }
-
-    
 
     const[num1,setNum1]=useState(0)
         const incNum1=()=>{
@@ -98,4 +96,4 @@ function HeaderComp(){
         </>
     );
 }
-export default HeaderComp;
+export default  ScoreUpdate;

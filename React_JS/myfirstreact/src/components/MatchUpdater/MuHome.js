@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { useState , useEffect} from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -6,18 +7,21 @@ import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import img1 from '../logo1.png';
-export default function TemHome() {
+import ViewMatchesMatchUpdator from './MatchViewAssigned';
+
+export default function MuHome() {
 
 
-const [tem,setTem] = useState(null);
+const [mu,setMu] = useState(null);
  useEffect(()=>{
  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
+
  console.log(uid);
-  fetch("http://localhost:8082/getTeamMan?uid="+uid)
+  fetch("http://localhost:8082/getMU?uid="+uid)
   .then(resp => resp.json())
   .then(obj => {
-    localStorage.setItem("loggedTeamMan", JSON.stringify(obj))
-    setTem(obj);
+    localStorage.setItem("loggedMU", JSON.stringify(obj))
+    setMu(obj);
   })
  } ,[])
 
@@ -25,7 +29,7 @@ const [tem,setTem] = useState(null);
     <div >
   <Navbar style={{fontSize:"15px", fontFamily:"Century Gothic"}}bg="dark" variant="dark" expand="lg">
   <Container fluid>
-  <Navbar.Brand href="/tem_home">
+  <Navbar.Brand href="/mu_home">
         <img
           src={img1}
           width="350"
@@ -40,11 +44,9 @@ const [tem,setTem] = useState(null);
         className="me-auto my-2 my-lg-0"
         style={{ maxHeight: '90px' }}
         navbarScroll>
-        <Nav.Link href="/tem_home/createteam">Create Team</Nav.Link>&nbsp
-        <Nav.Link href="/tem_home/participate">Participate</Nav.Link>&nbsp
-        <Nav.Link href="/tem_home/viewteam">My Team</Nav.Link>&nbsp
-        <Nav.Link href="/tem_home/allteams1">Teams</Nav.Link>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <Nav.Link style={{fontSize:"15px", fontFamily:"Century Gothic"}}>Welcome, {tem && tem.first_name}!</Nav.Link>
+        <Nav.Link href="/mu_home/matchview">View Matches</Nav.Link>&nbsp
+        <Nav.Link href="/mu_home/updatescore">Update Scores</Nav.Link>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <Nav.Link style={{fontSize:"15px", fontFamily:"Century Gothic"}}>Welcome, {mu && mu.first_name}!</Nav.Link>
       </Nav> 
   <DropdownButton
   align="end"
@@ -58,6 +60,7 @@ const [tem,setTem] = useState(null);
   </Container>
 </Navbar>
 <Outlet/>
+
   </div>
   )
 }

@@ -19,8 +19,17 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	public Optional<User> getLogin(String uid ,String pwd); // data maynot be present hence using Optional
 
 	
-	@Query("select u from User u where uid = ?1 ")
-	public User getUser(int id);
+	@Query("select u from User u where type_id = 0 and uid = ?1 ")
+	public User getAdmin(int id);
+	
+	@Query("select u from User u where type_id = 1 and uid = ?1  ")
+	public User getTourMan(int id);
+	
+	@Query("select u from User u where type_id = 2 and uid = ?1  ")
+	public User getTeamMan(int id);
+	
+	@Query("select u from User u where type_id = 3 and uid = ?1  ")
+	public User getMU(int id);
 	
 	@Query("select u from User u where user_status = 0 and type_id = 1")
 	public List<User> approveTourMan();

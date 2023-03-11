@@ -1,90 +1,68 @@
-import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom'
-import { useReducer, useState, useEffect} from "react";
+import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import img1 from '../logo1.png';
 
 export default function AdminHome() {
 
-  const [ad,setAd] = useState(null);
-  useEffect(()=>{
- 
-  var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
-   fetch("http://localhost:8082/getuser?uid="+uid)
-   .then(resp => resp.json())
-   .then(obj => {
-     localStorage.setItem("loggedAdmin", JSON.stringify(obj))
-     setAd(obj);
-   })
-  } ,[])
+  const [ad, setAd] = useState(null);
+  useEffect(() => {
+    var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
+    fetch("http://localhost:8082/getAdmin?uid=" + uid)
+      .then(resp => resp.json())
+      .then(obj => {
+        localStorage.setItem("loggedAdmin", JSON.stringify(obj))
+        setAd(obj);
+      })
+  }, [])
 
-    return(
+  return (
+    <div >
+      <Navbar style={{ fontSize: "15px", fontFamily: "Century Gothic" }} bg="dark" variant="dark" expand="lg">
+        <Container fluid>
+          <Navbar.Brand href="/admin_home">
+            <img
+              src={img1}
+              width="350"
+              height="40"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>&nbsp
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: '100px' }}
+              navbarScroll
+            >
 
-<div>
-<div>
-            <h1>Welcome {ad && ad.first_name}</h1>
-        </div>
-{/* <nav className="navbar navbar-expand-lg navbar-light  ">
-          <div className="container">
-            <Link class="font-weight-bold" className="navbar-brand" to={'/'}>
-              ScoreZone
-            </Link>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to="approveTour">
-                    Approve Tournament Manager
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="approveTeamM">
-                    Approve Team Manager
-                  </Link>
-                </li>
-
-                <li className="nav-item" >
-                  <Link className="nav-link" to={'/logout'}  class="text-right">
-                  <a name="" id="" className="btn btn-primary" href="#" role="button" >Logout</a>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav> */}
-<nav className="navbar navbar-expand-lg bg-dark fixed-top">
-        <div className="container-fluid">
-          <a style={{color:'white'}} className="navbar-brand" href="/">
-            <b>ScoreZone</b>
-          </a>
-          
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a style={{color:'white'}} className="nav-link" href="/admin_home/approveTour">
-                  <b>Approve Tournament Manager</b>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a style={{color:'white'}} className="nav-link " href="/admin_home/approveTeamM">
-                <b>Approve Team Manager</b>
-                </a>
-              </li>
-          
-               <li className="nav-item">
-                <a  style = {{textAlign:'right',position:'absolute',top:'12%',left:'93%'}}
-                 className="nav-link btn btn-light"  
-                 href="/logout">
-                <b>Logout</b>
-                </a>
-              </li>
-
-<span><h4 style = {{textAlign:'right',position:'absolute',top:'25%',left:'78%'}}>
-Welcome, {ad && ad.first_name}
-  </h4></span>
-            </ul>
-          </div>
-        </div>
-      </nav> 
-        
-        <Outlet />
-        </div>
-    )
+              <NavDropdown style={{ fontSize: "15px", fontFamily: "Century Gothic" }}
+                title="Approve Requests" id="navbarScrollingDropdown">
+                <NavDropdown.Item href="/admin_home/approveTour">Approve Tournament Manager</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/admin_home/approveTeamM">Approve Team Manager</NavDropdown.Item>
+              </NavDropdown> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+              <Nav.Link style={{ fontSize: "15px", fontFamily: "Century Gothic" }}>Welcome, {ad && ad.first_name}!</Nav.Link>
+            </Nav>
+            <DropdownButton
+              align="end"
+              title="Profile"
+              id="dropdown-button-dark-example1"
+              variant="secondary">
+              <Dropdown.Item eventKey="1" href="">Update Profile</Dropdown.Item>
+              <Dropdown.Item eventKey="2" href="/logout">Logout</Dropdown.Item>
+            </DropdownButton>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <Outlet />
+    </div>
+  )
 
 }
