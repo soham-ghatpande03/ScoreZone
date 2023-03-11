@@ -8,6 +8,7 @@ import com.example.demo.entities.Match;
 import com.example.demo.entities.Tournament;
 import com.example.demo.repositories.MatchRepository;
 
+
 @Service
 public class MatchService {
 	
@@ -33,5 +34,8 @@ public class MatchService {
 		return mrepo.getMatchByTourId(t);
 	}
 	
+	public int updateScores(int scoreA , int scoreB, int matchId) {
+		return mrepo.updateScores(scoreA, scoreB, matchId);
+	}
 
 }

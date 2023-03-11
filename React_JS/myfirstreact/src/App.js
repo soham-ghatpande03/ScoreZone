@@ -21,7 +21,7 @@ import MyTournaments from './components/Tournament/MyTournaments'
 import AllPlayers from './components/AllPlayers'
 import MuLogin from './components/MULogin'
 import ViewMatchesMatchUpdator from './components/MatchViewAssigned'
-import HeaderComp from './components/HeaderComp'
+import ScoreUpdate from './components/ScoreUpdate'
 
 function App() {
 
@@ -53,8 +53,8 @@ function App() {
                 </Route>  
 
               <Route path="/mu_home" element={<MuHome/>} >
-              <Route path="matchview" element={<ViewMatchesMatchUpdator/>} />
-              <Route path="updatescore" element={<HeaderComp/>} />   
+              <Route path="matchview" element={<ViewMatchesMatchUpdator/>} />   
+              <Route path="updatescore" element={<ScoreUpdate/>} />   
               </Route>  
               
               <Route path="/tm_home" element={<TmHome/>} >

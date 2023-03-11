@@ -72,7 +72,6 @@ public class UserController {
 		
 		System.out.print(u1);
 		UserType ut1 = utservice.getById(u1.getType_id());
-		
 		String encp =  PassBasedEnc.generateSecurePassword(u1.getPassword(),saltValue.getSalt());
 		User u = new User(u1.getFname(),u1.getLname(),u1.getEmail(),u1.getContact(),u1.getUsername(),encp,ut1,u1.getStatus(),u1.getQ_id(),u1.getQanswer());
 		return uservice.saveUser(u);

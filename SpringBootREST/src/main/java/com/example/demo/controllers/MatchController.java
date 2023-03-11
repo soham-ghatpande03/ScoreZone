@@ -74,4 +74,9 @@ public class MatchController {
 		Tournament t1 =  new Tournament(id);
 		return mservice.getMatchByTourId(t1);
 	}
+	
+	@GetMapping("/updateScores")
+	public int updateScores(@RequestParam("teama") int scoreA , @RequestParam("teamb")int scoreB, @RequestParam("matchid")int matchId) {
+		return mservice.updateScores(scoreA, scoreB, matchId);
+	}
 }
