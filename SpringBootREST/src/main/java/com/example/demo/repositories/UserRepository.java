@@ -35,5 +35,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Modifying
 	@Query("update User set user_status = 1 where uid = ?1 ")
 	public int updateTeamManStatus(int id);
+
+	@Query("select u from User u where type_id = 3")
+	public List<User> getMatchUpdaters();
 	
 }

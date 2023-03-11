@@ -72,5 +72,10 @@ public class UserService {
 	else
 		return false;
 	}
+
+	public List<User> getMatchUpdaters() 
+	{
+		return urepo.getMatchUpdaters();
+	}
 	
 }

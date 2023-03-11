@@ -34,6 +34,12 @@ public class UserController {
 		return uservice.getAll();
 	}
 	
+	@GetMapping("/getMatchUpdaters")
+	public List<User> getMatchUpdaters()
+	{
+		return uservice.getMatchUpdaters();
+	}
+	
 	@PostMapping("/loginchk")
 	public User checkLogin(@RequestBody LoginCheck lchck ) {
 		return uservice.getLogin(lchck.getUid(), lchck.getPwd());
