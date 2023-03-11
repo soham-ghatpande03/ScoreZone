@@ -10,7 +10,7 @@ export default function Tournamentform() {
   const init = {
     tournament_title: { value: "", error: "", valid: false, touched: false },
     tournament_manager_id: { value: tmanager.uid, error: "", valid: false, touched: true },
-    start_date: { value: "" , error: "", valid: false, touched: true },
+    start_date: { value: "", error: "", valid: false, touched: true },
     end_date: { value: "", error: "", valid: false, touched: false },
     participation_deadline: { value: "", error: "", valid: false, touched: false },
     tournament_type: { value: "", error: "", valid: false, touched: false }
@@ -48,8 +48,7 @@ export default function Tournamentform() {
       case 'start_date':
         tarDate = new Date(val)
         //if(info.start_date.value<date)
-        if (date.getFullYear() >= tarDate.getFullYear() && date.getMonth() >= tarDate.getMonth() && date.getDate() >= tarDate.getDate()) 
-        {
+        if (date.getFullYear() >= tarDate.getFullYear() && date.getMonth() >= tarDate.getMonth() && date.getDate() >= tarDate.getDate()) {
           console.log(val)
           error = "Tournament Start Date Should Not Be Before Current Date";
         }
@@ -62,8 +61,7 @@ export default function Tournamentform() {
       case 'end_date':
         tarDate = new Date(val);
         tarDate1 = new Date(info.start_date.value)
-        if (tarDate1.getFullYear() >= tarDate.getFullYear() && tarDate1.getMonth() >= tarDate.getMonth() && tarDate1.getDate() >= tarDate.getDate()) 
-         {
+        if (tarDate1.getFullYear() >= tarDate.getFullYear() && tarDate1.getMonth() >= tarDate.getMonth() && tarDate1.getDate() >= tarDate.getDate()) {
           error = "Tournament End Date Should Not Be Before Tournament Start Date";
         }
         else {
@@ -75,8 +73,7 @@ export default function Tournamentform() {
       case 'participation_deadline':
         tarDate = new Date(val);
         tarDate1 = new Date(info.start_date.value)
-        if (tarDate1.getFullYear() <= tarDate.getFullYear() && tarDate1.getMonth() <= tarDate.getMonth() && tarDate1.getDate() <= tarDate.getDate())
-        {
+        if (tarDate1.getFullYear() <= tarDate.getFullYear() && tarDate1.getMonth() <= tarDate.getMonth() && tarDate1.getDate() <= tarDate.getDate()) {
           error = "Deadline Cannot Be After Tourament Start Date";
         }
         else {
@@ -122,8 +119,8 @@ export default function Tournamentform() {
 
   return (
 
-    <div className="auth-wrapper">
-      <div className="auth-inner">
+    <div className="card shadow text-center" style={{ width: "40%", right: "-30%", top: "3%", animation: "ease-in-out", opacity: "0.92", fontSize: "15px", fontFamily: "Century Gothic" }} >
+      <div className="card-body">
         <form action="/">
           <h3>Create Tournament</h3>
           <div className="mb-3">
@@ -172,7 +169,7 @@ export default function Tournamentform() {
               placeholder="End Date"
               id="End_Date"
               name="End_Date"
-              disabled = {!info.start_date.value}
+              disabled={!info.start_date.value}
               value={info.end_date.value}
               onChange={(e) => { validate("end_date", e.target.value) }}
             />
@@ -192,11 +189,11 @@ export default function Tournamentform() {
               placeholder="Deadline Date"
               id="Deadline_Date"
               name="Deadline_Date"
-              disabled = {!info.start_date.value ||  !info.end_date.value}
+              disabled={!info.start_date.value || !info.end_date.value}
               value={info.participation_deadline.value}
               onChange={(e) => { validate("participation_deadline", e.target.value) }}
             />
-             <div
+            <div
               id="emailHelp"
               className="form-text"
               style={{ display: (!info.participation_deadline.valid && info.participation_deadline.touched) ? "block" : "none" }}>
@@ -221,11 +218,11 @@ export default function Tournamentform() {
           </div>
 
           <div className="d-grid">
-          <button type="submit" 
-          disabled={info.start_date.valid && info.tournament_title.valid && info.end_date.valid && info.participation_deadline.valid && info.tournament_type.valid ? false : true} 
-          className="btn btn-primary" onClick={(e) => {sendData(e)}}>
-            Submit
-          </button>
+            <button type="submit"
+              disabled={info.start_date.valid && info.tournament_title.valid && info.end_date.valid && info.participation_deadline.valid && info.tournament_type.valid ? false : true}
+              className="btn btn-primary" onClick={(e) => { sendData(e) }}>
+              Submit
+            </button>
           </div>
         </form>
       </div>

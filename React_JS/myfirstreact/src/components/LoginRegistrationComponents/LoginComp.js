@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../slice";
 
-var FirstForm = () => {
+export default function FirstForm()
+{
 
   const init = {
     uid: { value: "", error: "", valid: false, touched: false },
@@ -93,6 +94,7 @@ var FirstForm = () => {
           else {
 
             reduxAction(login());
+            
             localStorage.setItem("loggeduser", JSON.stringify(obj));
             if (obj.type_id.type_id === 1) {
               navigate("/tm_home");
@@ -116,80 +118,76 @@ var FirstForm = () => {
 
 
   return (
-    <div>
-      <div className="auth-wrapper">
-        <div className="auth-inner">
 
-          <form>
-            <h3>Sign In</h3>
-            <div className="mb-3">
-              <label htmlFor="uid" className="form-label"> </label>
-              <input type="text"
-                className="form-control"
-                placeholder="Enter Username"
-                id="uid"
-                name="uid"
-                value={info.uid.value}
-                onChange={(e) => { validate("uid", e.target.value) }} />
-              <div
-                id="emailHelp"
-                className="form-text"
-                style={{ display: (!info.uid.valid && info.uid.touched) ? "block" : "none" }}>
-                {info.uid.error}
-              </div>
+    <div class="card shadow text-center" style={{ width: "40%", right: "-30%", top: "50px", animation: "ease-in-out", opacity: "0.92", fontSize: "15px", fontFamily: "Century Gothic" }} >
+      <div class="card-body">
+
+        <form>
+          <h3>Sign In</h3>
+          <div className="mb-3">
+            <label htmlFor="uid" className="form-label"> </label>
+            <input type="text"
+              className="form-control"
+              placeholder="Enter Username"
+              id="uid"
+              name="uid"
+              value={info.uid.value}
+              onChange={(e) => { validate("uid", e.target.value) }} />
+            <div
+              id="emailHelp"
+              className="form-text"
+              style={{ display: (!info.uid.valid && info.uid.touched) ? "block" : "none" }}>
+              {info.uid.error}
             </div>
-            <div className="mb-3">
-              <label htmlFor="pwd" className="form-label"> </label>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="pwd" className="form-label"> </label>
+            <input
+              type={passwordShown ? "text" : "password"}
+              className="form-control" placeholder="Enter Password" id="pwd" name="pwd" value={info.pwd.value}
+              onChange={(e) => { validate("pwd", e.target.value) }}
+              onBlur={(e) => { validate("pwd", e.target.value) }}
+            />
+            <div id="emailHelp"
+              className="form-text"
+              style={{ display: !info.pwd.valid && info.pwd.touched ? "block" : "none" }}>
+              {info.pwd.error}
+            </div>
+          </div>
+
+          <div className="mb-3">
+            <div className="custom-control custom-checkbox">
               <input
-                type={passwordShown ? "text" : "password"}
-                className="form-control" placeholder="Enter Password" id="pwd" name="pwd" value={info.pwd.value}
-                onChange={(e) => { validate("pwd", e.target.value) }}
-                onBlur={(e) => { validate("pwd", e.target.value) }}
+                type="checkbox"
+                className="custom-control-input"
+                id="customCheck1"
+                onClick={togglePassword}
               />
-              <div id="emailHelp"
-                className="form-text"
-                style={{ display: !info.pwd.valid && info.pwd.touched ? "block" : "none" }}>
-                {info.pwd.error}
-              </div>
+              <label className="custom-control-label" htmlFor="customCheck1">
+                Show Password
+              </label>
             </div>
+          </div>
 
-            <div className="mb-3">
-              <div className="custom-control custom-checkbox">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="customCheck1"
-                  onClick={togglePassword}
-                />
-                <label className="custom-control-label" htmlFor="customCheck1">
-                  Show Password
-                </label>
-              </div>
-            </div>
-
-            <div className="d-grid">
-              <button type="submit" disabled={info.uid.valid && info.pwd.valid ? false : true} className="btn btn-primary" onClick={(e) => { sendData(e) }}>
-                Submit
-              </button>
-            </div>
-            <br />
-            <div className="d-grid">
-              <button type="reset" className="btn btn-primary" onClick={() => { dispatch({ type: 'reset' }) }}>
-                Clear
-              </button>
-            </div>
-            <br />
-            <div class="text-center">
-              <h5><p >Not a member? <a href='/sign-up'>Register</a></p></h5>
-            </div>
-          </form>
-          <p> {msg}</p>
-        </div>
+          <div className="d-grid">
+            <button type="submit" disabled={info.uid.valid && info.pwd.valid ? false : true} className="btn btn-primary" onClick={(e) => { sendData(e) }}>
+              Submit
+            </button>
+          </div>
+          <br />
+          <div className="d-grid">
+            <button type="reset" className="btn btn-primary" onClick={() => { dispatch({ type: 'reset' }) }}>
+              Clear
+            </button>
+          </div>
+          <br />
+          <div class="text-center">
+            <h5><p >Not a member? <a href='/sign-up'>Register</a></p></h5>
+          </div>
+        </form>
+        <p> {msg}</p>
       </div>
     </div>
+
   )
 }
-
-
-
-export { FirstForm };

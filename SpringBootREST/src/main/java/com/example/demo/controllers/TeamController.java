@@ -35,9 +35,9 @@ public class TeamController {
 	}
 	
 	@GetMapping("/getTeamsByMatchStatus")
-	public List<Team> getTeamsByMatchStatus()
+	public List<Team> getTeamsByMatchStatus(@RequestParam("status") int t1)
 	{
-		return teservice.getTeamsByMatchStatus();
+		return teservice.getTeamsByMatchStatus(t1);
 	}
 	
 	@GetMapping("/changeTeamMatchStatus")

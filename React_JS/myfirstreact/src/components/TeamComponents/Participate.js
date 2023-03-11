@@ -13,19 +13,10 @@ var AddTeam = () => {
             //         alert("Team Added")
             //         else
             //         alert("")
-            
+
             //         })
-            .then(resp => {if(resp.ok)
-                {
-                    console.log(resp.status)
-                    return resp.text();
-                }    
-                 else
-                 {
-                    console.log(resp.statusText)
-                     throw new Error("Server error"); 
-                 }
-                })
+
+
             .then(obj => {
                 if (obj) {
                     alert("Team Added")
@@ -38,7 +29,7 @@ var AddTeam = () => {
             })
     }
 
-    const [x ,setX] =useState([])
+    const [x, setX] = useState([])
     const [tour, setTour] = useState([]);
     const [teamid, setTeamId] = useState();
     useEffect(() => {
@@ -48,33 +39,32 @@ var AddTeam = () => {
     }, [])
 
     useEffect(() => {
-        fetch("http://localhost:8082/getTeamByTManId?uid=" + tmid )
+        fetch("http://localhost:8082/getTeamByTManId?uid=" + tmid)
             .then(resp => resp.json())
             .then(obj => setTeamId(obj))
-    },[])
+    }, [])
 
     return (
-        <div className="auth-wrapper">
-
-            <div>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 text-center mb-5">
+        <div className="card shadow text-center" style={{ width: "60%", right: "-20%", top: "4%", animation: "ease-in-out", opacity: "0.92", fontSize: "15px", fontFamily: "Century Gothic" }} >
+            <div className="card-body">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-md-6 text-center mb-5">
 
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4 class="text-center mb-4">List of Tournaments </h4>
-                            <div class="table-wrap">
-                                <table class="table">
-                                    <thead class="thead-primary">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h4 className="text-center mb-4">List of Tournaments </h4>
+                            <div className="table-wrap">
+                                <table className="table">
+                                    <thead className="thead-primary">
                                         <tr>
                                             <th>Tournament Title</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
                                             <th>Participation Deadline Date</th>
-                                           
+
                                             <th colSpan="2" align="center">Participate</th>
                                         </tr>
 
@@ -87,10 +77,10 @@ var AddTeam = () => {
                                                     <td>{t.start_date}</td>
                                                     <td>{t.end_date}</td>
                                                     <td>{t.participation_deadline}</td>
-                                                    
-                                                    <td><button disabled={flag?false:true}
 
-                                                    onClick={() => { participate(t) }} class="btn btn-primary">Add Team</button></td>
+                                                    <td><button disabled={flag ? false : true}
+
+                                                        onClick={() => { participate(t) }} className="btn btn-primary">Participate</button></td>
                                                 </tr>
                                             })
                                         }

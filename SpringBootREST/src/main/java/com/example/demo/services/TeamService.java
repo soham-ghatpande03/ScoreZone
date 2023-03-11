@@ -20,9 +20,9 @@ public class TeamService {
 		return terepo.findAll();
 	}
 	
-	public List<Team> getTeamsByMatchStatus()
+	public List<Team> getTeamsByMatchStatus(int id)
 	{
-		return terepo.getTeamsByMatchStatus();
+		return terepo.getTeamsByMatchStatus(id);
 	}
 	
 	public int changeTeamMatchStatus(int t)

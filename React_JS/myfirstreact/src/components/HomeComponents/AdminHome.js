@@ -22,7 +22,7 @@ export default function AdminHome() {
   }, [])
 
   return (
-    <div >
+    <div className='background'>
       <Navbar style={{ fontSize: "15px", fontFamily: "Century Gothic" }} bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand href="/admin_home">

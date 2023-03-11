@@ -19,8 +19,8 @@ public interface TeamRepository extends JpaRepository<Team, Integer> {
     )
 	public Team getTeamByTManId(int id);
 	
-	@Query("select t from Team t where team_match_status=0")
-	public List<Team> getTeamsByMatchStatus();
+	@Query("select t from Team t where team_match_status= ?1")
+	public List<Team> getTeamsByMatchStatus(int stat);
 	
 	@Modifying
 	@Query("update Team set team_match_status=1 where team_id = ?1")
