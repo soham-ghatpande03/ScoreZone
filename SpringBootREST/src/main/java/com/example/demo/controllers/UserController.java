@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.DummyUser;
 import com.example.demo.entities.LoginCheck;
+import com.example.demo.entities.PassBasedEnc;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.entities.User;
 import com.example.demo.entities.UserType;
 import com.example.demo.services.UserService;
@@ -28,6 +30,9 @@ public class UserController {
 	@Autowired
 	UserTypeService utservice;
 	
+	@Autowired
+	SaltValue saltValue;
+	
 	@GetMapping("/users")
 	public List<User> getAll()
 	{
@@ -36,7 +41,9 @@ public class UserController {
 	
 	@PostMapping("/loginchk")
 	public User checkLogin(@RequestBody LoginCheck lchck ) {
-		return uservice.getLogin(lchck.getUid(), lchck.getPwd());
+		
+		String encryp =  PassBasedEnc.generateSecurePassword(lchck.getPwd(), saltValue.getSalt());
+		return uservice.getLogin(lchck.getUid(), encryp);
 	}
 	
 	@GetMapping("/getAdmin")
@@ -65,7 +72,9 @@ public class UserController {
 		
 		System.out.print(u1);
 		UserType ut1 = utservice.getById(u1.getType_id());
-		User u = new User(u1.getFname(),u1.getLname(),u1.getEmail(),u1.getContact(),u1.getUsername(),u1.getPassword(),ut1,u1.getStatus(),u1.getQ_id(),u1.getQanswer());
+		
+		String encp =  PassBasedEnc.generateSecurePassword(u1.getPassword(),saltValue.getSalt());
+		User u = new User(u1.getFname(),u1.getLname(),u1.getEmail(),u1.getContact(),u1.getUsername(),encp,ut1,u1.getStatus(),u1.getQ_id(),u1.getQanswer());
 		return uservice.saveUser(u);
 	}
 	

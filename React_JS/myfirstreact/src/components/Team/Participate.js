@@ -74,6 +74,7 @@ var AddTeam = () => {
                                             <th>Start Date</th>
                                             <th>End Date</th>
                                             <th>Participation Deadline Date</th>
+                                           
                                             <th colSpan="2" align="center">Participate</th>
                                         </tr>
 
@@ -81,11 +82,14 @@ var AddTeam = () => {
                                     <tbody>
                                         {
                                             tour.map(t => {
+                                                let flag = new Date() < new Date(t.participation_deadline);
                                                 return <tr><td>{t.tournament_title}</td>
                                                     <td>{t.start_date}</td>
                                                     <td>{t.end_date}</td>
                                                     <td>{t.participation_deadline}</td>
-                                                    <td><button 
+                                                    
+                                                    <td><button disabled={flag?false:true}
+
                                                     onClick={() => { participate(t) }} class="btn btn-primary">Add Team</button></td>
                                                 </tr>
                                             })

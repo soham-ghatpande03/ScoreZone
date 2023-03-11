@@ -51,7 +51,7 @@ export default function Tournamentform() {
         if (date.getFullYear() >= tarDate.getFullYear() && date.getMonth() >= tarDate.getMonth() && date.getDate() >= tarDate.getDate()) 
         {
           console.log(val)
-          error = "Cannot be Before Current Date";
+          error = "Tournament Start Date Should Not Be Before Current Date";
         }
         else {
           error = "";
@@ -64,7 +64,7 @@ export default function Tournamentform() {
         tarDate1 = new Date(info.start_date.value)
         if (tarDate1.getFullYear() >= tarDate.getFullYear() && tarDate1.getMonth() >= tarDate.getMonth() && tarDate1.getDate() >= tarDate.getDate()) 
          {
-          error = "Cannot be Before Start Date";
+          error = "Tournament End Date Should Not Be Before Tournament Start Date";
         }
         else {
           error = "";
@@ -73,8 +73,11 @@ export default function Tournamentform() {
         break;
 
       case 'participation_deadline':
-        if (info.start_date.value > info.participation_deadline.value.value && info.participation_deadline.value < info.end_date.value) {
-          error = "Cannot be After Start Date and After End Date";
+        tarDate = new Date(val);
+        tarDate1 = new Date(info.start_date.value)
+        if (tarDate1.getFullYear() <= tarDate.getFullYear() && tarDate1.getMonth() <= tarDate.getMonth() && tarDate1.getDate() <= tarDate.getDate())
+        {
+          error = "Deadline Cannot Be After Tourament Start Date";
         }
         else {
           error = "";
@@ -170,7 +173,6 @@ export default function Tournamentform() {
               id="End_Date"
               name="End_Date"
               disabled = {!info.start_date.value}
-              
               value={info.end_date.value}
               onChange={(e) => { validate("end_date", e.target.value) }}
             />
@@ -190,9 +192,16 @@ export default function Tournamentform() {
               placeholder="Deadline Date"
               id="Deadline_Date"
               name="Deadline_Date"
-              value={info.participation_deadline}
-              onChange={(e) => { dispatch({ type: 'update', fld: 'participation_deadline', val: e.target.value }) }}
+              disabled = {!info.start_date.value ||  !info.end_date.value}
+              value={info.participation_deadline.value}
+              onChange={(e) => { validate("participation_deadline", e.target.value) }}
             />
+             <div
+              id="emailHelp"
+              className="form-text"
+              style={{ display: (!info.participation_deadline.valid && info.participation_deadline.touched) ? "block" : "none" }}>
+              {info.participation_deadline.error}
+            </div>
           </div>
 
           <div className="mb-3">
@@ -202,7 +211,7 @@ export default function Tournamentform() {
               id="tournament_type"
               name="tournament_type"
               value={info.tournament_type.value}
-              onChange={(e) => { dispatch({ type: 'update', fld: 'tournament_type', val: e.target.value }) }}>
+              onChange={(e) => { validate("tournament_type", e.target.value) }}>
 
               <option>Select Tournament Type</option>
               <option value={0}>Round Robin</option>
@@ -212,9 +221,11 @@ export default function Tournamentform() {
           </div>
 
           <div className="d-grid">
-            <button type="submit" className="btn btn-primary" onClick={(e) => { sendData(e) }}>
-              Submit
-            </button>
+          <button type="submit" 
+          disabled={info.start_date.valid && info.tournament_title.valid && info.end_date.valid && info.participation_deadline.valid && info.tournament_type.valid ? false : true} 
+          className="btn btn-primary" onClick={(e) => {sendData(e)}}>
+            Submit
+          </button>
           </div>
         </form>
       </div>

@@ -1,6 +1,4 @@
-import '../forms.css';
 import { useReducer} from "react";
-
 
 export default function Signup(){
 

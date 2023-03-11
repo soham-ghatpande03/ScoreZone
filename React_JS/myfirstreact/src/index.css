@@ -82,10 +82,11 @@ body, html, .App, #root, .auth-wrapper {
 
  .background {
   background-image: url('./stadium.jpg');
-  background-position: bottom;
+  /* background-position: bottom; */
+  position: static;
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+  background-size: contain;
+  height: 80vmax;
   width: 100%;
   opacity: 40;
 }
