@@ -9,8 +9,6 @@ public class DummyUser {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
 	public DummyUser(int status, int type_id, int q_id, String fname, String lname, String email,
 			String contact, String username, String password, String qanswer) {
 		super();

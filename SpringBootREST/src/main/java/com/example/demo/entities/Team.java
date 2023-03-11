@@ -40,6 +40,8 @@ public class Team {
 	@Column(name="TEAM_LOGO1")
 	String team_logo1;
 	
+	@Column(name="TEAM_MATCH_STATUS")
+	int team_match_status;
 
 	public Team() {
 		super();
@@ -47,7 +49,7 @@ public class Team {
 	}
 	
 	public Team(int team_id, String team_name, User team_manager_id, Date registration_date, String team_description,
-			String team_logo1) {
+			String team_logo1, int team_match_status) {
 		super();
 		this.team_id = team_id;
 		this.team_name = team_name;
@@ -55,6 +57,7 @@ public class Team {
 		this.registration_date = registration_date;
 		this.team_description = team_description;
 		this.team_logo1 = team_logo1;
+		this.team_match_status = team_match_status;
 	}
 	
 
@@ -66,6 +69,14 @@ public class Team {
 		this.registration_date = registration_date;
 		this.team_description = team_description;
 		this.team_logo1 = team_logo1;
+	}
+
+	public int getTeam_match_status() {
+		return team_match_status;
+	}
+
+	public void setTeam_match_status(int team_match_status) {
+		this.team_match_status = team_match_status;
 	}
 
 	public String getTeam_logo() {

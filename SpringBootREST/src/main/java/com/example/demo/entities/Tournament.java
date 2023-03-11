@@ -42,7 +42,7 @@ public class Tournament {
 	int tournament_status;
 	
 	@Column(name="TOURNAMENT_LOGO")
-	byte[] tournament_logo;
+	String  tournament_logo;
 
 	public Tournament() {
 		super();
@@ -51,7 +51,7 @@ public class Tournament {
 
 
 	public Tournament(int tournament_id, String tournament_title, int tournament_manager_id, Date start_date,
-			Date end_date, Date participation_deadline, int tournament_status, byte[] tournament_logo) {
+			Date end_date, Date participation_deadline, int tournament_status, String tournament_logo) {
 		super();
 		this.tournament_id = tournament_id;
 		this.tournament_title = tournament_title;
@@ -64,13 +64,19 @@ public class Tournament {
 	}
 
 
-	public byte[] getTournament_logo() {
+	public String getTournament_logo() {
 		return tournament_logo;
 	}
 
 
-	public void setTournament_logo(byte[] tournament_logo) {
+	public void setTournament_logo(String tournament_logo) {
 		this.tournament_logo = tournament_logo;
+	}
+
+
+	public Tournament(int tournament_id) {
+		super();
+		this.tournament_id = tournament_id;
 	}
 
 

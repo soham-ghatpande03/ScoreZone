@@ -46,7 +46,7 @@ public class Match {
 	@Column(name=" MATCH_VENUE")
 	String match_venue;
 	
-	@JsonFormat(pattern = "DD-MM-YYYY")
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name="MATCH_DATE")
 	Date match_date;
 	

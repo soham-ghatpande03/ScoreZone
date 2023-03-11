@@ -2,8 +2,6 @@ package com.example.demo.controllers;
 
 import java.util.*;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entities.DummyPlayer;
 import com.example.demo.entities.Player;
 import com.example.demo.services.PlayerService;
 
@@ -30,6 +29,8 @@ public class PlayerController {
 	
 	@PostMapping("/savePlayer")
 	public Player savePlayer(@RequestBody Player pe) {
+		
+	
 		return pservice.savePlayer(pe);
 	}
 	
