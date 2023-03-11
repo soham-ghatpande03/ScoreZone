@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.DummyUser;
 import com.example.demo.entities.LoginCheck;
+import com.example.demo.entities.MatchUpdator;
 import com.example.demo.entities.User;
 import com.example.demo.entities.UserType;
 import com.example.demo.services.UserService;
@@ -34,12 +35,17 @@ public class UserController {
 		return uservice.getAll();
 	}
 	
-	@GetMapping("/getMatchUpdaters")
-	public List<User> getMatchUpdaters()
+	@GetMapping("/getMatchUpdatersId")
+	public List<MatchUpdator> getMatchUpdatersId(@RequestParam("tmid") int tmid)
 	{
-		return uservice.getMatchUpdaters();
+		return uservice.getMatchUpdatersId(tmid);
 	}
 	
+	@GetMapping("/getMU")
+	public User getMU(@RequestParam("uid") int uid)
+	{
+		return uservice.getMU(uid);
+	}
 	@PostMapping("/loginchk")
 	public User checkLogin(@RequestBody LoginCheck lchck ) {
 		return uservice.getLogin(lchck.getUid(), lchck.getPwd());

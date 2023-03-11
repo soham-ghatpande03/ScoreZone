@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import com.example.demo.entities.MatchUpdator;
 import com.example.demo.entities.User;
 import com.example.demo.entities.UserType;
 
@@ -36,7 +37,14 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query("update User set user_status = 1 where uid = ?1 ")
 	public int updateTeamManStatus(int id);
 
-	@Query("select u from User u where type_id = 3")
-	public List<User> getMatchUpdaters();
+	@Query(value="select * from match_updater_tournament m "
+			+ " inner join tournaments t"
+			+ " on m.tournament_id = t.tournament_id"
+			+ " where t.tournament_manager_id = ?1"
+			, nativeQuery=true)
+	public List<MatchUpdator> getMatchUpdatersId(int tmid);
+
+	@Query("select u from User u where uid = ?1")
+	public User getMU(int uid);
 	
 }

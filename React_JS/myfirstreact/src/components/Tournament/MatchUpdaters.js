@@ -1,16 +1,32 @@
-import { useEffect } from "react"
+import { useEffect,  useState } from "react"
+import MuHome from "../MuHome";
 
 export default function MatchUpdaters()
 {
+    var tmid = JSON.parse(localStorage.getItem("loggedTourMan")).uid;
     const[mu, setMu] = useState([])
+    const[obj , setObj] = useState([])
     var x = 0 ;
+
     useEffect(() => {
-        fetch("http://localhost:8082/getMatchUpdaters")
+        fetch("http://localhost:8082/getMatchUpdatersId?tmid=" + tmid)
         .then(resp => resp.json())
         .then(obj => setMu(obj))
-    })
+    },[])
+    console.log(mu.length + "......")
+
+        useEffect (() =>{
+            fetch("http://localhost:8082/getMU?uid=" + mu)
+            .then(resp => resp.json())
+            .then(object => {setObj(object)
+            console.log(object)}
+            )
+        },[])
+    
+
     return(
         <div>
+            
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-5">					
@@ -29,12 +45,16 @@ export default function MatchUpdaters()
                                 </thead>
                                 <tbody>
                                 {
-                                    mu.map(m =>{
-                                        return 
-                                        <tr> 
-                                        <td>{++x}</td>
-                                        <td>{m.first_name} {m.last_name}</td>
-                                        </tr>
+                                    
+                                    mu.forEach((e) => {
+                            
+                                        return( 
+                                            <tr> 
+                                            <td>{x++}</td>
+                                            <td>{obj.first_name}</td> 
+                                            <td>{obj.last_name}</td>
+                                            </tr>       
+                                            )
                                     })
                                 } 
                                 </tbody>

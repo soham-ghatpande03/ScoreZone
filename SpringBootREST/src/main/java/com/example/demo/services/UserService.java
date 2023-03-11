@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.MatchUpdator;
 import com.example.demo.entities.User;
 import com.example.demo.entities.UserType;
 import com.example.demo.repositories.UserRepository;
@@ -73,9 +75,13 @@ public class UserService {
 		return false;
 	}
 
-	public List<User> getMatchUpdaters() 
+	public List<MatchUpdator> getMatchUpdatersId(int tmid) 
 	{
-		return urepo.getMatchUpdaters();
+		return urepo.getMatchUpdatersId(tmid);
+	}
+
+	public User getMU(int uid) {
+		return urepo.getMU(uid);
 	}
 	
 }

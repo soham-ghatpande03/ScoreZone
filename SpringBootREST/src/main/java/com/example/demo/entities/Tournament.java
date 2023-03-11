@@ -6,6 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -22,10 +27,10 @@ public class Tournament {
 	@Column(name="TOURNAMENT_TITLE")
 	String tournament_title;
 	
-	@Column(name="TOURNAMENT_MANAGER_ID")
-	int tournament_manager_id;
+	@ManyToOne
+	@JoinColumn(name="tournament_manager_id")
+	User tournament_manager_id;
 	
-
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Column(name="START_DATE")
 	Date start_date;
@@ -50,7 +55,7 @@ public class Tournament {
 	}
 
 
-	public Tournament(int tournament_id, String tournament_title, int tournament_manager_id, Date start_date,
+	public Tournament(int tournament_id, String tournament_title, User tournament_manager_id, Date start_date,
 			Date end_date, Date participation_deadline, int tournament_status, String tournament_logo) {
 		super();
 		this.tournament_id = tournament_id;
@@ -96,11 +101,11 @@ public class Tournament {
 		this.tournament_title = tournament_title;
 	}
 
-	public int getTournament_manager_id() {
+	public User getTournament_manager_id() {
 		return tournament_manager_id;
 	}
 
-	public void setTournament_manager_id(int tournament_manager_id) {
+	public void setTournament_manager_id(User tournament_manager_id) {
 		this.tournament_manager_id = tournament_manager_id;
 	}
 

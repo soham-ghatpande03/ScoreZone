@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Column;
 
 
@@ -15,27 +19,42 @@ import javax.persistence.Column;
 public class TournamentTeam  {
 	
 	@Id
-	@Column(name="TOURNAMENT_ID")
-	int tournament_id;
+	@OneToOne
+	@JoinColumn(name="tournament_id")
+	Tournament tournament_id;
 	
 	@Id
-	@Column(name="TEAM_ID")
-	int team_id;
+	@OneToOne
+	@JoinColumn(name="team_id")
+	Team team_id;
 
-	public int getTour_id() {
+	public TournamentTeam() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public TournamentTeam(Tournament tournament_id, Team team_id) {
+		super();
+		this.tournament_id = tournament_id;
+		this.team_id = team_id;
+	}
+
+	public Tournament getTournament_id() {
 		return tournament_id;
 	}
 
-	public void setTour_id(int tournament_id) {
+	public void setTournament_id(Tournament tournament_id) {
 		this.tournament_id = tournament_id;
 	}
 
-	public int getTeam_id() {
+	public Team getTeam_id() {
 		return team_id;
 	}
 
-	public void setTeam_id(int team_id) {
+	public void setTeam_id(Team team_id) {
 		this.team_id = team_id;
 	}
+
+	
 	
 }

@@ -54,7 +54,7 @@ export default function TmHome() {
              title="Match Updater" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/tm_home">Create Login</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/tm_home/creattour">Show Match Updaters</NavDropdown.Item>
+              <NavDropdown.Item href="/tm_home/matchupdator">Show Match Updaters</NavDropdown.Item>
             </NavDropdown>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <Nav.Link style={{fontSize:"15px", fontFamily:"Century Gothic"}}>Welcome, {tm && tm.first_name}!</Nav.Link>
       </Nav> 

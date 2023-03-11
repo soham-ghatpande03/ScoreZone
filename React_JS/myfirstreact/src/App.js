@@ -19,6 +19,7 @@ import ViewMatch from './components/Match/ViewMatch'
 import { AddTeam } from './components/Team/Participate'
 import GenerateMatch from './components/Match/GenerateMatch' 
 import MyTournaments from './components/Tournament/MyTournaments'
+import MatchUpdaters from './components/Tournament/MatchUpdaters'
 
 function App() {
 
@@ -59,11 +60,11 @@ function App() {
             <Route path="/logout" element={<LogoutComp />} />
 
               <Route path="/tm_home" element={<TmHome/>} >
-                <Route path="creatematch" element={<GenerateMatch/>} />
-                <Route path="creattour" element={<Tournamentform/>} />
-                <Route path="mytournaments" element={<MyTournaments/>} />   
+                <Route path="creatematch" element={<GenerateMatch />} />
+                <Route path="creattour" element={<Tournamentform />} />
+                <Route path="mytournaments" element={<MyTournaments/>} /> 
+                <Route path="matchupdator" element={<MatchUpdaters />} /> 
               </Route> 
-
             </Routes>
     </Router>
    

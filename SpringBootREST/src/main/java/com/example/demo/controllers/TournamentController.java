@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entities.Team;
 import com.example.demo.entities.Tournament;
 import com.example.demo.services.TournamentService;
 
@@ -26,6 +27,7 @@ public class TournamentController {
 		return tservice.getAll();
 	}
 	
+	
 	@PostMapping("/createTournament")
 	public Tournament saveTournament(@RequestBody Tournament t)
 	{
@@ -36,6 +38,12 @@ public class TournamentController {
 	public List<Tournament> getTourById(@RequestParam ("uid") int id)
 	{
 		return tservice.getTourById(id);
+	}
+	
+	@GetMapping("/getParticipatedTeams")
+	public List<Team> getParticipatedTeams(@RequestParam("tmid") int tmid, @RequestParam("tid") int tid)
+	{
+		return tservice.getParticipatedTeams(tmid, tid);
 	}
 	
 
