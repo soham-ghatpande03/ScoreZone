@@ -1,9 +1,10 @@
 
 import { useReducer } from "react";
-import { format, isAfter } from 'date-fns'
+import { useNavigate } from "react-router-dom";
 
 export default function Tournamentform() {
 
+  const nav = useNavigate();
   const date = new Date();
   const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
 
@@ -35,7 +36,7 @@ export default function Tournamentform() {
     let touched = true;
     switch (nm) {
       case 'tournament_title':
-        const exp1 = /^[A-Za-z0-9]{5,12}$/
+        const exp1 = /^[A-Za-z0-9\s]{5,12}$/
         if (!exp1.test(val)) {
           error = "Atleast 1 Capital Letter, 1 Small Letter , No Special Characters";
         }
@@ -112,9 +113,17 @@ export default function Tournamentform() {
         })
     }
     fetch("http://localhost:8082/createTournament", reqOptions)
-      .then(resp => console.log(resp))
-      .then(alert('You have Sucessfully Created the Tournament'))
-      .then(window.location.reload(false))
+    .then((resp => {
+      if(resp.ok){
+        alert('Tournament Created Successfully!!')
+        nav("/tm_home")
+        return resp.json()
+      }
+      else
+      {
+        alert('Error Occured...Try Again')
+        window.location.reload(false)
+      }}))
   }
 
   return (
@@ -211,8 +220,9 @@ export default function Tournamentform() {
               onChange={(e) => { validate("tournament_type", e.target.value) }}>
 
               <option>Select Tournament Type</option>
+              <option value={0}>Knock Out</option>
               <option value={0}>Round Robin</option>
-              <option value={1}>Group Stage</option>
+              <option value={0}>Group Stage</option>
 
             </select>
           </div>

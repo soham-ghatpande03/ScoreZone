@@ -10,8 +10,7 @@ export default function ShowVenues() {
 
     return (
 
-        <div className="card shadow"
-            style={{ width: "50%", right: "-25%", top: "50px", animation: "ease-in-out", opacity: "0.9" }} >
+        <div className="card shadow" style={{ width: "50%", right: "-25%", top: "50px", animation: "ease-in-out", opacity: "0.9" }} >
             <div className="card-body">
                 <div>
                     <div className="container">
@@ -25,11 +24,11 @@ export default function ShowVenues() {
                                 <h4 className="text-center mb-4">Venue Database</h4>
                                 <div className="table-wrap">
                                     <table className="table table-striped table-hover">
-                                        <thead className=" justify-content-center thead-primary">
-                                            <tr className=" justify-content-center ">
-                                                <th>Sr No.</th>
-                                                <th>Venue Name</th>
-                                                <th>City</th>
+                                        <thead className="justify-content-center thead-primary">
+                                            <tr style={{textAlign:"center"}}>
+                                                <th >Sr No.</th>
+                                                <th > Venue Name</th>
+                                                <th >City</th>
                                             </tr>
 
                                         </thead>
@@ -37,7 +36,7 @@ export default function ShowVenues() {
                                             {
                                                 venues.map(ut => {
 
-                                                    return <tr>
+                                                    return <tr style={{textAlign:"center"}}>
                                                         <td>{++x}</td>
                                                         <td>{ut.venue_name} </td>
                                                         <td>{ut.venue_city}</td>

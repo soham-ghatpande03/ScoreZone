@@ -285,9 +285,11 @@
 
 
 import { useReducer, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function GenerateMatch() {
 
+  const nav = useNavigate();
   const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
   console.log(tmanager.uid)
   const [tours, setTour] = useState([]);
@@ -334,9 +336,17 @@ export default function GenerateMatch() {
       body: JSON.stringify(info)
     }
     fetch("http://localhost:8082/saveMatch ", reqOptions)
-      .then(resp => console.log(resp))
-      .then(alert('You have Sucessfully Generate a Match'))
-      .then(window.location.reload(false))
+      .then(resp => {
+        if(resp.ok){
+        alert('Match Generated Successfully!!')
+        nav("/tm_home")
+        return resp.json()
+      }
+      else
+      {
+        alert('Error Occured...Try Again')
+        window.location.reload(false)
+      }})
   }
 
   const changeStatus = () => {

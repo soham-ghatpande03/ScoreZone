@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entities.Team;
 import com.example.demo.repositories.TeamRepository;
 
+
 @Service
 public class TeamService {
 	
@@ -44,6 +45,12 @@ public class TeamService {
 	public Team getTeamByTManId(int id)
 	{
 		return terepo.getTeamByTManId(id);
+	}
+	
+	
+	public Team getById(int id)
+	{
+		return terepo.findById(id).get();
 	}
 }
 
