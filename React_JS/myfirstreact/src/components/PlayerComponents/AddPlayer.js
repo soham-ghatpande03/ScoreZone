@@ -6,7 +6,7 @@ export default function AddPlayer() {
 
 var tmid = JSON.parse(localStorage.getItem("loggedTeamMan")).uid;
 console.log(tmid)
-const [team1, setTeam] = useState()
+
 var nav = useNavigate();
 
   const init = {

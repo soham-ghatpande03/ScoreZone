@@ -23,6 +23,9 @@ import MuLogin from './components/LoginRegistrationComponents/MULogin'
 import ViewMatchesMatchUpdator from './components/ScoreComponents/MatchViewAssigned'
 import ScoreUpdate from './components/ScoreComponents/ScoreUpdate'
 import AddPlayer from './components/PlayerComponents/AddPlayer';
+import ShowVenues from './components/VenueComponents/ShowVenues';
+import AddVenue from './components/VenueComponents/AddVenue';
+
 
 function App() {
 
@@ -43,6 +46,8 @@ function App() {
               <Route path="/admin_home" element={<AdminHome/>} >
                 <Route path="approveTour" element={<ApproveTourMan/>} /> 
                 <Route path="approveTeamM" element={<ApproveTeamMan/>} />
+                <Route path="showVenues" element={<ShowVenues/>} />
+                <Route path="addvenue" element={<AddVenue/>} />
                 </Route>
 
               <Route path="/tem_home" element={<TemHome/>} >
