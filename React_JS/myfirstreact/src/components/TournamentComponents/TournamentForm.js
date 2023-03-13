@@ -36,7 +36,7 @@ export default function Tournamentform() {
     let touched = true;
     switch (nm) {
       case 'tournament_title':
-        const exp1 = /^[A-Za-z0-9\s]{5,12}$/
+        const exp1 = /^[A-Za-z0-9\s]{5,30}$/
         if (!exp1.test(val)) {
           error = "Atleast 1 Capital Letter, 1 Small Letter , No Special Characters";
         }

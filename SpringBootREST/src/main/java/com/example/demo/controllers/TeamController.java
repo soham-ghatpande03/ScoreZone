@@ -34,10 +34,17 @@ public class TeamController {
 		return teservice.getAll();
 	}
 	
-	@GetMapping("/getTeamsByMatchStatus")
-	public List<Team> getTeamsByMatchStatus(@RequestParam("status") int t1)
+//	@GetMapping("/getTeamsByTeamMatchStatus")
+//	public List<Team> getTeamsByMatchStatus(@RequestParam("status") int t1)
+//	{
+//		return teservice.getTeamsByMatchStatus(t1);
+//	}
+//	
+	
+	@GetMapping("/getTeamsByTeamMatchStatus")
+	public List<Team> getTeamsByMatchStatus(@RequestParam("status") int t1 , @RequestParam("tour") int tou)
 	{
-		return teservice.getTeamsByMatchStatus(t1);
+		return teservice.getTeamsByMatchStatus(t1,tou);
 	}
 	
 	@GetMapping("/changeTeamMatchStatus")
@@ -65,5 +72,18 @@ public class TeamController {
 	public Team getTeamByTManId(@RequestParam("uid") int id)
 	{
 		return teservice.getTeamByTManId(id);
+	}
+	
+	@GetMapping("/changeTeamMatchStatusWin")
+	public int changeTeamMatchStatusWin(@RequestParam("teamid") int id)
+	{
+		return teservice.changeTeamMatchStatusWin(id);
+	}
+	
+	
+	@GetMapping("/changeTeamMatchStatusLoose")
+	public int changeTeamMatchStatusLoose(@RequestParam("teamid") int id)
+	{
+		return teservice.changeTeamMatchStatusLoose(id);
 	}
 }

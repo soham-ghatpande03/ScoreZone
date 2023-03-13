@@ -14,8 +14,8 @@ var Viewteam = () => {
 	}, [])
 
 
-	let addPlayer = () =>{
-		
+	let addPlayer = () => {
+
 		nav("/tem_home/addplayer");
 	}
 
@@ -65,9 +65,9 @@ var Viewteam = () => {
 						}
 
 						<button
-						className="btn btn-primary"
-						type="button"
-						onClick ={() => {addPlayer()}}
+							className="btn btn-primary"
+							type="button"
+							onClick={() => { addPlayer() }}
 						>Add Player</button>
 					</div>
 				</div>

@@ -28,4 +28,10 @@ public class MatchUpdatorController {
 	{
 		return muservice.getTournamentIdByMuId(id);
 	}
+	
+	@GetMapping("/updateMatchStatus")
+	public int updateMatchStatus(@RequestParam("matchid") int id)
+	{
+		return muservice.updateMatchStatus(id);
+	}
 }

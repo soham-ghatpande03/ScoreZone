@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.*;
 
+import com.example.demo.entities.Tournament;
 import com.example.demo.entities.TournamentTeam;
 import com.example.demo.entities.TournamentTeamId;
 import com.example.demo.repositories.TournamentTeamRepository;
@@ -23,5 +24,10 @@ public class TournamentTeamService {
 	public TournamentTeam saveTeam(TournamentTeam t) {
 		return trepo.save(t);
 		
+	}
+
+	public List<TournamentTeam> allTeams(Tournament tid) {
+		
+		return trepo.allTeams(tid);
 	}
 }
