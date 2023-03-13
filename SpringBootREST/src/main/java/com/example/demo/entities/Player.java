@@ -45,10 +45,9 @@ public class Player {
 	@Column(name= "PLAYER_STATUS")
 	int player_status;
 
-	public Player(int player_id, Team team_id, String first_name, String last_name, String player_position,
+	public Player(Team team_id, String first_name, String last_name, String player_position,
 			Date player_birthdate, int goals, int player_status) {
 		super();
-		this.player_id = player_id;
 		this.team_id = team_id;
 		this.first_name = first_name;
 		this.last_name = last_name;

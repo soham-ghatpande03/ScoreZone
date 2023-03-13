@@ -19,7 +19,11 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
 	
 	@Modifying
 	@Query(value = "update matches set team_a_score =?1 ,team_b_score = ?2 where match_id = ?3",
-            nativeQuery=true)
-            
-            public int updateScores(int scoreA , int scoreB, int matchId);
+    nativeQuery=true)
+     public int updateScores(int scoreA , int scoreB, int matchId);
+	
+	@Query(value = "select * from matches WHERE match_status = 1 ",
+            nativeQuery=true
+    )
+	public Match getTeamNamesByMatchStatus();
 }

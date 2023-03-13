@@ -1,6 +1,9 @@
 import { useReducer } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
+
+  const nav = useNavigate();
 
   const init = {
     fname: { value: "", error: "", valid: false, touched: false },
@@ -74,7 +77,7 @@ export default function Signup() {
         break;
 
       case 'username':
-        const exp5 = /[A-Za-z]{2,12}/
+        const exp5 = /[A-Za-z0-9]{5,12}/
         if (!exp5.test(val)) {
           error = "Atleast 1 Capital Letter, 1 Small Letter and 1 Number  Required ";
         }
@@ -131,10 +134,22 @@ export default function Signup() {
       })
     }
     fetch("http://localhost:8082/saveUser", reqOptions)
-      .then(resp => console.log(resp))
-      .then(alert('You are Succesfully Registered..!!'))
-      .then(window.location.reload(false))
-  }
+      .then((resp => {
+        if(resp.ok){
+          alert('You are Succesfully Registered..!!')
+          nav("/")
+          return resp.json()
+         
+        }
+        else
+        {
+          alert('Server Error!!...OR...Use Different Username!!')
+          window.location.reload(false)
+        }
+
+      }))
+      
+  } 
 
   return (
 

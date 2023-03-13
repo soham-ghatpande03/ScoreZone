@@ -8,28 +8,19 @@ var AddTeam = () => {
     const nav = useNavigate();
     const participate = (t) => {
         fetch("http://localhost:8082/addTeam?teamid=" + teamid.team_id + "&tourid=" + t.tournament_id)
-            // .then((response) => {
-            //     if(response.status == 200)
-            //         alert("Team Added")
-            //         else
-            //         alert("")
-
-            //         })
-
-
-            .then(obj => {
-                if (obj) {
-                    alert("Team Added")
-                    nav("/tem_home/participate")
-                    window.location.reload();
-                }
-                else
-                    alert("Participation Failed")
-
-            })
+        .then(resp => {
+            if(resp.ok===true){
+            alert('Team Added In Tournament')
+            nav("/tem_home")
+            return resp.json()
+          }
+          else
+          {
+            alert('Team already Added...OR..Server Error')
+            window.location.reload(false)
+          }
+        })
     }
-
-    const [x, setX] = useState([])
     const [tour, setTour] = useState([]);
     const [teamid, setTeamId] = useState();
     useEffect(() => {

@@ -27,17 +27,15 @@ export default function ViewMatchesMatchUpdator() {
   }, [tourid])
 
 
-  const startMatch = (matchid) => {
-    console.log(matchid)
-    if (matchid > 0) {
-      localStorage.setItem("MatchId", JSON.stringify(matchid))
+  const startMatch = (match) => {
+    console.log(match)
+    if (match.match_id > 0) {
+      localStorage.setItem("Match",JSON.stringify(match))
       nav("/mu_home/updatescore")
     }
   }
 
   var x =1;
-  //
-
 
   return (
     <div className="card shadow text-center" style={{ width: "60%", right: "-20%", top: "80px", animation: "ease-in-out", opacity: "0.92", fontSize: "15px", fontFamily: "Century Gothic" }} >
@@ -64,8 +62,8 @@ export default function ViewMatchesMatchUpdator() {
                     <td>{match.team_id_b.team_name}</td>
                     <td>{match.match_date}</td>
                     <td><button 
-                    disabled={new Date() == new Date(match.match_date) ? false : true}
-                    onClick={() => { startMatch(match.match_id) }} className="btn btn-primary">Start Match</button></td>
+                    // disabled={new Date() == new Date(match.match_date) ? false : true}
+                    onClick={() => { startMatch(match) }} className="btn btn-primary">Start Match</button></td>
                   </tr>
                 );
               })}

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.DummyPlayer;
 import com.example.demo.entities.Player;
+import com.example.demo.entities.Team;
 import com.example.demo.services.PlayerService;
+import com.example.demo.services.TeamService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -21,6 +23,8 @@ public class PlayerController {
 	@Autowired
 	PlayerService pservice;
 	
+	@Autowired
+	TeamService teservice;
 	
 	@GetMapping("/allPlayers")
 	public List<Player> getAll() {
@@ -28,10 +32,11 @@ public class PlayerController {
 	}
 	
 	@PostMapping("/savePlayer")
-	public Player savePlayer(@RequestBody Player pe) {
+	public Player savePlayer(@RequestBody DummyPlayer pe) {
 		
-	
-		return pservice.savePlayer(pe);
+		Team t = teservice.getById(pe.getTeam_id());		
+		Player p = new Player(t,pe.getFname(),pe.getLname(),pe.getPosition(),pe.getBdate(),pe.getGoals(),pe.getStatus());
+		return pservice.savePlayer(p);
 	}
 	
 	@GetMapping("/getPlayersByTeam")

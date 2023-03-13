@@ -285,9 +285,13 @@
 
 
 import { useReducer, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function GenerateMatch() {
 
+  var selGroup;
+  const [tour,setTo] = useState();
+  const nav = useNavigate();
   const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
   console.log(tmanager.uid)
   const [tours, setTour] = useState([]);
@@ -298,12 +302,12 @@ export default function GenerateMatch() {
   }, [])
 
   const [teams, setTeam] = useState([]);
-
-  const selGroup = (selvalue) => {
-    fetch("http://localhost:8082/getTeamsByMatchStatus?status=" + selvalue)
-      .then(resp => resp.json())
-      .then(obj => setTeam(obj))
-  }
+  
+  // const selGroup = (selvalue) => {
+  //   fetch("http://localhost:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour)
+  //     .then(resp => resp.json())
+  //     .then(obj => setTeam(obj))
+  // }
 
   useEffect(() => { })
 
@@ -324,6 +328,7 @@ export default function GenerateMatch() {
     }
   }
 
+  
   const [info, dispatch] = useReducer(reducer, init)
 
   const sendData = (e) => {
@@ -334,9 +339,17 @@ export default function GenerateMatch() {
       body: JSON.stringify(info)
     }
     fetch("http://localhost:8082/saveMatch ", reqOptions)
-      .then(resp => console.log(resp))
-      .then(alert('You have Sucessfully Generate a Match'))
-      .then(window.location.reload(false))
+      .then(resp => {
+        if(resp.ok){
+        alert('Match Generated Successfully!!')
+        nav("/tm_home")
+        return resp.json()
+      }
+      else
+      {
+        alert('Error Occured...Try Again')
+        window.location.reload(false)
+      }})
   }
 
   const changeStatus = () => {
@@ -358,27 +371,39 @@ export default function GenerateMatch() {
               className="form-control"
               id="tournament_id"
               name="tournament_id"
-              onChange={(e) => { dispatch({ type: 'update', fld: 'tournament_id', val: e.target.value }) }}>
+              onChange={(e) => { 
+                setTo(e.target.value)
+                dispatch({ type: 'update', fld: 'tournament_id', val: e.target.value }) }}>
               <option>Select Tournament</option>
               {
-
                 tours.map(tour => {
-                  return <option value={tour.tournament_id}>{tour.tournament_title}</option>
+                  return <option 
+                  
+                  value={tour.tournament_id}>{tour.tournament_title}</option>
                 })
               }
             </select>
           </div>
 
+{
+
+  selGroup = (selvalue) => {
+  fetch("http://localhost:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour)
+    .then(resp => resp.json())
+    .then(obj => setTeam(obj))
+}
+}
+
           <div className="mb-3">
-            <label>Team Match Status</label>
+            <label>Round</label>
             <select
               className="form-control"
-              onChange={(e) => { selGroup(e.target.value) }}>
-              <option>Select Team Status</option>
+              onChange={(e) => {selGroup(e.target.value,)}}>
+              <option>Select Round</option>
               <option value={0}>Group Stage</option>
-              <option value={1}>Quater Finals</option>
-              <option value={2}>Semi Finals</option>
-              <option value={3}>Finals</option>
+              <option value={2}>Quater Finals</option>
+              <option value={4}>Semi Finals</option>
+              <option value={6}>Finals</option>
             </select>
           </div>
 

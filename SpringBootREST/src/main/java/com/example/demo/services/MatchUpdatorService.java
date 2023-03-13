@@ -27,5 +27,9 @@ public class MatchUpdatorService {
 		return murepo.getTournamentIdByMuId(id);
 	}
 	
+	public int updateMatchStatus(int matchid)
+	{
+		return murepo.updateMatchStatus(matchid);
+	}
 
 }

@@ -49,7 +49,7 @@ export default function TmHome() {
               </NavDropdown>&nbsp
 
               <Nav.Link href="/tm_home/creatematch">Generate Matches</Nav.Link>&nbsp
-              <Nav.Link href="/tm_home">Participated Teams</Nav.Link>&nbsp
+              <Nav.Link href="/tm_home/partiteam">Participated Teams</Nav.Link>&nbsp
               <NavDropdown style={{ fontSize: "15px", fontFamily: "Century Gothic" }}
                 title="Match Updater" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="/tm_home/mulogin">Create Login</NavDropdown.Item>

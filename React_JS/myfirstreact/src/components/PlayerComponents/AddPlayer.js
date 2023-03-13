@@ -2,11 +2,17 @@ import { useReducer , useEffect, useState} from "react";
 import { useNavigate } from 'react-router-dom';
 
 export default function AddPlayer() {
-
-
+const [teamm,setTeam] = useState([]);
 var tmid = JSON.parse(localStorage.getItem("loggedTeamMan")).uid;
 console.log(tmid)
-const [team1, setTeam] = useState()
+
+useEffect( (e) =>{
+  fetch("http://localhost:8082/getTeamByTManId?uid="+tmid)
+  .then(resp => resp.json())
+  .then(obj => setTeam((obj)))
+},[tmid])
+
+var tt = teamm.team_id
 var nav = useNavigate();
 
   const init = {
@@ -14,10 +20,9 @@ var nav = useNavigate();
     lname: { value: "", error: "", valid: false, touched: false },
     position: { value: "", error: "", valid: false, touched: false },
     bdate: { value: "", error: "", valid: false, touched: false },
-    team_id: 1,
+    team_id: "",
     goals: { value: "", error: "", valid: false, touched: false },
     status: 1,
-    
   }
 
   const reducer = (state, action) => {
@@ -92,15 +97,23 @@ var nav = useNavigate();
         position: info.position.value,
         bdate: info.bdate.value,
         goals: info.goals.value,
-        team_id:info.team_id.value,
+        team_id: tt,
         status : info.status.value
       })
     }
 
     fetch("http://localhost:8082/savePlayer", reqOptions)
-      .then(resp => console.log(resp))
-      .then(alert('Player Added'))
-      .then(nav("/tem_home"))
+    .then(resp => {
+      if(resp.ok){
+      alert('Player Added Successfully..!!')
+      nav("/tem_home/viewteam")
+      return resp.json()
+    }
+    else
+    {
+      alert('Error Occured...Try Again')
+      window.location.reload(false)
+    }})
   }
 
   return (

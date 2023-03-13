@@ -1,12 +1,14 @@
 
 import { useReducer } from "react";
 import { format } from 'date-fns'
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterTeam() {
 
   const date = format(new Date(), 'yyyy-MM-dd')
   const teamMan = JSON.parse(localStorage.getItem("loggedTeamMan"));
 
+  const nav = useNavigate();
   const init = {
     team_name: { value: "", error: "", valid: false, touched: false },
     team_manager_id: { value: teamMan.uid, error: "", valid: false, touched: true },
@@ -31,7 +33,7 @@ export default function RegisterTeam() {
     let touched = true;
     switch (nm) {
       case 'team_name':
-        const exp1 = /^[A-Za-z\s]{5,12}$/
+        const exp1 = /^[A-Za-z\s]{5,30}$/
         if (!exp1.test(val)) {
           error = "Atleast 1 Capital Letter, 1 Small Letter , No Alphanumeric";
         }
@@ -86,9 +88,17 @@ export default function RegisterTeam() {
         })
     }
     fetch("http://localhost:8082/saveTeam", reqOptions)
-      .then(resp => console.log(resp))
-      .then(alert('You have Sucessfully Created Your Team'))
-      .then(window.location.reload(false))
+    .then(resp => {
+      if(resp.ok){
+      alert('Team Added Successfully..!!')
+      nav("/tem_home")
+      return resp.json()
+    }
+    else
+    {
+      alert('You Add Team Only Once...OR..Server Error')
+      window.location.reload(false)
+    }})
   }
 
 

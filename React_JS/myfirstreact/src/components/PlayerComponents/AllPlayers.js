@@ -29,6 +29,7 @@ export default function AllPlayers() {
                                             <tr>
                                                 <th>Sr No.</th>
                                                 <th>Player Name</th>
+                                                <th>Team Name</th>
                                                 <th>Player Position</th>
                                                 <th>Goals</th>
                                             </tr>
@@ -41,6 +42,7 @@ export default function AllPlayers() {
                                                     return <tr>
                                                         <td>{++x}</td>
                                                         <td>{ut.first_name} {ut.last_name}</td>
+                                                        <td>{ut.team_id.team_name}</td>
                                                         <td>{ut.player_position}</td>
                                                         <td>{ut.goals}</td>
                                                     </tr>

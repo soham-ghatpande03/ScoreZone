@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
+import com.example.demo.entities.Tournament;
 import com.example.demo.entities.TournamentTeam;
+import com.example.demo.services.TournamentService;
 import com.example.demo.services.TournamentTeamService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -18,9 +20,19 @@ public class TournamentTeamController {
 	@Autowired
 	TournamentTeamService tservice;
 	
+	@Autowired 
+	TournamentService tourservice;
+	
 	@GetMapping("/allTournamentTeamID")
 	public List<TournamentTeam>getAll(){
 		return tservice.getAll();
+	}
+	
+	@GetMapping("/TeamsByTourId")
+	public List<TournamentTeam> allTeams(@RequestParam("tid") int tid){
+		
+		Tournament t1 = tourservice.getById(tid);
+		return tservice.allTeams(t1);
 	}
 	
 	@PostMapping("/saveTeamTournamentID")
@@ -29,12 +41,12 @@ public class TournamentTeamController {
 		
 	}
 	
-	@GetMapping("/addTeam")
-	public TournamentTeam participate(@RequestParam("teamid") int teamid, @RequestParam("tourid") int tour_id)
-	{
-		TournamentTeam ttid = new TournamentTeam();
-		ttid.setTeam_id(teamid);
-		ttid.setTour_id(tour_id);
-		return tservice.saveTeam(ttid);
-	}
+//	@GetMapping("/addTeam")
+//	public TournamentTeam participate(@RequestParam("teamid") int teamid, @RequestParam("tourid") int tour_id)
+//	{
+//		TournamentTeam ttid = new TournamentTeam();
+//		ttid.setTeam_id(teamid);
+//		ttid.setTour_id(tour_id);
+//		return tservice.saveTeam(ttid);
+//	}
 }

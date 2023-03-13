@@ -1,9 +1,10 @@
 
 import { useReducer } from "react";
-
+import { useNavigate } from 'react-router-dom';
 
 export default function MuLogin() {
 
+  const nav = useNavigate();
   const init = {
     fname: { value: "", error: "", valid: false, touched: false },
     lname: { value: "", error: "", valid: false, touched: false },
@@ -135,9 +136,20 @@ export default function MuLogin() {
       })
     }
     fetch("http://localhost:8082/saveUser", reqOptions)
-      .then(resp => console.log(resp))
-      .then(alert('You are Succesfully Registered..!!'))
-      .then(window.location.reload(false))
+    .then((resp => {
+      if(resp.ok){
+        alert('Match Updater Registered..!!')
+        nav("/tm_home")
+        return resp.json()
+       
+      }
+      else
+      {
+        alert('Error Occured...Try Again')
+        window.location.reload(false)
+      }
+
+    }))
   }
 
   return (
