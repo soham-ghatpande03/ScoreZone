@@ -33,5 +33,12 @@ public class MatchService {
 		return mrepo.getMatchByTourId(t);
 	}
 	
+	public Match getTeamNamesByMatchStatus(){
+		return mrepo.getTeamNamesByMatchStatus();
+	}
+	
+	public int updateScores(int scoreA , int scoreB, int matchId) {
+		return mrepo.updateScores(scoreA, scoreB, matchId);
+	}
 
 }

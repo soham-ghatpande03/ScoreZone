@@ -28,6 +28,7 @@ export default function ViewMatchesMatchUpdator() {
 
   //
   const startMatch = (matchid) => {
+    fetch("http://localhost:8082/updateMatchStatus?matchid=" + matchid)
     window.alert("clicked")
 		console.log(matchid)
     if(matchid>0){

@@ -3,50 +3,55 @@ import { useState } from 'react';
 function ScoreUpdate(){
     
    // const currentTime = Date.now();
-    var teamAName="MU"
-    var teamBName="LP"
+   var teamAName="MU"
+   var teamBName="LP"
+   var matchid = localStorage.getItem("MatchId")
+   console.log(matchid);
+
+   const newScore= (a,b) =>{
+     fetch("http://localhost:8082/updateScores?teama="+a+"&teamb="+b+"&matchid="+matchid)
+     .then(resp => resp.json())
+     .then(obj => {
+       console.log(JSON.stringify(obj))
+       if (obj===1) {
+         alert("Updation done")
+       }}
+       )
+   }
+
+   const[ScoreA,setScoreA]=useState(0)
+       const incScoreA=()=>{
+           setScoreA(ScoreA+num1)
+           
+       }
+
+   const[ScoreB,setScoreB]=useState(0)
+       const incScoreB=()=>{
+           setScoreB(ScoreB+num2)
+       }
+
+   const[num1,setNum1]=useState(0)
+
+       const incNum1=()=>{
+           setNum1(num1+1);
+           }
+
+       const decNum1=()=>{
+           
+           setNum1(num1-1);
+       }
 
 
-    const newScore= (a,b) =>{
+   const[num2,setNum2]=useState(0)
 
-      fetch("localhost:8082/changeTeamAScore?ScoreA="+a+"&matchid=1")
+   const incNum2=()=>{
+       setNum2(num2+1);
+       }
 
-
-    }
-
-    const[ScoreA,setScoreA]=useState(0)
-        const incScoreA=()=>{
-            setScoreA(ScoreA+num1)
-            
-        }
-
-    const[ScoreB,setScoreB]=useState(0)
-        const incScoreB=()=>{
-            setScoreB(ScoreB+num2)
-        }
-
-    const[num1,setNum1]=useState(0)
-
-        const incNum1=()=>{
-            setNum1(num1+1);
-            }
-
-        const decNum1=()=>{
-            
-            setNum1(num1-1);
-        }
-
-
-    const[num2,setNum2]=useState(0)
-
-    const incNum2=()=>{
-        setNum2(num2+1);
-        }
-
-    const decNum2=()=>{
-        
-        setNum2(num2-1);
-    }
+   const decNum2=()=>{
+       
+       setNum2(num2-1);
+   }
     
     return(
 
@@ -74,6 +79,13 @@ function ScoreUpdate(){
           <button  class="btn btn-primary" onClick={ () => { 
             newScore(ScoreA , ScoreB);
             incScoreA();} } >Update</button>
+        </div><br></br>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <button  class="btn btn-primary" onClick={ () => {} } >Winner</button>
+        </div>
+        <br></br>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <button  class="btn btn-primary" onClick={ () => {} } >Looser</button>
         </div>
         
       </div>
@@ -98,6 +110,13 @@ function ScoreUpdate(){
           <button  class="btn btn-primary" onClick={ () => { 
             newScore(ScoreA , ScoreB);
             incScoreB();} } >Update</button>
+        </div><br></br>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <button  class="btn btn-primary" onClick={ () =>{}} >Winner</button>
+        </div><br></br>
+        
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <button  class="btn btn-primary" onClick={ () => {} } >Looser</button>
         </div>
       </div>
     </div>

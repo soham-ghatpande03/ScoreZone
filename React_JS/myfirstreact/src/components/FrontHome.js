@@ -36,7 +36,7 @@ export default function FrontHome()
             navbarScroll
           >
             <NavDropdown title="Matches" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Live Scores</NavDropdown.Item>
+              <NavDropdown.Item href="/livescore">Live Scores</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/viewmatch">Upcoming Matches</NavDropdown.Item>
               </NavDropdown>&nbsp

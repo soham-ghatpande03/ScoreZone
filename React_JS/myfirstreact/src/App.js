@@ -22,6 +22,7 @@ import AllPlayers from './components/AllPlayers'
 import MuLogin from './components/MatchUpdater/MULogin'
 import ViewMatchesMatchUpdator from './components/MatchUpdater/MatchViewAssigned'
 import ScoreUpdate from './components/MatchUpdater/ScoreUpdate'
+import Score from './components/LiveScore'
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
                 <Route path="mulogin" element={<MuLogin/>} />
               </Route> 
 
+              <Route path="/livescore" element={<Score/>} />
 
               <Route path="/logout" element={<LogoutComp/>} />
 

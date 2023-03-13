@@ -4,6 +4,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import com.example.demo.entities.MatchUpdator;
@@ -17,7 +18,14 @@ public interface MatchUpdatorRepository extends JpaRepository<MatchUpdator, Inte
             nativeQuery=true
     )
 	public List<MatchUpdator> getTournamentIdByMuId(int id);
-
+	
+	//shan change
+	@Modifying
+	@Query(value = "update matches set match_status =1 WHERE match_id = ?1 ",
+            nativeQuery=true
+    )
+	public int updateMatchStatus(int s);
+	//shan change
 
 	
 }
