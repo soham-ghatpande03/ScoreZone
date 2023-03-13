@@ -24,13 +24,14 @@ export default function ViewMatch() {
         <div>
             <br />
             <br />
-            <div style={{ right: "-20%", top: "10px" }} >
-                <div class="col-15 text-center dark">
+            <div style={{ position: "absolute", top: "15%", left: "45%", opacity: "0.8" }} >
+                <div className="col text-center dark ">
                     <select
-
-                        className="form-control col-5 text-center"
+                        className="form-control text-center"
                         onChange={(e) => gettour(e.target.value)}>
-                        <option>Select A Tournament</option>
+                        <option
+                            style={{ position: "absolute", top: "15%", left: "45%", opacity: "0.9" }}
+                        >Select A Tournament</option>
                         {
                             tours.map(tour => {
                                 return <option value={tour.tournament_id}>
@@ -49,25 +50,25 @@ export default function ViewMatch() {
 
                     return (
                         <div>
-                            <div class="card shadow" style={{ width: "60%", right: "-20%", top: "10px" }} >
-                                <div class="card-body">
-                                    <div class="row justify-content-between align-items-center">
-                                        <div class="col-4 text-center">
+                            <div className="card shadow" style={{ width: "60%", right: "-20%", top: "50px", animation: "ease-in-out", opacity: "0.9" }} >
+                                <div className="card-body">
+                                    <div className="row justify-content-between align-items-center">
+                                        <div className="col-4 text-center">
                                             <h5>{match.team_id_a.team_name}</h5>
                                             <img src={match.team_id_a.team_logo} height="200px" width="200px" />
                                         </div>
-                                        <div class="col-3 text-center">
+                                        <div className="col-3 text-center">
                                             <h2>{match.match_date}</h2>
-                                            
+
                                         </div>
-                                        <div class="col-4 text-center">
+                                        <div className="col-4 text-center">
                                             <h5>{match.team_id_b.team_name}</h5>
                                             <img src={match.team_id_b.team_logo} height="200px" width="200px" />
                                         </div>
                                     </div>
                                     <hr />
-                                    <div class="row">
-                                        <div class="col-15 text-center">
+                                    <div className="row">
+                                        <div className="col-15 text-center">
                                             <h4>Venue: {match.match_venue}</h4>
                                         </div>
                                     </div>

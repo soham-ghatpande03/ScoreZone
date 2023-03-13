@@ -1,28 +1,31 @@
 import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import { FirstForm } from './components/Logging/LoginComp'
-import AdminHome from './components/Admin/AdminHome'
-import TemHome from './components/Team/TemHome'
-import TmHome from './components/Tournament/TmHome'
-import MuHome from './components/MatchUpdater/MuHome'
-import FrontHome from './components/FrontHome'
-import LogoutComp from './components/Logging/LogoutComp'
-import Tournamentform from './components/Tournament/TournamentForm'
 import './index.css';
-import Signup from './components/UserRegister'
-import RegisterTeam from './components/Team/CreateTeam'
-import { ApproveTeamMan, ApproveTourMan } from './components/Admin/Approve'
-import { ViewAllTeams, Viewteam } from './components/Team/DisplayTeam'
-import ViewMatch from './components/Match/ViewMatch'
-import GenerateMatch from './components/Match/GenerateMatch'
-import { AddTeam } from './components/Team/Participate'
-import MyTournaments from './components/Tournament/MyTournaments'
-import AllPlayers from './components/AllPlayers'
-import MuLogin from './components/MatchUpdater/MULogin'
-import ViewMatchesMatchUpdator from './components/MatchUpdater/MatchViewAssigned'
-import ScoreUpdate from './components/MatchUpdater/ScoreUpdate'
-import Score from './components/LiveScore'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import FirstForm from './components/LoginRegistrationComponents/LoginComp'
+import AdminHome from './components/HomeComponents/AdminHome'
+import TemHome from './components/HomeComponents/TemHome'
+import TmHome from './components/HomeComponents/TmHome'
+import MuHome from './components/HomeComponents/MuHome'
+import FrontHome from './components/HomeComponents/FrontHome'
+import LogoutComp from './components/LoginRegistrationComponents/LogoutComp'
+import Tournamentform from './components/TournamentComponents/TournamentForm'
+import Signup from './components/LoginRegistrationComponents/UserRegister'
+import RegisterTeam from './components/TeamComponents/CreateTeam'
+import { ApproveTeamMan, ApproveTourMan } from './components/Approve'
+import { ViewAllTeams, Viewteam } from './components/TeamComponents/DisplayTeam'
+import ViewMatch from './components/MatchComponents/ViewMatch'
+import GenerateMatch from './components/MatchComponents/GenerateMatch'
+import { AddTeam } from './components/TeamComponents/Participate'
+import MyTournaments from './components/TournamentComponents/MyTournaments'
+import AllPlayers from './components/PlayerComponents/AllPlayers'
+import MuLogin from './components/LoginRegistrationComponents/MULogin'
+import ViewMatchesMatchUpdator from './components/ScoreComponents/MatchViewAssigned'
+import ScoreUpdate from './components/ScoreComponents/ScoreUpdate'
+import AddPlayer from './components/PlayerComponents/AddPlayer';
+import ShowVenues from './components/VenueComponents/ShowVenues';
+import AddVenue from './components/VenueComponents/AddVenue';
+
 
 function App() {
 
@@ -43,6 +46,8 @@ function App() {
               <Route path="/admin_home" element={<AdminHome/>} >
                 <Route path="approveTour" element={<ApproveTourMan/>} /> 
                 <Route path="approveTeamM" element={<ApproveTeamMan/>} />
+                <Route path="showVenues" element={<ShowVenues/>} />
+                <Route path="addvenue" element={<AddVenue/>} />
                 </Route>
 
               <Route path="/tem_home" element={<TemHome/>} >
@@ -51,10 +56,11 @@ function App() {
                 <Route path="participate" element={<AddTeam/>} /> 
                 <Route path="allteams1" element={<ViewAllTeams/> } />
                 <Route path="viewmatch" element={<ViewMatch/>} />  
+                <Route path="addplayer" element={<AddPlayer/>} />  
                 </Route>  
 
               <Route path="/mu_home" element={<MuHome/>} >
-              <Route path="matchview" element={<ViewMatchesMatchUpdator/>} />
+              <Route path="matchview" element={<ViewMatchesMatchUpdator/>} />   
               <Route path="updatescore" element={<ScoreUpdate/>} />   
               </Route>  
               
@@ -65,7 +71,6 @@ function App() {
                 <Route path="mulogin" element={<MuLogin/>} />
               </Route> 
 
-              <Route path="/livescore" element={<Score/>} />
 
               <Route path="/logout" element={<LogoutComp/>} />
 

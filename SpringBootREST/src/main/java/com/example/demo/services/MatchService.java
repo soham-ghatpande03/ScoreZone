@@ -40,5 +40,9 @@ public class MatchService {
 	public int updateScores(int scoreA , int scoreB, int matchId) {
 		return mrepo.updateScores(scoreA, scoreB, matchId);
 	}
+	
+	
+	
+	
 
 }

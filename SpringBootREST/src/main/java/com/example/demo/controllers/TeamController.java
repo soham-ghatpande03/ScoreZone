@@ -66,4 +66,28 @@ public class TeamController {
 	{
 		return teservice.getTeamByTManId(id);
 	}
+	
+	////last day change
+	@GetMapping("/getTeamNameById")
+	public String getTeamNameById(@RequestParam("teamid") int id)
+	{
+		return teservice.getTeamNameById(id);
+	}
+	
+	
+	
+	@GetMapping("/changeTeamMatchStatusWin")
+	public int changeTeamMatchStatusWin(@RequestParam("teamid") int id)
+	{
+		return teservice.changeTeamMatchStatusWin(id);
+	}
+	
+	
+	@GetMapping("/changeTeamMatchStatusLoose")
+	public int changeTeamMatchStatusLoose(@RequestParam("teamid") int id)
+	{
+		return teservice.changeTeamMatchStatusLoose(id);
+	}
+	
+	
 }

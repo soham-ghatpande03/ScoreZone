@@ -25,4 +25,22 @@ public interface TeamRepository extends JpaRepository<Team, Integer> {
 	@Modifying
 	@Query("update Team set team_match_status=1 where team_id = ?1")
 	public int changeTeamMatchStatus(int t);
+	
+	/////
+	@Modifying
+	@Query("update Team set team_match_status= team_match_status+1 where team_id = ?1")
+	public int changeTeamMatchStatusWin(int t);
+	
+	@Modifying
+	@Query("update Team set team_match_status=0 where team_id = ?1")
+	public int changeTeamMatchStatusLoose(int t);
+	
+	
+	@Query(value = "SELECT t.team_name FROM teams t WHERE t.team_id = ?1",
+            nativeQuery=true
+    )
+	public String getTeamNameById(int id);
+	
+	
+	
 }

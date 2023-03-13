@@ -45,5 +45,20 @@ public class TeamService {
 	{
 		return terepo.getTeamByTManId(id);
 	}
+	
+	public int changeTeamMatchStatusWin(int id)
+	{
+		return terepo.changeTeamMatchStatusWin(id);
+	}
+	
+	public int changeTeamMatchStatusLoose(int id)
+	{
+		return terepo.changeTeamMatchStatusLoose(id);
+	}
+	
+	public String getTeamNameById(int id)
+	{
+		return terepo.getTeamNameById(id);
+	}
 }
 

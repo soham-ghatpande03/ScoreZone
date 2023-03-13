@@ -85,4 +85,6 @@ public class MatchController {
 	public int updateScores(@RequestParam("teama") int scoreA , @RequestParam("teamb")int scoreB, @RequestParam("matchid")int matchId) {
 		return mservice.updateScores(scoreA, scoreB, matchId);
 	}
+	
+		
 }

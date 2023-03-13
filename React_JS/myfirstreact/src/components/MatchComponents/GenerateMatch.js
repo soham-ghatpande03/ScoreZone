@@ -285,9 +285,11 @@
 
 
 import { useReducer, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function GenerateMatch() {
 
+  const nav = useNavigate();
   const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
   console.log(tmanager.uid)
   const [tours, setTour] = useState([]);
@@ -298,13 +300,12 @@ export default function GenerateMatch() {
   }, [])
 
   const [teams, setTeam] = useState([]);
-  const [seleteam, setSelTeam] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8082/getTeamsByMatchStatus")
+  const selGroup = (selvalue) => {
+    fetch("http://localhost:8082/getTeamsByMatchStatus?status=" + selvalue)
       .then(resp => resp.json())
       .then(obj => setTeam(obj))
-  }, [])
+  }
 
   useEffect(() => { })
 
@@ -335,9 +336,17 @@ export default function GenerateMatch() {
       body: JSON.stringify(info)
     }
     fetch("http://localhost:8082/saveMatch ", reqOptions)
-      .then(resp => console.log(resp))
-      .then(alert('You have Sucessfully Generate a Match'))
-      .then(window.location.reload(false))
+      .then(resp => {
+        if(resp.ok){
+        alert('Match Generated Successfully!!')
+        nav("/tm_home")
+        return resp.json()
+      }
+      else
+      {
+        alert('Error Occured...Try Again')
+        window.location.reload(false)
+      }})
   }
 
   const changeStatus = () => {
@@ -345,106 +354,118 @@ export default function GenerateMatch() {
       .then(resp => console.log(resp))
   }
 
-
   return (
-    <div>
-      <div className="auth-wrapper">
-        <div className="auth-inner">
-          <form>
-            <h3>Generate Match</h3>
-            <div className="mb-3">
-              <label>Tournament Name</label>
-              <select
-                className="form-control"
-                id="tournament_id"
-                name="tournament_id"
-                onChange={(e) => { dispatch({ type: 'update', fld: 'tournament_id', val: e.target.value }) }}>
-                <option>Select Tournament</option>
-                {
 
-                  tours.map(tour => {
-                    return <option value={tour.tournament_id}>{tour.tournament_title}</option>
-                  })
-                }
-              </select>
-            </div>
+    <div className="card shadow text-center" style={{ width: "40%", right: "-30%", top: "3%", animation: "ease-in-out", opacity: "0.92", fontSize: "15px", fontFamily: "Century Gothic" }} >
+      <div className="card-body">
+        <form>
 
+          <h3>Generate Match</h3>
+          <br/>
+          <div className="mb-3">
+            <label>Tournament Name</label>
+            <select
+              className="form-control"
+              id="tournament_id"
+              name="tournament_id"
+              onChange={(e) => { dispatch({ type: 'update', fld: 'tournament_id', val: e.target.value }) }}>
+              <option>Select Tournament</option>
+              {
 
-            <div className="mb-3">
-              <label>Select Team A</label>
-              <select
-                className="form-control"
-                id="team_id_a"
-                name="team_id_a"
-                onChange={(e) => { dispatch({ type: 'update', fld: 'team_id_a', val: e.target.value }) }}>
-                <option>Select Team A</option>
-                {
-                  teams.map(team => {
-                    return <option value={team.team_id}> {team.team_name} </option>
-                  })
-                }
-              </select>
-            </div>
-
-            <div className="mb-3">
-              <label>Select Team B</label>
-              <select
-                className="form-control"
-                id="team_id_b"
-                name="team_id_b"
-                onChange={(e) => { dispatch({ type: 'update', fld: 'team_id_b', val: e.target.value }) }}>
-                <option>Select Team B</option>
-                {
-                  teams.map(team => {
-                    { console.log(info.team_id_a + " / " + team.team_id) }
-                    return ((info.team_id_a != team.team_id) && <option value={team.team_id}> {team.team_name} </option>)
-                  })
-                }
-              </select>
-            </div>
-
-            <div className="mb-3">
-              <label>Match Venue</label>
-              <select
-                className="form-control"
-                id="match_venue"
-                name="match_venue"
-                value={info.match_venue.value}
-                onChange={(e) => { dispatch({ type: 'update', fld: 'match_venue', val: e.target.value }) }}>
-
-                <option>Select A Match Venue</option>
-                <option value="Pune District Football Association Stadium">Pune District Football Association Stadium</option>
-                <option value="Pune FC Training Ground">Pune FC Training Ground</option>
-                <option value="Shree Shiv Chhatrapati Sports Complex, Pune">Pune District Football Association Stadium</option>
-                <option value="Cooperage Football Stadium, Mumbai">Cooperage Football Stadium, Mumbai</option>
-                <option value="Fr. Agnel Stadium, Navi Mumbai">Fr. Agnel Stadium, Navi Mumbai</option>
-                <option value="DY Patil Stadium, Navi Mumbai">DY Patil Stadium, Navi Mumbai</option>
-              </select>
-            </div>
-
-            <div className="mb-3">
-              <label>Match Date & Time</label>
-              <input
-                type="datetime-local"
-                className="form-control"
-                placeholder="Start Date"
-                id="match_date"
-                name="match_date"
-                value={info.match_date}
-                onChange={(e) => { dispatch({ type: 'update', fld: 'match_date', val: e.target.value }) }}
-              />
-            </div>
-            <div className="d-grid">
-              <button type="submit" className="btn btn-primary" onClick={(e) => {
-                changeStatus()
-                sendData(e)
+                tours.map(tour => {
+                  return <option value={tour.tournament_id}>{tour.tournament_title}</option>
+                })
               }
-              }>
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
+            </select>
+          </div>
+
+          <div className="mb-3">
+            <label>Team Match Status</label>
+            <select
+              className="form-control"
+              onChange={(e) => { selGroup(e.target.value) }}>
+              <option>Select Team Status</option>
+              <option value={0}>Group Stage</option>
+              <option value={1}>Quater Finals</option>
+              <option value={2}>Semi Finals</option>
+              <option value={3}>Finals</option>
+            </select>
+          </div>
+
+          <div className="mb-3">
+            <label>Select Team A</label>
+            <select
+              className="form-control"
+              id="team_id_a"
+              name="team_id_a"
+              onChange={(e) => { dispatch({ type: 'update', fld: 'team_id_a', val: e.target.value }) }}>
+              <option>Select Team A</option>
+              {
+                teams.map(team => {
+                  return <option value={team.team_id}> {team.team_name} </option>
+                })
+              }
+            </select>
+          </div>
+
+          <div className="mb-3">
+            <label>Select Team B</label>
+            <select
+              className="form-control"
+              id="team_id_b"
+              name="team_id_b"
+              onChange={(e) => { dispatch({ type: 'update', fld: 'team_id_b', val: e.target.value }) }}>
+              <option>Select Team B</option>
+              {
+                teams.map(team => {
+                  { console.log(info.team_id_a + " / " + team.team_id) }
+                  return ((info.team_id_a != team.team_id) && <option value={team.team_id}> {team.team_name} </option>)
+                })
+              }
+            </select>
+          </div>
+
+          <div className="mb-3">
+            <label>Match Venue</label>
+            <select
+              className="form-control"
+              id="match_venue"
+              name="match_venue"
+              value={info.match_venue.value}
+              onChange={(e) => { dispatch({ type: 'update', fld: 'match_venue', val: e.target.value }) }}>
+
+              <option>Select A Match Venue</option>
+              <option value="Pune District Football Association Stadium">Pune District Football Association Stadium</option>
+              <option value="Pune FC Training Ground">Pune FC Training Ground</option>
+              <option value="Shree Shiv Chhatrapati Sports Complex, Pune">Pune District Football Association Stadium</option>
+              <option value="Cooperage Football Stadium, Mumbai">Cooperage Football Stadium, Mumbai</option>
+              <option value="Fr. Agnel Stadium, Navi Mumbai">Fr. Agnel Stadium, Navi Mumbai</option>
+              <option value="DY Patil Stadium, Navi Mumbai">DY Patil Stadium, Navi Mumbai</option>
+            </select>
+          </div>
+
+          <div className="mb-3">
+            <label>Match Date & Time</label>
+            <input
+              type="datetime-local"
+              className="form-control"
+              placeholder="Start Date"
+              id="match_date"
+              name="match_date"
+              value={info.match_date}
+              onChange={(e) => { dispatch({ type: 'update', fld: 'match_date', val: e.target.value }) }}
+            />
+          </div>
+          <div className="d-grid">
+            <button type="submit" className="btn btn-primary" onClick={(e) => {
+              changeStatus()
+              sendData(e)
+            }
+            }>
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   )

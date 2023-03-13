@@ -27,26 +27,25 @@ var ApproveTourMan = () => {
 
 			})
 	}
-	
 	return (
-		<div>
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-6 text-center mb-5">
+		<div className="card shadow text-center" style={{ width: "60%", right: "-20%", top: "3%", animation: "ease-in-out", opacity: "0.92", fontSize: "15px", fontFamily: "Century Gothic" }} >
+			<div className="card-body">
+				<div className="row justify-content-center">
+					<div className="col-md-6 text-center mb-5">
 
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-12">
+				<div className="row">
+					<div className="col-md-12">
 						{
 							utour.length > 0 ?
 								<div>
-									<h4 class="text-center mb-4">List of Pending Approvals </h4>
-									<div class="table-wrap">
+									<h4 className="text-center mb-4">List of Pending Approvals </h4>
+									<div className="table-wrap">
 
 
-										<table class="table">
-											<thead class="thead-primary">
+										<table className="table">
+											<thead className="thead-primary">
 												<tr>
 													<th>Tournament Manager ID</th>
 													<th>Tournament Manager Name</th>
@@ -64,7 +63,7 @@ var ApproveTourMan = () => {
 															<td>{ut.email}</td>
 															<td>{ut.username}</td>
 															<td><button onClick={() => { approve(ut.uid) }} className="btn btn-primary">Approve</button></td>
-															<td><a href="/admin_home" class="btn btn-danger">Reject</a></td>
+															<td><a href="/admin_home" className="btn btn-danger">Reject</a></td>
 														</tr>
 
 													})
@@ -116,24 +115,23 @@ var ApproveTeamMan = () => {
 	}, [])
 
 	return (
-		<div className="auth-wrapper">
-
-			<div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-md-6 text-center mb-5">
+		<div className="card shadow text-center" style={{ width: "60%", right: "-20%", top: "3%", animation: "ease-in-out", opacity: "0.92", fontSize: "15px", fontFamily: "Century Gothic" }} >
+			<div className="card-body">
+				<div className="container">
+					<div className="row justify-content-center">
+						<div className="col-md-6 text-center mb-5">
 
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-12">
+					<div className="row">
+						<div className="col-md-12">
 							{
 								uteam.length > 0 ?
 									<div>
-										<h4 class="text-center mb-4">List of Pending Approvals </h4>
-										<div class="table-wrap">
-											<table class="table">
-												<thead class="thead-primary">
+										<h4 className="text-center mb-4">List of Pending Approvals </h4>
+										<div className="table-wrap">
+											<table className="table">
+												<thead className="thead-primary">
 													<tr>
 														<th>Team Manager ID</th>
 														<th>Team Manager Name</th>
@@ -151,7 +149,7 @@ var ApproveTeamMan = () => {
 																	<td>{uut.first_name} {uut.last_name}</td>
 																	<td>{uut.email}</td>
 																	<td>{uut.username}</td>
-																	<td><button onClick={() => { approve(uut.uid) }} class="btn btn-primary">Approve</button></td>
+																	<td><button onClick={() => { approve(uut.uid) }} className="btn btn-primary">Approve</button></td>
 																	<td><button type="submit" className="btn btn-danger" >Reject</button></td>
 																</tr>
 															}

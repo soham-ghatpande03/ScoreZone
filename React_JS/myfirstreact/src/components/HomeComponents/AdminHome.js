@@ -22,7 +22,7 @@ export default function AdminHome() {
   }, [])
 
   return (
-    <div >
+    <div className='background'>
       <Navbar style={{ fontSize: "15px", fontFamily: "Century Gothic" }} bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand href="/admin_home">
@@ -47,7 +47,13 @@ export default function AdminHome() {
                 <NavDropdown.Item href="/admin_home/approveTour">Approve Tournament Manager</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/admin_home/approveTeamM">Approve Team Manager</NavDropdown.Item>
-              </NavDropdown> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+              </NavDropdown> &nbsp
+              <NavDropdown style={{ fontSize: "15px", fontFamily: "Century Gothic" }}
+                title="Venues" id="navbarScrollingDropdown">
+                <NavDropdown.Item href="/admin_home/showVenues">Show Venues</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/admin_home/addvenue">Add Venues</NavDropdown.Item>
+              </NavDropdown>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
               <Nav.Link style={{ fontSize: "15px", fontFamily: "Century Gothic" }}>Welcome, {ad && ad.first_name}!</Nav.Link>
             </Nav>
             <DropdownButton
