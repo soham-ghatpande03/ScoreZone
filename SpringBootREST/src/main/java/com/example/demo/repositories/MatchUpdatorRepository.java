@@ -25,6 +25,12 @@ public interface MatchUpdatorRepository extends JpaRepository<MatchUpdator, Inte
             nativeQuery=true
     )
 	public int updateMatchStatus(int s);
+	
+	@Modifying
+	@Query(value = "update matches set match_status =2 WHERE match_id = ?1 ",
+            nativeQuery=true
+    )
+	public int endMatch(int s);
 	//shan change
 
 	

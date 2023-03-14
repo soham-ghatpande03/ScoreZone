@@ -32,6 +32,11 @@ public class MatchUpdatorService {
 	{
 		return murepo.updateMatchStatus(matchid);
 	}
+	
+	public int endMatch(int matchid)
+	{
+		return murepo.endMatch(matchid);
+	}
 	//shan change
 
 }

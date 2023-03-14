@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 export default function ScoreUpdate()
 {
   
    // const currentTime = Date.now();
 
-    
+    var nav=useNavigate();
     var m= JSON.parse(localStorage.getItem("Match"));
     var teamAName=m.team_id_a.team_name;
     var teamBName=m.team_id_b.team_name;
@@ -39,6 +40,18 @@ export default function ScoreUpdate()
 				console.log(JSON.stringify(obj))
 				if (obj===1) {
 					alert("Updation done")
+        }}
+				)
+    }
+
+    const endMatch= (matchid) =>{
+      fetch("http://localhost:8082/endMatch?matchid="+matchid)
+      .then(resp => resp.json())
+			.then(obj => {
+				console.log(JSON.stringify(obj))
+				if (obj===1) {
+					alert("Match Ended")
+          nav("/mu_home")
         }}
 				)
     }
@@ -148,7 +161,7 @@ export default function ScoreUpdate()
     
   </div>
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <button  class="btn btn-primary" onClick={ () => {} } >End Match</button>
+          <button  class="btn btn-primary" onClick={ () => {endMatch(m.match_id)} } >End Match</button>
         </div>
 
   

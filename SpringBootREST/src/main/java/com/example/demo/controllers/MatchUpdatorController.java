@@ -35,5 +35,11 @@ public class MatchUpdatorController {
 	{
 		return muservice.updateMatchStatus(id);
 	}
+	
+	@GetMapping("/endMatch")
+	public int endMatch(@RequestParam("matchid") int id)
+	{
+		return muservice.endMatch(id);
+	}
 	//shan change
 }
