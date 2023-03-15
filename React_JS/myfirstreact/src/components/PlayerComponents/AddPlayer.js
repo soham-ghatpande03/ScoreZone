@@ -111,7 +111,7 @@ var nav = useNavigate();
     }
     else
     {
-      alert('Error Occured...Try Again')
+      alert('Error Occured...Might be team not created....Try again')
       window.location.reload(false)
     }})
   }

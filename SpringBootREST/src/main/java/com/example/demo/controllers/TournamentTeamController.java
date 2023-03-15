@@ -10,6 +10,7 @@ import java.util.*;
 
 import com.example.demo.entities.Tournament;
 import com.example.demo.entities.TournamentTeam;
+import com.example.demo.services.TeamService;
 import com.example.demo.services.TournamentService;
 import com.example.demo.services.TournamentTeamService;
 
@@ -22,6 +23,9 @@ public class TournamentTeamController {
 	
 	@Autowired 
 	TournamentService tourservice;
+	
+	@Autowired
+	TeamService teservice;
 	
 	@GetMapping("/allTournamentTeamID")
 	public List<TournamentTeam>getAll(){
@@ -41,12 +45,12 @@ public class TournamentTeamController {
 		
 	}
 	
-//	@GetMapping("/addTeam")
-//	public TournamentTeam participate(@RequestParam("teamid") int teamid, @RequestParam("tourid") int tour_id)
-//	{
-//		TournamentTeam ttid = new TournamentTeam();
-//		ttid.setTeam_id(teamid);
-//		ttid.setTour_id(tour_id);
-//		return tservice.saveTeam(ttid);
-//	}
+	@GetMapping("/addTeam")
+	public TournamentTeam participate(@RequestParam("teamid") int teamid, @RequestParam("tourid") int tour_id)
+	{
+		TournamentTeam ttid = new TournamentTeam();
+		tourservice.getById(tour_id);
+		teservice.getById(teamid);
+		return tservice.saveTeam(ttid);
+	}
 }

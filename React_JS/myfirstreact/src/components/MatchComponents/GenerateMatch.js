@@ -468,7 +468,7 @@ export default function GenerateMatch() {
               id="match_date"
               name="match_date"
               value={info.match_date}
-              onChange={(e) => { dispatch({ type: 'update', fld: 'match_date', val: e.target.value }) }}
+              onChange={(e) => { dispatch({ type: 'update', fld: 'match_date', val: e.target.value+":00" }) }}
             />
           </div>
           <div className="d-grid">
