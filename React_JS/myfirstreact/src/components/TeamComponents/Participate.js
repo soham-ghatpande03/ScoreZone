@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 var AddTeam = () => {
 
+    const [teamid, setTeamId] = useState();
     var tmid = JSON.parse(localStorage.getItem("loggedTeamMan")).uid;
 
     const nav = useNavigate();
@@ -22,7 +23,7 @@ var AddTeam = () => {
         })
     }
     const [tour, setTour] = useState([]);
-    const [teamid, setTeamId] = useState();
+  
     useEffect(() => {
         fetch("http://localhost:8082/getTournaments")
             .then(resp => resp.json())
@@ -76,6 +77,8 @@ var AddTeam = () => {
                                             })
                                         }
                                     </tbody>
+
+                                    
                                 </table>
                             </div>
                         </div>

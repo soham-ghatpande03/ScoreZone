@@ -121,7 +121,7 @@ export default function Tournamentform() {
       }
       else
       {
-        alert('Error Occured...Try Again')
+        alert('Enter Different Tournament Name...OR...Server Error')
         window.location.reload(false)
       }}))
   }
