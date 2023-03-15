@@ -62,7 +62,7 @@ export default function ViewMatchesMatchUpdator() {
                     <td>{match.team_id_b.team_name}</td>
                     <td>{match.match_date}</td>
                     <td><button 
-                    // disabled={new Date() == new Date(match.match_date) ? false : true}
+                     //disabled={new Date() == new Date(match.match_date) ? false : true}
                     onClick={() => { startMatch(match) }} className="btn btn-primary">Start Match</button></td>
                   </tr>
                 );

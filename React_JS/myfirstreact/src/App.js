@@ -26,6 +26,7 @@ import AddPlayer from './components/PlayerComponents/AddPlayer';
 import ShowVenues from './components/VenueComponents/ShowVenues';
 import AddVenue from './components/VenueComponents/AddVenue';
 import ParticipatedTeams from './components/ParticipatedTeams';
+import GenerateMatch1 from './components/gm1';
 
 
 function App() {
@@ -66,7 +67,7 @@ function App() {
               </Route>  
               
               <Route path="/tm_home" element={<TmHome/>} >
-                <Route path="creatematch" element={<GenerateMatch/>} />
+                <Route path="creatematch" element={<GenerateMatch1/>} />
                 <Route path="mytours" element={<MyTournaments/>} />
                 <Route path="creattour" element={<Tournamentform/>} />
                 <Route path="mulogin" element={<MuLogin/>} />
