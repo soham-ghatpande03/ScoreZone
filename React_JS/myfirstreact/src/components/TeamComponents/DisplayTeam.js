@@ -8,7 +8,7 @@ var Viewteam = () => {
 
 	const [players, setPlayer] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:8082/getPlayersByTeam?team_id=" + teamanager)
+		fetch("http://54.92.203.101:8082/getPlayersByTeam?team_id=" + teamanager)
 			.then(resp => resp.json())
 			.then(obj => setPlayer(obj))
 	}, [])
@@ -84,7 +84,7 @@ var ViewAllTeams = () => {
 
 	const [allteam, setAllTeam] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:8082/getTeams")
+		fetch("http://54.92.203.101:8082/getTeams")
 			.then(resp => resp.json())
 			.then(obj => { setAllTeam(obj) })
 	}, [])

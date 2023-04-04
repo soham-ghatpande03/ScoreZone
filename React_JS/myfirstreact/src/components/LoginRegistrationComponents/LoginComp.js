@@ -70,7 +70,7 @@ export default function FirstForm()
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ uid: info.uid.value, pwd: info.pwd.value })
     }
-    fetch("http://localhost:8082/loginchk", reqOptions)
+    fetch("http://54.92.203.101:8082/loginchk", reqOptions)
       .then(resp => {
         if (resp.ok) {
           console.log(resp.status)

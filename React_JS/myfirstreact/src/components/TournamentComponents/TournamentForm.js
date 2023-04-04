@@ -112,7 +112,7 @@ export default function Tournamentform() {
           tournament_type: info.tournament_type.value
         })
     }
-    fetch("http://localhost:8082/createTournament", reqOptions)
+    fetch("http://54.92.203.101:8082/createTournament", reqOptions)
     .then((resp => {
       if(resp.ok){
         alert('Tournament Created Successfully!!')

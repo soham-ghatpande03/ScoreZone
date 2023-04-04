@@ -10,14 +10,14 @@ export default function ParticipatedTeams(){
 
 
     useEffect(() => {
-        fetch("http://localhost:8082/getTourById?uid="+uid)
+        fetch("http://54.92.203.101:8082/getTourById?uid="+uid)
             .then((resp) => resp.json())
             .then((obj) => setTours(obj))
     }, [])
 
     const gettour = (uid1) => {
         console.log(uid)
-        fetch("http://localhost:8082/TeamsByTourId?tid="+ uid1)
+        fetch("http://54.92.203.101:8082/TeamsByTourId?tid="+ uid1)
             .then((resp) => resp.json())
             .then((obj) => setTeamss(obj))
     }

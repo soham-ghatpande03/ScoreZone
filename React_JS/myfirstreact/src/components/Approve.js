@@ -4,7 +4,7 @@ var ApproveTourMan = () => {
 
 	const [utour, setUTour] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:8082/approveTourMan")
+		fetch("http://54.92.203.101:8082/approveTourMan")
 			.then(resp => resp.json())
 			.then(obj => setUTour(obj))
 	}, [])
@@ -13,7 +13,7 @@ var ApproveTourMan = () => {
 
 	const approve = (uid) => {
 		console.log(uid)
-		fetch("http://localhost:8082/updateTourManStatus?uid=" + uid)
+		fetch("http://54.92.203.101:8082/updateTourManStatus?uid=" + uid)
 			.then(resp => resp.json())
 			.then(obj => {
 				console.log(JSON.stringify(obj))
@@ -92,7 +92,7 @@ var ApproveTeamMan = () => {
 
 	const approve = (uid) => {
 		console.log(uid)
-		fetch("http://localhost:8082/updateTeamManStatus?uid=" + uid)
+		fetch("http://54.92.203.101:8082/updateTeamManStatus?uid=" + uid)
 			.then(resp => resp.json())
 			.then(obj => {
 				console.log(JSON.stringify(obj))
@@ -109,7 +109,7 @@ var ApproveTeamMan = () => {
 
 	const [uteam, setUTeam] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:8082/approveTeamMan")
+		fetch("http://54.92.203.101:8082/approveTeamMan")
 			.then(resp => resp.json())
 			.then(obj => setUTeam(obj))
 	}, [])

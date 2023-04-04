@@ -16,7 +16,7 @@ export default function MuHome() {
     var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
 
     console.log(uid);
-    fetch("http://localhost:8082/getMU?uid=" + uid)
+    fetch("http://54.92.203.101:8082/getMU?uid=" + uid)
       .then(resp => resp.json())
       .then(obj => {
         localStorage.setItem("loggedMU", JSON.stringify(obj))

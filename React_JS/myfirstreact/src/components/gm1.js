@@ -12,7 +12,7 @@ const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
 const [tours, setTour] = useState([]);
 
 useEffect(() => {
-fetch("http://localhost:8082/getTourById?uid=" + tmanager.uid)
+fetch("http://54.92.203.101:8082/getTourById?uid=" + tmanager.uid)
     .then(resp => resp.json())
     .then(obj => setTour(obj))
 }, [])
@@ -59,7 +59,7 @@ const [endate,setEndDate] = useState();
           match_status : info.match_status.value,
         })
     }
-        fetch("http://localhost:8082/saveMatch ", reqOptions)
+        fetch("http://54.92.203.101:8082/saveMatch ", reqOptions)
         .then(resp => {
         if(resp.ok){
         alert('Match Generated Successfully!!')
@@ -75,7 +75,7 @@ const [endate,setEndDate] = useState();
 
 
         const changeStatus = () => {
-        fetch("http://localhost:8082/changeTeamMatchStatus?t1=" + info.team_id_a.value + "&t2=" + info.team_id_b.value)
+        fetch("http://54.92.203.101:8082/changeTeamMatchStatus?t1=" + info.team_id_a.value + "&t2=" + info.team_id_b.value)
         .then(resp => console.log(resp))
             }
 
@@ -190,7 +190,7 @@ const [endate,setEndDate] = useState();
 {
 
             selGroup = (selvalue) => {
-            fetch("http://localhost:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour1)
+            fetch("http://54.92.203.101:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour1)
                 .then(resp => resp.json())
                 .then(obj => setTeam(obj))
 
@@ -337,7 +337,7 @@ const [endate,setEndDate] = useState();
 //   console.log(tmanager.uid)
 //   const [tours, setTour] = useState([]);
 //   useEffect(() => {
-//     fetch("http://localhost:8082/getTourById?uid=" + tmanager.uid)
+//     fetch("http://54.92.203.101:8082/getTourById?uid=" + tmanager.uid)
 //       .then(resp => resp.json())
 //       .then(obj => setTour(obj))
 //   }, [])
@@ -373,7 +373,7 @@ const [endate,setEndDate] = useState();
 //       headers: { 'content-type': 'application/json' },
 //       body: JSON.stringify(info)
 //     }
-//     fetch("http://localhost:8082/saveMatch ", reqOptions)
+//     fetch("http://54.92.203.101:8082/saveMatch ", reqOptions)
 //       .then(resp => {
 //         if(resp.ok){
 //         alert('Match Generated Successfully!!')
@@ -388,7 +388,7 @@ const [endate,setEndDate] = useState();
 //   }
 
 //   const changeStatus = () => {
-//     fetch("http://localhost:8082/changeTeamMatchStatus?t1=" + info.team_id_a + "&t2=" + info.team_id_b)
+//     fetch("http://54.92.203.101:8082/changeTeamMatchStatus?t1=" + info.team_id_a + "&t2=" + info.team_id_b)
 //       .then(resp => console.log(resp))
 //   }
 
@@ -423,7 +423,7 @@ const [endate,setEndDate] = useState();
 // {
 
 //   selGroup = (selvalue) => {
-//   fetch("http://localhost:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour)
+//   fetch("http://54.92.203.101:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour)
 //     .then(resp => resp.json())
 //     .then(obj => setTeam(obj))
 // }

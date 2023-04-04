@@ -133,7 +133,7 @@ export default function Signup() {
         q_answer: info.q_answer.value,
       })
     }
-    fetch("http://localhost:8082/saveUser", reqOptions)
+    fetch("http://54.92.203.101:8082/saveUser", reqOptions)
       .then((resp => {
         if(resp.ok){
           alert('You are Succesfully Registered..!!')

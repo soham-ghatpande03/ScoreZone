@@ -7,7 +7,7 @@ var tmid = JSON.parse(localStorage.getItem("loggedTeamMan")).uid;
 console.log(tmid)
 
 useEffect( (e) =>{
-  fetch("http://localhost:8082/getTeamByTManId?uid="+tmid)
+  fetch("http://54.92.203.101:8082/getTeamByTManId?uid="+tmid)
   .then(resp => resp.json())
   .then(obj => setTeam((obj)))
 },[tmid])
@@ -102,7 +102,7 @@ var nav = useNavigate();
       })
     }
 
-    fetch("http://localhost:8082/savePlayer", reqOptions)
+    fetch("http://54.92.203.101:8082/savePlayer", reqOptions)
     .then(resp => {
       if(resp.ok){
       alert('Player Added Successfully..!!')

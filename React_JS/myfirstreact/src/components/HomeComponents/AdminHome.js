@@ -13,7 +13,7 @@ export default function AdminHome() {
   const [ad, setAd] = useState(null);
   useEffect(() => {
     var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
-    fetch("http://localhost:8082/getAdmin?uid=" + uid)
+    fetch("http://54.92.203.101:8082/getAdmin?uid=" + uid)
       .then(resp => resp.json())
       .then(obj => {
         localStorage.setItem("loggedAdmin", JSON.stringify(obj))

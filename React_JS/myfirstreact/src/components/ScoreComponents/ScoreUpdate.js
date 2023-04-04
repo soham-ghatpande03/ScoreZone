@@ -8,7 +8,7 @@ export default function ScoreUpdate()
   console.log(m.match_id);
 
   const newScore= (a,b) =>{
-    fetch("http://localhost:8082/updateScores?teama="+a+"&teamb="+b+"&matchid="+m.match_id)
+    fetch("http://54.92.203.101:8082/updateScores?teama="+a+"&teamb="+b+"&matchid="+m.match_id)
     .then(resp => resp.json())
     .then(obj => {
       console.log(JSON.stringify(obj))
@@ -19,7 +19,7 @@ export default function ScoreUpdate()
   }
 
   const winTeam= (teamid) =>{
-    fetch("http://localhost:8082/changeTeamMatchStatusWin?teamid="+teamid)
+    fetch("http://54.92.203.101:8082/changeTeamMatchStatusWin?teamid="+teamid)
     .then(resp => resp.json())
     .then(obj => {
       console.log(JSON.stringify(obj))
@@ -30,7 +30,7 @@ export default function ScoreUpdate()
   }
 
   const looseTeam= (teamid) =>{
-    fetch("http://localhost:8082/changeTeamMatchStatusLoose?teamid="+teamid)
+    fetch("http://54.92.203.101:8082/changeTeamMatchStatusLoose?teamid="+teamid)
     .then(resp => resp.json())
     .then(obj => {
       console.log(JSON.stringify(obj))

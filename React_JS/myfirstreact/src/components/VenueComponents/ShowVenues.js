@@ -3,7 +3,7 @@ export default function ShowVenues() {
     var x = 0;
     const [venues, setVenue] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:8082/allVenues")
+        fetch("http://54.92.203.101:8082/allVenues")
             .then(resp => resp.json())
             .then(obj => setVenue(obj))
     }, [])
