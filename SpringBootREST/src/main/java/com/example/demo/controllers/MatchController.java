@@ -23,7 +23,7 @@ import com.example.demo.services.MatchService;
 import com.example.demo.services.TeamService;
 import com.example.demo.services.TournamentService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://szdb.s3-website-us-east-1.amazonaws.com")
 
 
 

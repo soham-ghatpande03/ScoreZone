@@ -14,7 +14,7 @@ import com.example.demo.services.VenueService;
 
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://szdb.s3-website-us-east-1.amazonaws.com")
 @RestController
 public class VenueController {
 

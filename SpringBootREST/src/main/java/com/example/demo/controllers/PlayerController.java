@@ -16,7 +16,7 @@ import com.example.demo.entities.Team;
 import com.example.demo.services.PlayerService;
 import com.example.demo.services.TeamService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://szdb.s3-website-us-east-1.amazonaws.com")
 @RestController
 public class PlayerController {
 	

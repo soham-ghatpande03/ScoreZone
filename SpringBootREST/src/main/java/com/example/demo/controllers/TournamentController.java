@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entities.Tournament;
 import com.example.demo.services.TournamentService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://szdb.s3-website-us-east-1.amazonaws.com")
 @RestController
 public class TournamentController {
 	

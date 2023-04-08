@@ -19,7 +19,7 @@ import com.example.demo.entities.UserType;
 import com.example.demo.services.UserService;
 import com.example.demo.services.UserTypeService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://szdb.s3-website-us-east-1.amazonaws.com")
 @RestController
 public class UserController {
 

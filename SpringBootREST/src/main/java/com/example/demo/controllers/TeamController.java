@@ -17,7 +17,7 @@ import com.example.demo.entities.User;
 import com.example.demo.services.TeamService;
 import com.example.demo.services.UserService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://szdb.s3-website-us-east-1.amazonaws.com")
 @RestController
 public class TeamController {
 	
