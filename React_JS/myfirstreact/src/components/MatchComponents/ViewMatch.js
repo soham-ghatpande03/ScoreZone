@@ -8,14 +8,14 @@ export default function ViewMatch() {
 
     useEffect(() => {
 
-        fetch("http://54.92.203.101:8082/getTournaments")
+        fetch("http://54.243.238.129:8082/getTournaments")
             .then((resp) => resp.json())
             .then((obj) => setTours(obj))
     }, [])
 
     const gettour = (uid) => {
         console.log(uid)
-        fetch("http://54.92.203.101:8082/matchByTourId?tour=" + uid)
+        fetch("http://54.243.238.129:8082/matchByTourId?tour=" + uid)
             .then((resp) => resp.json())
             .then((obj) => setMatch(obj))
     }

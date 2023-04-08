@@ -5,7 +5,7 @@ export default function MyTournaments() {
     var tmid = JSON.parse(localStorage.getItem("loggedTourMan")).uid;
     const [tour, setTour] = useState([]);
     useEffect(() => {
-        fetch("http://54.92.203.101:8082/getTourById?uid=" + tmid)
+        fetch("http://54.243.238.129:8082/getTourById?uid=" + tmid)
             .then(resp => resp.json())
             .then(obj => setTour(obj))
     }, [])

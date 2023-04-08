@@ -135,7 +135,7 @@ export default function MuLogin() {
         q_answer: info.q_answer.value,
       })
     }
-    fetch("http://54.92.203.101:8082/saveUser", reqOptions)
+    fetch("http://54.243.238.129:8082/saveUser", reqOptions)
     .then((resp => {
       if(resp.ok){
         alert('Match Updater Registered..!!')

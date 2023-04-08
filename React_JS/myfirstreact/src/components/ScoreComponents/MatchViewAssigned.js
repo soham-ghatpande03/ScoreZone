@@ -9,7 +9,7 @@ export default function ViewMatchesMatchUpdator() {
   const [matches, setMatch] = useState([]);
 
   useEffect(() => {
-    fetch("http://54.92.203.101:8082/getMatchesByMuId?mu_id=" + uid)
+    fetch("http://54.243.238.129:8082/getMatchesByMuId?mu_id=" + uid)
       .then(resp => resp.json())
       .then(obj => setTid(obj))
   }, [])
@@ -21,7 +21,7 @@ export default function ViewMatchesMatchUpdator() {
 
   useEffect(() => {
     console.log(tourid)
-    fetch("http://54.92.203.101:8082/matchByTourId?tour=" + tourid)
+    fetch("http://54.243.238.129:8082/matchByTourId?tour=" + tourid)
       .then((resp) => resp.json())
       .then((obj) => setMatch(obj))
   }, [tourid])
@@ -93,7 +93,7 @@ export default function ViewMatchesMatchUpdator() {
 //     const[matches,setMatch] = useState([]);
 
 //     useEffect(()=>{
-//       fetch("http://54.92.203.101:8082/getMatchesByMuId?mu_id="+uid)
+//       fetch("http://54.243.238.129:8082/getMatchesByMuId?mu_id="+uid)
 //       .then(resp => resp.json())
 //       .then(obj => setTid(obj))
 //       },[])
@@ -105,7 +105,7 @@ export default function ViewMatchesMatchUpdator() {
 
 //     useEffect(()=>{
 //       console.log(tourid)
-//       fetch("http://54.92.203.101:8082/matchByTourId?tour="+tourid)
+//       fetch("http://54.243.238.129:8082/matchByTourId?tour="+tourid)
 //       .then((resp)=>resp.json())
 //       .then ((obj) => setMatch(obj))
 //       },[tourid])

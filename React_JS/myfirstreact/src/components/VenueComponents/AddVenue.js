@@ -68,7 +68,7 @@ var nav = useNavigate();
       })
     }
 
-    fetch("http://54.92.203.101:8082/saveVenue", reqOptions)
+    fetch("http://54.243.238.129:8082/saveVenue", reqOptions)
       .then(resp => console.log(resp))
       .then(alert('Venue Added'))
       .then(nav("/admin_home"))

@@ -7,13 +7,13 @@
 //   const [tours,setTour] = useState([]);
 
 //   useEffect(()=>{
-//    fetch("http://54.92.203.101:8082/getTourById?uid="+tmanager.uid)
+//    fetch("http://54.243.238.129:8082/getTourById?uid="+tmanager.uid)
 //    .then(resp => resp.json())
 //    .then(obj => setTour(obj))
 //   },[])
 
 //   useEffect(()=>{
-//     fetch("http://54.92.203.101:8082/getTeamsByMatchStatus")
+//     fetch("http://54.243.238.129:8082/getTeamsByMatchStatus")
 //     .then(resp => resp.json())
 //     .then(obj => setTeam(obj))
 //    } ,[])
@@ -58,7 +58,7 @@
 //         })
 //       }
 
-// fetch("http://54.92.203.101:8082/saveMatch ",reqOptions)
+// fetch("http://54.243.238.129:8082/saveMatch ",reqOptions)
 // .then(resp => console.log(resp))
 // .then(alert('You have Sucessfully Generate a Match'))
 // .then(window.location.reload(false))
@@ -66,7 +66,7 @@
 
 
 // const changeStatus= () => {
-//   fetch("http://54.92.203.101:8082/changeTeamMatchStatus?t1="+info.team_id_a+"&t2="+info.team_id_b)
+//   fetch("http://54.243.238.129:8082/changeTeamMatchStatus?t1="+info.team_id_a+"&t2="+info.team_id_b)
 //   .then(resp => console.log(resp))
 // }
 
@@ -296,7 +296,7 @@ export default function GenerateMatch() {
   console.log(tmanager.uid)
   const [tours, setTour] = useState([]);
   useEffect(() => {
-    fetch("http://54.92.203.101:8082/getTourById?uid=" + tmanager.uid)
+    fetch("http://54.243.238.129:8082/getTourById?uid=" + tmanager.uid)
       .then(resp => resp.json())
       .then(obj => setTour(obj))
   }, [])
@@ -304,7 +304,7 @@ export default function GenerateMatch() {
   const [teams, setTeam] = useState([]);
   
   // const selGroup = (selvalue) => {
-  //   fetch("http://54.92.203.101:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour)
+  //   fetch("http://54.243.238.129:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour)
   //     .then(resp => resp.json())
   //     .then(obj => setTeam(obj))
   // }
@@ -338,7 +338,7 @@ export default function GenerateMatch() {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(info)
     }
-    fetch("http://54.92.203.101:8082/saveMatch ", reqOptions)
+    fetch("http://54.243.238.129:8082/saveMatch ", reqOptions)
       .then(resp => {
         if(resp.ok){
         alert('Match Generated Successfully!!')
@@ -353,7 +353,7 @@ export default function GenerateMatch() {
   }
 
   const changeStatus = () => {
-    fetch("http://54.92.203.101:8082/changeTeamMatchStatus?t1=" + info.team_id_a + "&t2=" + info.team_id_b)
+    fetch("http://54.243.238.129:8082/changeTeamMatchStatus?t1=" + info.team_id_a + "&t2=" + info.team_id_b)
       .then(resp => console.log(resp))
   }
 
@@ -388,7 +388,7 @@ export default function GenerateMatch() {
 {
 
   selGroup = (selvalue) => {
-  fetch("http://54.92.203.101:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour)
+  fetch("http://54.243.238.129:8082/getTeamsByTeamMatchStatus?status="+selvalue+"&tour="+tour)
     .then(resp => resp.json())
     .then(obj => setTeam(obj))
 }

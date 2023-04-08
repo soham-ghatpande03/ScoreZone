@@ -3,7 +3,7 @@ export default function AllPlayers() {
     var x = 0;
     const [players, setPlayer] = useState([]);
     useEffect(() => {
-        fetch("http://54.92.203.101:8082/allPlayers")
+        fetch("http://54.243.238.129:8082/allPlayers")
             .then(resp => resp.json())
             .then(obj => setPlayer(obj))
     }, [])

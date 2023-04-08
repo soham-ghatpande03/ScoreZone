@@ -13,7 +13,7 @@ export default function TemHome() {
   useEffect(() => {
     var uid = JSON.parse(localStorage.getItem("loggeduser")).uid;
     console.log(uid);
-    fetch("http://54.92.203.101:8082/getTeamMan?uid=" + uid)
+    fetch("http://54.243.238.129:8082/getTeamMan?uid=" + uid)
       .then(resp => resp.json())
       .then(obj => {
         localStorage.setItem("loggedTeamMan", JSON.stringify(obj))

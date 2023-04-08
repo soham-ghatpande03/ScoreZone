@@ -87,7 +87,7 @@ export default function RegisterTeam() {
           team_logo: info.team_logo.value
         })
     }
-    fetch("http://54.92.203.101:8082/saveTeam", reqOptions)
+    fetch("http://54.243.238.129:8082/saveTeam", reqOptions)
     .then(resp => {
       if(resp.ok){
       alert('Team Added Successfully..!!')

@@ -8,7 +8,7 @@ var AddTeam = () => {
 
     const nav = useNavigate();
     const participate = (t) => {
-        fetch("http://54.92.203.101:8082/addTeam?teamid=" + teamid.team_id + "&tourid=" + t.tournament_id)
+        fetch("http://54.243.238.129:8082/addTeam?teamid=" + teamid.team_id + "&tourid=" + t.tournament_id)
         .then(resp => {
             if(resp.ok===true){
             alert('Team Added In Tournament')
@@ -25,13 +25,13 @@ var AddTeam = () => {
     const [tour, setTour] = useState([]);
   
     useEffect(() => {
-        fetch("http://54.92.203.101:8082/getTournaments")
+        fetch("http://54.243.238.129:8082/getTournaments")
             .then(resp => resp.json())
             .then(obj => setTour(obj))
     }, [])
 
     useEffect(() => {
-        fetch("http://54.92.203.101:8082/getTeamByTManId?uid=" + tmid)
+        fetch("http://54.243.238.129:8082/getTeamByTManId?uid=" + tmid)
             .then(resp => resp.json())
             .then(obj => setTeamId(obj))
     }, [])
