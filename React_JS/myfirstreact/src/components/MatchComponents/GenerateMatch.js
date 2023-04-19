@@ -295,6 +295,7 @@ export default function GenerateMatch() {
   const tmanager = JSON.parse(localStorage.getItem("loggedTourMan"));
   console.log(tmanager.uid)
   const [tours, setTour] = useState([]);
+  
   useEffect(() => {
     fetch("http://54.243.238.129:8082/getTourById?uid=" + tmanager.uid)
       .then(resp => resp.json())

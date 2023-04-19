@@ -94,6 +94,15 @@ body, html, .App, #root, .auth-wrapper {
 
 /* .background {
   text-align: center ;
+  background: url('./stadium.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+} */
+
+/* .background {
+  text-align: center ;
   background-image: url('./stadium.jpg') 
   no-repeat center center fixed;
   -webkit-background-size: cover;
